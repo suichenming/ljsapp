@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>政策法规</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <style>
+         header > i {
+            position: absolute;
+            right: 5%;
+            top: 12px;
+            color: #888888;
+            font-size: 20px
+        }
+        .prope > ul > li {
+            padding: 20px 0;
+            border-bottom: 1px solid #ccc;
+            margin: 0 15px;
+            color: #454545;
+            font-weight: 600
+        }
+       
+        .prope > ul > li> i {
+            float: right;
+            margin-top: 5px
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <headers :showid='true'>
+            政策法规
+        </headers>
+        <div class="prope">
+            <ul>
+                <li v-for='(item,index) in Property' :key='index'>
+                    {{item.name}}
+                    <i class="el-icon-arrow-right"></i>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            Property:[
+                {name: '企业增资业务规则（试行）'},
+                {name: '中华人民共和国企业国有资产法'},
+                {name: '深圳市属企业国有产权变动监管规定'},
+                {name: '深圳市属企业国有产权变动工作指引'},
+                {name: '关于国有控股混合所有制企业开展员工持股试点的意见'},
+                {name: '国务院国有资产监督管理委员会财政部32号'},
+            ]
+        }
+    })
+</script>

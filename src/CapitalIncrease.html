@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>增资专题</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <style>
+        .prope > ul > li {
+            padding: 20px 0;
+            border-bottom: 1px solid #ccc;
+            margin: 0 15px;
+            color: #454545;
+            font-weight: 600
+        }
+         .prope > ul > li > img{
+            margin: 0 5px
+        } 
+        .prope > ul > li> i {
+            float: right;
+            margin-top: 5px
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <headers>
+            增资专题
+        </headers>
+        <div class="prope">
+            <ul>
+                <li v-for='(item,index) in Property' :key='index'>
+                    <img :src="item.imgs" alt="">
+                    {{item.name}}
+                    <i class="el-icon-arrow-right"></i>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            Property:[
+                {name: '业务介绍',imgs: '../images/yewu.png'},
+                {name: '公告信息',imgs: '../images/zulinxg.png'},
+                {name: '政策法规',imgs: '../images/zhengc.png'},
+                {name: '服务规范',imgs: '../images/fuwugf.png'},
+                {name: '经典案例',imgs: '../images/jingdian.png'},
+                {name: '新闻动态',imgs: '../images/xinwendt.png'},
+                {name: '咨询与答疑',imgs: '../images/wentiay.png'},
+            ]
+        }
+    })
+</script>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登入</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <style>
+        main{
+            text-align: center;
+            padding: 40px 0
+        }
+        .box{
+            width: 80%;
+            margin: 0 auto
+        }
+        .el-input__inner{
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-radius: 0
+        }
+        .el-form-item__label{
+            color: #7E7E7E
+        }
+        .btns > button{
+            width: 100%;
+            border: none;
+            background: -webkit-gradient(linear, left top, right top, from(#FF8D00) , to(#FF5300));
+            background: linear-gradient(to right, #FF8D00 , #FF5300);
+            border-radius: 4px;
+            outline: none;
+            color: #fff
+        }
+        .el-button--primary:focus{
+            background: -webkit-gradient(linear, left top, right top, from(#FF8D00) , to(#FF5300));
+            background: linear-gradient(to right, #FF8D00 , #FF5300);
+        }
+        .el-button--primary.is-disabled, .el-button--primary.is-disabled:hover{
+            background: #CCCCCC;
+            color: #F7F7F7;
+            border-color: #CCCCCC
+        }
+        .el-button--primary:focus, .el-button--primary:hover{
+            background: -webkit-gradient(linear, left top, right top, from(#FF8D00) , to(#FF5300));
+            background: linear-gradient(to right, #FF8D00 , #FF5300);
+        }
+        .el-form-item.is-required:not(.is-no-asterisk)>.el-form-item__label:before{
+            display: none
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <headers>
+            登录
+        </headers>
+        <main>
+            <img src="../images/logo.png" alt="">
+        </main>
+        <div class="col-xs-12 col-sm-12">
+            <div class="box">
+                <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="50px" class="demo-ruleForm" label-position='left'>
+                    <el-form-item label="账号" prop="Account">
+                        <el-input v-model="ruleForm.Account"></el-input>
+                    </el-form-item>
+                    <el-form-item label="密码" prop="Password">
+                        <el-input v-model="ruleForm.Password" type="password"></el-input>
+                    </el-form-item>
+                    <div class="text-center btns">
+                        <el-button type="primary" :disabled='disabled' @click="submitForm('ruleForm')">登入</el-button>
+                    </div>
+                    <p style="margin-top: 5px"><span style="color: #A5A5A5" @click='retrieve()'>忘记密码</span>
+                         <span style="color: #A5A5A5;float:right;" @click='register()'>立即注册</span></p>
+                </el-form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            ruleForm:{
+                Account: '',
+                Password: ''
+            },
+            disabled: true,
+            rules:{
+                Account: [ { required: true, message: '请输入账号', trigger: 'change' }],
+                Password: [ { required: true, message: '请输入密码', trigger: 'change' }],
+            }
+        },
+        methods: {
+            submitForm(formName){
+                this.$refs[formName].validate((valid) => {
+                if (valid) {
+
+                } else {
+                    return false;
+                }
+                });
+            },
+            //  忘记密码
+            retrieve(){
+                window.location.href = './Retrievepassword.html'
+            },
+            //  注册
+            register(){
+                window.location.href = './registers.html'
+            }
+        },
+        watch: {
+            'ruleForm':{
+                handler(newval,oldval){
+                    if(newval.Account === '' && newval.Password === '') {
+                        this.disabled = true
+                    } else {
+                        this.disabled = false
+                    }
+                },
+                deep:true
+            }
+        },
+    })
+</script>

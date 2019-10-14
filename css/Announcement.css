@@ -1,0 +1,239 @@
+header > i {
+    position: absolute;
+    right: 5%;
+    top: 12px;
+    color: #888888;
+    font-size: 20px
+}
+nav{
+    position: relative;
+}
+nav > ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 44px;
+    line-height: 44px;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    border-bottom: 1px solid #ccc
+}
+.icon-filter{
+   font-size: 24px
+}
+.footers{
+    width: 100%;
+    height: 54px;
+    background: #fff;
+    position:fixed;
+    bottom: 0;
+    -webkit-box-shadow: 0px -5px 7px #ccc;
+    box-shadow: 0px -5px 7px #ccc;
+}
+.footerlist{
+    height: 100%;
+}
+.footerlist> ul{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 100%;
+}
+.footerlist > ul > li {
+    width: 33%;
+    text-align: center;
+    color: #6D6D6D
+}
+.footerlist > ul > li > i {
+    font-size: 18px
+}
+.xiabiao{
+    color: #CCCCCC
+}
+.shangbiao{
+    color: #FF8E00
+}
+.gonggaoconten{
+    padding: 10px;
+    border-bottom:  1px solid #ccc
+}
+.gonggaoconten > p,.box > div > p{
+    padding: 2px 0
+}
+.gonggaoconten > .box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 14px;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+.gonggaoconten > .box > div > p > .clo{
+    color: #ADADAD
+}
+.fonts{
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+    font-size: 15px;
+    font-weight: 600
+}
+.jianbian {
+    font-size: 12px;
+    color: #fff;
+    padding: 4px 6px;
+    background: -webkit-gradient(linear, left top, right top, from(#FFC80A) , to(#FFA301));
+    background: linear-gradient(to right, #FFC80A , #FFA301);
+    border-radius: 4px;
+    display: inline-block;
+}
+.jianbian1 {
+    font-size: 12px;
+    color: #EEEEEE;
+    padding: 4px 6px;
+    background: #CCCCCC;
+    border-radius: 4px;
+    display: inline-block;
+}
+.showbox{
+    position: absolute;
+    top: 88px;
+    left: 0;
+    right:0;
+    bottom:0;
+    width:100%;
+    height:100%;
+    -moz-opacity: 0.8;
+    background:rgba(0,0,0,1);
+    opacity:0.2;
+    z-index:1;
+    filter: alpha(opacity=40);
+}
+.slide-fade-enter-active {
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.slide-fade-leave-active {
+    -webkit-transition: all .3s cubic-bezier(1.0, 0.5, 8, 1.0);
+    transition: all .3s cubic-bezier(1.0, 0.5, 8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+    /* .slide-fade-leave-active for below version 2.1.8 */ {
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+    opacity: 0;
+}
+.lockback{
+    height: 100%;
+    overflow: hidden;
+}
+.showlist{
+    position: absolute;
+    background: #fff;
+    width: 100%;
+    z-index: 1002;
+}
+.showlist > .twolist{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-start;
+}
+.screens > .screensul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content:flex-start;
+}
+.showlist > .twolist > li{
+    width: 30%;
+    text-align: center;
+    padding:8px 10px;
+    border:1px solid #DEDEDE;
+    margin: 6px;
+    border-radius: 8px;
+    color: #757575
+}
+.screens > .screensul >li {
+    text-align: center;
+    padding:8px 10px;
+    border:1px solid #DEDEDE;
+    margin: 6px;
+    border-radius: 8px;
+    color: #757575
+}
+.screens {
+    margin: 10px
+}
+.screens > p {
+    margin-left: 8px;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(51,51,51,1);
+}
+.btns{
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #ccc
+}
+.btns > button {
+    width: 49%;
+    padding: 10px 0;
+    color: #fff;
+    outline: none
+}
+.btns > .chongzhi {
+    background: #CCCCCC;
+    border: none;
+    border-radius: 4px
+}
+.btns > .queding {
+    background: -webkit-gradient(linear, left top, right top, from(#FF8D00) , to(#FF5300));
+    background: linear-gradient(to right, #FF8D00 , #FF5300);
+    border: none;
+    border-radius: 4px
+}
+.moneys {
+    margin: 10px;
+
+}
+.moneys > ul {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc
+}
+.moneys > p {
+    padding: 10px 0;
+    color: #FFAE53;
+    text-align: center
+}
+.moneys > ul > li {
+    padding: 10px;
+    text-align: center;
+    color: #7D7D7D
+}
+.content{
+    margin-bottom: 54px;
+    position: absolute;
+    top: 85px;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    background: #fff
+}
+.refreshText {
+    position: absolute;
+    text-align: center;
+    width: 100%
+}

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新闻资讯</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <style>
+         nav{
+            height: 50px;
+            border-bottom: 1px solid #ccc;
+        }
+        nav > ul{
+            height: 100%;
+            display: flex;
+            justify-content: space-around;;
+            align-items: center;
+        }
+        nav > ul > li{
+            color: #666666;
+            line-height: 47px
+        }
+        footer > .dongtai {
+            display: flex;
+            margin: 0 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #ccc;
+        }
+        footer > .dongtai >img {
+            width: 30%
+        }
+        footer > .dongtai > div {
+            width: 70%;
+        }
+        footer > .dongtai > div > .tit{
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;  
+            overflow: hidden;
+            font-size: 15px
+        }
+        footer > .dongtai > div > .time {
+            color: #ACACAC;
+            margin-top: 12px
+        }
+        
+        footer > .dongtai > div > .tit{
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;  
+            overflow: hidden;
+            font-size: 15px
+        }
+        footer > .dongtai > div > .times {
+            color: #ACACAC;
+            margin-top: 12px;
+            float: right
+        }
+        .box{
+            margin: 10px
+        }
+        .box > p,.mainconten> p  {
+            margin: 10px 0
+        }
+        .box > .top{
+            font-size: 18px;
+            font-weight: 600;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden
+        }
+        .box > .toptime {
+            text-align: right;
+            color: #AAAAAA
+        }
+        .contens {
+            text-indent: 2rem;
+            color: #777777
+        }
+        .mainconten > img {
+            width: 100%
+        }
+    </style>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <div v-if='ishow === 1'>
+            <headers>
+                新闻资讯
+            </headers>
+            <nav>
+                <ul>
+                    <li v-for='(item,index) in list' :key='index' 
+                    :style="{color: num === index? '#FF8E00' : '#666666',borderBottom: num ===index? '1px solid #FF8E00' :'' }" @click='listclik(item,index)' >
+                        {{item.name}}
+                    </li>
+                </ul>
+            </nav>
+            <footer>
+                <div class="dongtai" v-for='(item,index) in arr' v-if='num === 0' @click='detailslist(item)'>
+                    <div>
+                        <p class="tit">{{item.name}}</p>
+                        <p class="time">{{item.times}}</p>
+                    </div>
+                    <img :src="item.imgs" alt="">
+                </div>
+                <div class="dongtai" v-for='(item,index) in arr1' v-if='num === 1' @click='detailslist(item)'>
+                    <div style="width: 100%">
+                        <p class="tit">{{item.name}}</p>
+                        <p class="times">{{item.titmes}}</p>
+                    </div>
+                </div>
+                <div class="dongtai" v-for='(item,index) in arr2' v-if='num === 2' @click='detailslist(item)'>
+                    <div style="width: 100%">
+                        <p class="tit">{{item.name}}</p>
+                        <p class="times">{{item.titmes}}</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <div v-if='ishow === 2'>
+            <headers :ishow='panshouw' @getchilis='getchilis'></headers>
+            <div class="box">
+                <p class="top">浙江省国资委副主任朱恒福、浙江产权交易所董事长周琪一行莅临我所调研交流</p>
+                <p class="toptime">发布时间：2019/01/02</p>
+                <div class="mainconten">
+                   <p class="contens"> 3月4日上午，浙江省国资委副主任、党委委员朱恒福、浙江产权交易所董事长周琪一行莅临我所参观调研。联交所班子成员及相关部门负责人参加了调研座谈会，双方就如何提升产权交易资本市场融资功能，助力国有资源优化配置实现高质量发展进行了探讨交流。</p>
+                    <img src="../images/detail.png" alt="">
+                    <p class="contens">座谈会上，联交所监事会主席朱建军对浙江省国资委、浙江产权交易所的来访调研表示热烈欢迎，并重点介绍了公司的基本概况及近年来业务开展取得的成效。李霄代总裁向朱恒福副主任一行介绍了联交所在服务国企深化改革，优化国有资产配置，实现企业降本增效方面的情况；特别针对运用投行化思维开展增资扩股业务，以及金融资产交易服务的创新做法进行了详细介绍。
+                            朱恒福副主任对联交所的行业地位、市场化运作模式以及创新经验做法表示肯定。双方就进一步推动产权市场做大做强，助力国有企业转型发展分享经验和体会，并展开深入交流。
+                            会后，双方表示将进一步加强交流协作，拓展业务合作空间，共同加快推进产权行业的市场化、创新化发展，发挥产权交易市场在提高资源配置和运营效率中的作用，为推动国资国企深化改革提供重要助力。</p>
+                    <img src="../images/detail.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            list: [
+                {name: '办理指南'},{name: '政策法规'},{name: '相关下载'},   
+            ],
+            num: 1,
+            arr: [
+                {
+                    name: '浙江省国资委副主任朱恒福、浙江产权交易所董事长周琪一行点点滴滴多大的多多多多多多多多多多多多多多多多多多多多多多多多多多多多', 
+                    times: '2019-03-09',imgs:'../images/tuceng.png'
+                },
+                {
+                    name: '浙江省国资委副主任朱恒福、浙江产权交易所董事长周琪一', 
+                    times: '2019-03-09',imgs:'../images/tuceng.png'
+                },
+                {
+                    name: '浙江省国资委副主任朱恒福、浙江产权交易所董事长周琪一', 
+                    times: '2019-03-09',imgs:'../images/tuceng.png'
+                },
+                {
+                    name: '浙江省国资委副主任朱恒福、浙江产权交易所董事长周琪一', 
+                    times: '2019-03-09',imgs:'../images/tuceng.png'
+                },
+                {
+                    name: '浙江省国资委副主任朱恒福、浙江产权交易所董事长周琪一', 
+                    times: '2019-03-09',imgs:'../images/tuceng.png'
+                },
+                {
+                    name: '浙江省国资委副主任朱恒福、浙江产权交易所董事长周琪一', 
+                    times: '2019-03-09',imgs:'../images/tuceng.png'
+                },
+                {
+                    name: '浙江省国资委副主任朱恒福、浙江产权交易所董事长周琪一', 
+                    times: '2019-03-09',imgs:'../images/tuceng.png'
+                },
+            ],
+            arr1: [
+                {name: '“阳光交易、价值发现”------泰州市鹏翔置业有限公司100%股权转让以高溢价成交告岁数大大大大多大多大多点点滴滴多大的多多多多多多多多多多多多多多多多多多',titmes: '2017-06-29'},
+                {name: '“阳光交易、价值发现”------泰州市鹏翔置业有限公司100%股权转让以高溢价成交告',titmes: '2017-06-29'},
+                {name: '“阳光交易、价值发现”------泰州市鹏翔置业有限公司100%股权转让以高溢价成交告',titmes: '2017-06-29'},
+                {name: '“阳光交易、价值发现”------泰州市鹏翔置业有限公司100%股权转让以高溢价成交告',titmes: '2017-06-29'},
+                {name: '“阳光交易、价值发现”------泰州市鹏翔置业有限公司100%股权转让以高溢价成交告',titmes: '2017-06-29'},
+                {name: '“阳光交易、价值发现”------泰州市鹏翔置业有限公司100%股权转让以高溢价成交告',titmes: '2017-06-29'},
+                {name: '“阳光交易、价值发现”------泰州市鹏翔置业有限公司100%股权转让以高溢价成交告',titmes: '2017-06-29'},
+                {name: '“阳光交易、价值发现”------泰州市鹏翔置业有限公司100%股权转让以高溢价成交告',titmes: '2017-06-29'},
+                {name: '“阳光交易、价值发现”------泰州市鹏翔置业有限公司100%股权转让以高溢价成交告',titmes: '2017-06-29'},
+                {name: '“阳光交易、价值发现”------泰州市鹏翔置业有限公司100%股权转让以高溢价成交告',titmes: '2017-06-29'},
+            ],
+            arr2: [
+                {name: '“阳光交易、价值发现”------泰州市鹏翔置业有限公带而我却hi分别扣水电费第三方包脑力风暴咖啡吧',titmes: '2017-06-29'},
+                {name: '“阳光交易、价值发现”------泰州市鹏翔置业有限公司100%股权转让以高溢价成交告',titmes: '2017-06-29'},
+                {name: '“阳光交易、价值发现”------泰州市鹏翔置业有限公司100%股权转让以高溢价成交告',titmes: '2017-06-29'},
+            ],
+            ishow: 1,
+            panshouw: false
+        },
+        methods: {
+            listclik(item,index){
+                this.num =index
+            },
+            detailslist(item){
+                this.panshouw = true
+                this.ishow = 2
+            },
+            getchilis(val){
+                this.panshouw = false
+                this.ishow = val
+            }
+        },
+        mounted() {
+            
+        },
+    })
+</script>

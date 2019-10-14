@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>业务收费标准</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <style>
+        .centers {
+            border-bottom: 1px solid #ccc;
+        }
+        .centers > .ce{
+            padding: 15px 0;
+            padding-right: 20px;
+            position: relative;
+        }
+        .centers > .ce >span{
+            font-size:16px;
+            font-family:PingFang SC;
+            font-weight:500;
+            color:rgba(51,51,51,1);
+        }
+        .centers > div > i{
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #D1D1D1
+        }
+        .childrens{
+             padding: 10px;
+             margin-bottom: 10px;
+             color: #666666;
+             border-radius: 4px
+        }
+        .row{
+            margin: 0
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <headers>
+            业务收费标准
+        </headers>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12" v-for="(item,index) in conte" :key='index'>
+                <div class="centers ">
+                    <div class="ce">
+                        <span> {{item.contents}} </span>
+                        <i class="el-icon-arrow-down" @click='iconclick(item,index)'></i>
+                    </div>
+                    <div class="childrens" v-if='index === contenum'> 
+                            <el-table
+                            :data="tableData6"
+                            :span-method="arraySpanMethod"
+                            border
+                            style="width: 100%">
+                            <el-table-column
+                              prop="id"
+                              label="合同标的额"
+                              :formatter='formatter'
+                               >
+                            </el-table-column>
+                            <el-table-column
+                              prop="name"
+                              label="收费公式（单位：元）">
+                            </el-table-column>
+                          </el-table>
+                      
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            conte:[
+                {
+                    contents: '(一) 免收托管业务基本收费包括初始登记费、登记托管年费、托管公告费、开户信息服务费。',
+                },
+            ],
+            contenum: 0,
+            tableData6:[
+                {
+                    id: '标的额≤1000 万元',
+                    name: '（标的额 × 0.002）× 2（不 低于 50 元）',
+                },
+                {
+                    id: '1000 万元＜标的额≤ 5000 万元',
+                    name: '［（标的额 - 1000 万）×  0.0015 + 20000］× 2',
+                },
+                {
+                    id: '5000 万元＜标的额≤ 10000 万元',
+                    name: '［（标的额 - 5000 万）×  0.001 + 80000］× 2',
+                },
+                {
+                    id: '10000 万元＜标的额≤ 50000 万元',
+                    name: '［（标的额 - 10000 万）×  0.0008 + 130000］× 2',
+                },
+                {
+                    id: '标的额＞50000 万元',
+                    name: '［（标的额 - 50000 万）×  0.0005 + 450000］× 2',
+                },
+                {
+                    id: '例：合同标的额 1500 万元收费如下：［（1500万元 - 1000 万元）× 0.0015 + 20000元］× 2 =（500万元 × 0.0015 + 20000元）× 2 = 55000元 计费原则：合同标的额低于股份面值的，按照股份面值计算；合同标的额高于股份面值的，按实际交易金额计算。',
+                    name: '［（标的额 - 50000 万）×  0.0005 + 450000］× 2',
+                },
+            ]
+            
+        },
+        methods: {
+            iconclick(item,index){
+                if(this.contenum === index) {
+                    this.contenum = -1
+                } else {
+                    this.contenum =index
+                }
+                
+            },
+            arraySpanMethod({row, column, rowIndex, columnIndex}){
+                if (rowIndex  === this.tableData6.length - 1) {
+                    if (columnIndex === 0) {
+                        return [1, 2];
+                    } else if (columnIndex === 1) {
+                        return [0, 0];
+                    }
+                }
+            },
+            formatter(row, column, value){
+                return row.id
+            }
+        },
+    })
+</script>

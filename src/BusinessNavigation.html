@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>业务导航</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <style>
+        .imgs{
+            text-align: center;
+            margin-top: 20px
+        }
+        .imgs > img{
+            width: 92%
+        }
+    </style>
+</head>
+<body>
+    <div id='app'>
+        <headers>
+            业务导航
+        </headers>
+        <div class="imgs" v-for='(item,index) in imgs' :key="index">
+            <img :src="item.img" alt="">
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            imgs: [
+                {img:'../images/tuoguang.png'},
+                {img:'../images/tuoguang1.png'},
+                {img:'../images/tuoguang2.png'},
+                {img:'../images/tuoguang3.png'},
+                {img:'../images/tuogunag4.png'},
+            ]
+        }
+    })
+</script>

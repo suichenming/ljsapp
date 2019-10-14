@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>业务材料下载</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <style>
+         header > i {
+            position: absolute;
+            right: 5%;
+            top: 12px;
+            color: #888888;
+            font-size: 20px
+        }
+        .prope > ul > li {
+            padding: 15px 0;
+            border-bottom: 1px solid #ccc;
+            margin: 0 15px;
+            color: #454545;
+            font-weight: 600
+        }
+        .prope > ul > li > img{
+            float: right;
+            margin-right: 15px
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <headers :showid='panshouw'>
+            业务材料下载
+        </headers>
+        <div class="prope">
+            <ul>
+                <li v-for='(item,index) in Property' :key='index'>
+                    {{item.name}}
+                    <img src="../images/xiazai.png" alt="">
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            panshouw:true,
+            Property:[
+                {name:'托管初始登记：法人股东开户信息批量导入表'},
+                {name: '托管初始登记：自然人股东开户信息批量导入表'},
+                {name: '股权回购登记：非上市股份公司股份回购申请表'},
+                {name: '股权增资登记：非上市股份公司增资登记申请表'},
+                {name: '股权交易过户：非上市股份公司股份交易过户申请表'},
+                {name: '股权交易过户：股份转让协议书参考文本'},
+                {name: '股权托管经营：股份经营权托管登记协议书参考文本'},
+            ],
+        }
+    })
+</script>

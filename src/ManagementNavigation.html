@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>业务办理导航</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <style>
+        footer{
+            display: flex;
+            flex-wrap: wrap;
+            
+        } 
+        footer > div {
+            position: relative;
+            width: 50%;
+            text-align: center;
+            margin:10px 0
+        }
+        footer > div > img{
+            width: 100%;
+            padding: 0 10px;
+            image-rendering: auto;
+            image-rendering: inherit;
+            image-rendering: initial;
+            image-rendering: optimizeQuality;
+            image-rendering: pixelated;
+        }
+        footer > div > p {
+            color: #fff;
+            padding: 5px;
+            background: #000;
+            opacity: 0.5;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 60%
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <headers>
+            业务办理导航
+        </headers>
+        <footer>
+            <div v-for='(item,index) in banli' :key='index'>
+                <img :src='item.img' alt="">
+                <p>{{item.name}}</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            banli:[
+                {img: '../images/dengji.png',name: '初始登记托管'},
+                {img: '../images/jiaoyi.png',name: '交易过户'},
+                {img: '../images/zengzi.png',name: '增资'},
+                {img: '../images/huigou.png',name: '回购及减资'},
+                {img: '../images/qiye.png',name: '其他过户'},
+                {img: '../images/jingyin.png',name: '经营权托管'},
+                {img: '../images/sheli.png',name: '质押设立、质押变更及解除质押'},
+            ]
+        }
+    })
+</script>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>挂牌企业</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <style>
+        .listbox{
+            
+            margin: 10px;
+        }
+        .box > img {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+        }
+        .box {
+            background:rgba(255,255,255,1);
+            box-shadow:0px 1px 4px 0px rgba(4,0,0,0.1);
+            border-radius:5px;
+            padding:10px 6px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .box > .title {
+            font-size: 15px;
+
+        }
+        .left {
+            color:rgba(153,153,153,1);
+        }
+        .name{
+            font-size: 12px;
+            padding: 5px 0 5px 4px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <headers>
+            挂牌企业 
+        </headers>
+        <div class="listbox">
+           
+            <div class="box" v-for='(item,index) in arr' :key="index">
+                <img :src="item.img" alt="">
+                <p class="title"></p>
+                <p class="name">
+                    <span class="left">法定代表人：</span>
+                    <span>{{item.name}}</span>
+                </p>
+                <p class="name">
+                    <span class="left">成立日期：</span>
+                    <span>{{item.times}}</span>
+                </p>
+                <p class="name">
+                    <span class="left">注册资本：</span>
+                    <span>{{item.prices}}</span>
+                </p>
+                <p class="name">
+                    <span class="left">统一社会信用代码/注册号：</span>
+                    <span>{{item.num}}</span>
+                </p>
+                <p class="name">
+                    <span class="left">一般经营项: </span>
+                    <span>{{item.xiang}}</span>
+                </p>
+                <p class="name">
+                    <span class="left">许可经营项：</span>
+                </p>
+                <p>{{item.xuke}}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            arr: [
+                {
+                    title: '深圳华特容器股份有限公司',
+                    img:'../images/shenzht.png',
+                    name: '严琪',
+                    times: '2008年4月16日',
+                    prices: '10000万元',
+                    num: '91440300618840482Y',
+                    xiang: '无',
+                    xuke: '加工、生产经营各种马口铁包装容器、印花马口铁、马口铁及各种包装材料包装产品；从事上述产品的批发、进出口及相关配套业务（涉及许可证管理、专项规定管理的商品'
+                },
+                {
+                    title: '阳光保险集团股份有限公司',
+                    img:'../images/yangguangimg.png',
+                    name: '张维功',
+                    times: '2008年4月16日',
+                    prices: '1035137万元',
+                    num: '91440300664161245Y',
+                    xiang: '无',
+                    xuke: '加工、生产经营各种马口铁包装容器、印花马口铁、马口铁及各种包装材料包装产品；从事上述产品的批发、进出口及相关配套业务（涉及许可证管理、专项规定管理的商品'
+                },
+                {
+                    title: '深圳华特容器股份有限公司',
+                    img:'../images/shenzht.png',
+                    name: '严琪',
+                    times: '2008年4月16日',
+                    prices: '10000万元',
+                    num: '91440300618840482Y',
+                    xiang: '无',
+                    xuke: '加工、生产经营各种马口铁包装容器、印花马口铁、马口铁及各种包装材料包装产品；从事上述产品的批发、进出口及相关配套业务（涉及许可证管理、专项规定管理的商品'
+                },
+
+            ]
+        }
+    })
+</script>

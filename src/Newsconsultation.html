@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新闻动态</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <style>
+        .box{
+            margin:0 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid #ccc;
+        }
+        .box > .tit{
+            font-size:16px;
+            font-family:PingFang SC;
+            font-weight:500;
+            color:rgba(51,51,51,1);
+        }
+        .box > .times {
+            text-align: right;
+            font-size: 13px;
+            color:rgba(153,153,153,1);
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <headers>
+            新闻动态
+        </headers>
+        <div class="box" v-for='(item,index) in arr' :key="index">
+            <p class="tit">{{item.name}}</p>
+            <p class="times">{{item.ti}}</p>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            arr: [
+                {name: '深圳机场T3航站楼商业网点招商公告', ti: '2018-12-19'},
+                {name: '首例涉诉国有资产司法拍卖进入产权交易平台-深圳司法拍卖改革迈出第一步 ', ti: '2018-12-19'},
+                {name: '清理整顿交易场所首批过关名单下发  ', ti: '2018-12-19'},
+                {name: '深圳市建筑科学研究院有限公司增资40%股权项目', ti: '2018-12-19'},
+                {name: 'VC/PE在产权交易平台上实现资本循环  ', ti: '2018-12-19'},
+                {name: '金马甲撮合服务大厅正式上线  ', ti: '2018-12-19'},
+                {name: '信贷资产证券化正式重启 释放500亿资金额度  ', ti: '2018-12-19'},
+                {name: '深圳市住宅开发修缮租赁中心湛江公司100%股权公开拍卖成交案例', ti: '2018-12-19'},
+            ]
+        },
+        methods: {
+          
+           
+        },
+    })
+</script>

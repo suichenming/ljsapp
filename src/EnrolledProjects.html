@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>已报名项目</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <style>
+        .conten{
+            margin:0 15px;
+            border-bottom: 1px solid #ccc;
+            padding: 15px 0
+        }
+        .conten > p{
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            font-size:16px;
+            font-family:PingFang SC;
+            font-weight:500;
+            color:rgba(51,51,51,1);
+        }
+       .posicont{
+           display: flex
+       }
+       .posicont > div {
+           width: 50%;
+           font-size: 12px
+       }
+       .posicont > .left{
+           border-right: 1px solid #ccc
+       }
+       .posicont > .right{
+           text-align: center
+       }
+       .left > p, .right > p {
+            padding-top: 5px
+       }
+       .left > p > span, .right > p > span{
+            color: #9D9D9D;
+            
+            
+       }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <headers>
+            已报名项目
+        </headers>
+        <div class="conten" v-for='(item,index) in arr'>
+            <p class="p">
+                {{item.titles}}
+            </p>
+            <div class="posicont">
+                <div class="left">
+                    <p>
+                        <span>项目编号：</span>{{item.nums}}
+                    </p>
+                    <p>
+                        <span>挂牌价格：</span>{{item.prices}}
+                    </p>
+                </div>
+                <div class="right">
+                    <p>
+                        <span>开始时间：</span>{{item.strattime}}
+                    </p>
+                    <p>
+                        <span>结束时间：</span>{{item.endtime}}
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            arr: [
+                {
+                    titles: '湖南省湘诚誉峰房地产开发有限公司70%股权湖南省湘诚誉峰房地产开发有限公司70%股权湖南省湘诚誉峰房地产开发有限公司70%股权',
+                    nums: 'JT01201800093',
+                    prices: '2428.03万元',
+                    strattime: '2019年1月15日',
+                    endtime: '2019年1月15日'
+                },{
+                    titles: '湖南省湘诚誉峰房地产开发有限公司70%股权湖南省湘诚誉峰房地产开发有限公司70%股权湖南省湘诚誉峰房地产开发有限公司70%股权',
+                    nums: 'JT01201800093',
+                    prices: '2428.03万元',
+                    strattime: '2019年1月15日',
+                    endtime: '2019年1月15日'
+                },{
+                    titles: '湖南省湘诚誉峰房地产开发有限公司70%股权湖南省湘诚誉峰房地产开发有限公司70%股权湖南省湘诚誉峰房地产开发有限公司70%股权',
+                    nums: 'JT01201800093',
+                    prices: '2428.03万元',
+                    strattime: '2019年1月15日',
+                    endtime: '2019年1月15日'
+                },{
+                    titles: '湖南省湘诚誉峰房地产开发有限公司70%股权湖南省湘诚誉峰房地产开发有限公司70%股权湖南省湘诚誉峰房地产开发有限公司70%股权',
+                    nums: 'JT01201800093',
+                    prices: '2428.03万元',
+                    strattime: '2019年1月15日',
+                    endtime: '2019年1月15日'
+                },{
+                    titles: '湖南省湘诚誉峰房地产开发有限公司70%股权湖南省湘诚誉峰房地产开发有限公司70%股权湖南省湘诚誉峰房地产开发有限公司70%股权',
+                    nums: 'JT01201800093',
+                    prices: '2428.03万元',
+                    strattime: '2019年1月15日',
+                    endtime: '2019年1月15日'
+                },{
+                    titles: '湖南省湘诚誉峰房地产开发有限公司70%股权湖南省湘诚誉峰房地产开发有限公司70%股权湖南省湘诚誉峰房地产开发有限公司70%股权',
+                    nums: 'JT01201800093',
+                    prices: '2428.03万元',
+                    strattime: '2019年1月15日',
+                    endtime: '2019年1月15日'
+                },{
+                    titles: '湖南省湘诚誉峰房地产开发有限公司70%股权湖南省湘诚誉峰房地产开发有限公司70%股权湖南省湘诚誉峰房地产开发有限公司70%股权',
+                    nums: 'JT01201800093',
+                    prices: '2428.03万元',
+                    strattime: '2019年1月15日',
+                    endtime: '2019年1月15日'
+                },{
+                    titles: '湖南省湘诚誉峰房地产开发有限公司70%股权湖南省湘诚誉峰房地产开发有限公司70%股权湖南省湘诚誉峰房地产开发有限公司70%股权',
+                    nums: 'JT01201800093',
+                    prices: '2428.03万元',
+                    strattime: '2019年1月15日',
+                    endtime: '2019年1月15日'
+                },{
+                    titles: '湖南省湘诚誉峰房地产开发有限公司70%股权湖南省湘诚誉峰房地产开发有限公司70%股权湖南省湘诚誉峰房地产开发有限公司70%股权',
+                    nums: 'JT01201800093',
+                    prices: '2428.03万元',
+                    strattime: '2019年1月15日',
+                    endtime: '2019年1月15日'
+                },{
+                    titles: '湖南省湘诚誉峰房地产开发有限公司70%股权湖南省湘诚誉峰房地产开发有限公司70%股权湖南省湘诚誉峰房地产开发有限公司70%股权',
+                    nums: 'JT01201800093',
+                    prices: '2428.03万元',
+                    strattime: '2019年1月15日',
+                    endtime: '2019年1月15日'
+                },
+                
+            ]
+        }
+    })
+</script>

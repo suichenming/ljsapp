@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>业务介绍</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <style>
+        .title{
+            margin: 20px;
+            text-indent: 2rem;
+            font-size: 15px;
+        }
+        .box {
+            margin: 20px;
+            font-size: 15px;
+        }
+        .box > .tit{
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .box > p > i {
+            width: 15px;
+            height: 15px;
+            background: #000000;
+            border-radius: 50%;
+            float: left;
+            margin: 6px;
+        }
+        .contens{
+            margin: 10px 0;
+            text-indent: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <headers>
+            业务介绍
+        </headers>
+        <div class="title"> 
+            经根据深圳市政府《关于加强自主创新促进高新技术产业发展若干政策措施》[2008]200号文批准，根据、国发[2009]26号《关于2009年深化经济体 制改革工作的意见》国发[2009]26号和2009年5月国务院批准实施的《深圳市综合配套改革总体方案》，华南中心暨联交所在多年政策研究、制度创 新和实践探索的基础上，深圳联交所在国内率先推出挂牌中小企业非公开股权柜台交易市场，即“SOTC深柜市场”。
+        </div>
+        <div class="box" v-for='(item,index) in arr' :key="index">
+            <p class="tit"> <i></i>{{item.title}} </p>
+            <p class="contens">{{item.cont}} </p>
+        </div>
+       
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            arr: [
+                {
+                    title: '多层次资本市场的基石', 
+                    cont: '深柜市场与深交所主板市场、中小板市场、创业板和新三板市场（“股份报价转让系统”）一起协调发展，使广东省率先在中国构筑了国内构筑完善 的多层次资本市场体系，对中国多层次资本市场体系建设具有重大实践意义。'
+                },
+                {
+                    title: '国内外公开资本市场的预科', 
+                    cont: '深柜市场聚集集中深圳市及珠三角区域内地区的优质中小企业资源，通过项目孵化、挂牌展示、路演推介、规范改制、私募融资、治理督导，为公开 资本市场培育、输送优质上市企业资源。'
+                },
+                {
+                    title: '高度专业化的投融资平台', 
+                    cont: '深柜市场集聚了天使投资、风险投资、创业投资（VC）、私募股权投资基金（PE）等创投基金和符合资格投资人的各类投资资金大量合资格投资人， 为场内合资格投资人创投基金及其投资人提供便捷的进入与退出渠道。●企业股权定价的有效场所深柜市场通过市场化挂牌交易，手段对企业股权进行估值形成市场定价，充分发现企业价值，推动为中小企业私募发行、股权流通与转让、兼并并购 重组，为企业、资本、场内交易形成公允交易对家提供有效的定价服务。股改业务：2006年推动政府开展实施了实现自主创新战略的“股改+托管+私募=>成长+上市”创新型企业成长路线图资助计划，通过股改、托管、私募等市场化服务，帮助创新型企业快速和规范的发展。先后为200多家中小企业提供跨市场集成综合金融服务。'
+                },
+            ]
+        }
+    })
+</script>

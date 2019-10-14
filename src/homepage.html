@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <link rel="stylesheet" href="../css/homepage.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+</head>
+<body>
+    <div id="app" v-cloak>
+       <div class="box">
+            <!-- 头部搜索框 -->
+        <div class="col-xs-12 col-sm-12">
+            <el-input id="inputs" prefix-icon='el-icon-search' v-model="input" placeholder="点击输入搜索关键字"></el-input>
+        </div>
+        <!-- banner图 -->
+        <div style="margin-top:10px">
+            <img class="col-xs-12 col-sm-12" src="../images/banner.jpg" alt="">
+        </div>
+        <!-- 列表 -->
+        <div class="col-xs-12 col-sm-12">
+            <ul class="list">
+                <li v-for='(item,index) in imgs' :key="index" @click='liclick(item,index)'>
+                    <img  :src="item.img" alt="">
+                    <p>{{item.titles}}</p>
+                </li>
+            </ul>
+        </div>
+        <!-- 推荐项目 -->
+        <div class="col-xs-12 col-sm-12">
+            <p class="tuicun">
+                <img src="../images/huo.jpg" alt="" style="margin-top:-10px">
+                <span class="tuiname">推荐项目</span>
+                <span class="tuiright">
+                    <i class="el-icon-refresh"></i>换一批
+                </span>
+            </p>
+            <div class="conten" v-for='(item,index) in tuicun' :key='index'>
+                <p class="tuititle">
+                    <span :class="{jianbian: (item.state === '进行中'), jianbian1: (item.state !== '进行中')}">{{item.state}}</span>
+                    {{item.tuititle}}
+                </p>
+                <div class="tuiimg" >
+                    <img :src="item.imgs" alt="">
+                    <div class="tuiprice">
+                        <p>项目编号：</p>
+                        <p>挂牌价格：</p>
+                        <p>发布时间：</p>
+                    </div>
+                    <div class="tuinum">
+                        <p>{{item.tuinum}}</p>
+                        <p>{{item.starttime}}</p>
+                        <p style="color: #FFA440">{{item.prices}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+       </div>
+        <!-- tab -->
+        <div class="footers col-xs-12 col-sm-12">
+            <div class="footerlist">
+                   <ul>
+                       <li v-for='(item,index) in footerlist' :key='index' :style="{color: num === index? '#FF6E00' : '#6D6D6D'}" @click='listclick(index)'>
+                           <i :class="item.icon"></i>
+                           <p>{{item.name}}</p>
+                       </li>
+                   </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+var app = new Vue({
+    el: '#app',
+    data:{
+        input:'',
+        imgs:[
+            {img:'../images/list.jpg',titles:'公告信息'},
+            {img:'../images/yewu.jpg',titles:'业务导航'},
+            {img:'../images/yewu1.jpg',titles:'业务指南'},
+            {img:'../images/pingtai.jpg',titles:'平台服务'},
+            {img:'../images/tangjian.jpg',titles:'党建风采'},
+            {img:'../images/zixun.jpg',titles:'咨询答疑'},
+            {img:'../images/xinwen.jpg',titles:'新闻资讯'},
+            {img:'../images/guanyu.jpg',titles:'关于我们'},
+        ],
+        tuicun:[
+            {   
+                imgs: '../images/tuicun.jpg',
+                tuititle: '淮南朝阳医院管理有限公司53%股权项目转让意向征集贩夫贩妇反反复复烦反反复复飞',
+                tuinum: 'JT01201800093',
+                prices: '2428.03万元',
+                starttime: '2019年1月15日',
+                state: '进行中'
+            },
+            {   
+                imgs: '../images/tuicun.jpg',
+                tuititle: '淮南朝阳医院管理有限公司53%股权项目转让意向征集贩夫贩妇反反复复烦反反复复飞',
+                tuinum: 'JT01201800093',
+                prices: '2428.03万元',
+                starttime: '2019年1月15日',
+                state: '已结束'
+            },
+            {   
+                imgs: '../images/tuicun.jpg',
+                tuititle: '淮南朝阳医院管理有限公司53%股权项目转让意向征集贩夫贩妇反反复复烦反反复复飞',
+                tuinum: 'JT01201800093',
+                prices: '2428.03万元',
+                starttime: '2019年1月15日',
+                state: '进行中'
+            },
+        ],
+        footerlist: [
+            {icon: 'iconfont icon-shouye',name: '首页'},{icon: 'iconfont icon-qianshuigonggao',name: '公告'},{icon: 'iconfont icon-wode1',name: '我的'},
+        ],
+        num: 0
+    },
+    methods: {
+        liclick(item,index){
+            //window.location.href = './Announcement.html'
+            console.log(item,index)
+        },
+        listclick(index){
+            this.num = index
+            if(index === 1){
+                window.location.href = './Announcement.html'
+            } else if(index === 2){
+                window.location.href = './MemberCenter.html'
+            }
+        }
+    },
+    
+})
+</script>

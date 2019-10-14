@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>平台管理</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <style>
+        .list{
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            border-bottom: 2px solid #F3F3F3
+        }
+        .list > li{
+            width: 33%;
+            text-align: center;
+            padding: 10px
+                
+            }
+        .list > li > img {
+            image-rendering: auto;
+            image-rendering: inherit;
+            image-rendering: initial;
+            image-rendering: optimizeQuality;
+            -ms-interpolation-mode: nearest-neighbor;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -o-pixelated;
+            image-rendering: pixelated;
+        }
+        .list > li > p {
+            color: #333333;
+            font-size: 1.5rem
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <headers>
+            平台业务
+        </headers>
+        <ul class="list">
+            <li v-for='(item,index) in plaimg' :key='index'>
+                    <img  :src="item.img" alt="">
+                    <p>{{item.titles}}</p>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            plaimg:[
+                {img: '../images/xiaoqiche.png',titles:'小汽车增量指标'},
+                {img: '../images/qiyefw.png',titles:'企业增资服务'},
+                {img: '../images/sanzijy.png',titles:'三资交易'},
+                {img: '../images/yanguang.png',titles:'阳光采购平台'},
+                {img: '../images/guoyou.png',titles:'国有资产租赁'},
+                {img: '../images/lianhe.png',titles:'联合租赁平台'},
+            ]
+        }
+    })
+</script>

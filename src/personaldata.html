@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人资料</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <style>
+        .ziliao > ul {
+            margin: 10px 0
+        }
+        .ziliao > ul >li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+        }
+        .ziliao > ul > li > .title {
+            font-size:14px;
+            font-family:PingFang SC;
+            font-weight:500;
+            color:rgba(102,102,102,1);
+            line-height: 40px
+        }
+        .el-input__inner{
+            border: none;
+            text-align: right;
+        }
+        .el-input{
+            width: 70%
+        }
+        .el-input.is-disabled .el-input__inner{
+            background: #fff
+        }
+        .btns > button{
+            width: 100%;
+            border: none;
+            background: -webkit-gradient(linear, left top, right top, from(#FF8D00) , to(#FF5300));
+            background: linear-gradient(to right, #FF8D00 , #FF5300);
+            border-radius: 4px;
+            outline: none;
+            color: #fff;
+        }
+        .el-button--primary:focus{
+            background: -webkit-gradient(linear, left top, right top, from(#FF8D00) , to(#FF5300));
+            background: linear-gradient(to right, #FF8D00 , #FF5300);
+        }
+        .el-button--primary:focus, .el-button--primary:hover{
+            background: -webkit-gradient(linear, left top, right top, from(#FF8D00) , to(#FF5300));
+            background: linear-gradient(to right, #FF8D00 , #FF5300);
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+        <headers>
+            个人资料
+        </headers>
+        <main>
+            <div class="col-xs-12 col-sm-12 ziliao">
+                <ul>
+                    <li v-for='(item,index) in datalist' :key='index'>
+                        <span class="title">
+                            {{item.titles}}
+                        </span>
+                        <el-input  v-model="item.name" 
+                        :disabled='item.titles === "邮箱地址" || item.titles === "注册时间" || item.titles === "账号类型"'>
+                        </el-input>
+                    </li>
+                </ul>
+            </div>
+        </main>
+        <footer class="col-xs-12 col-sm-12">
+            <div class="text-center btns ">
+                    <el-button type="primary"  @click="submitForm()">完成</el-button>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            datalist: [
+                {name: '张三',titles: '会员名称'},{name: '张三',titles: '联系人'},{name: '435890302@qq.com',titles: '邮箱地址'},{name: '2019年03月11日',titles: '注册时间'},
+                {name: '网站浏览会员',titles: '账号类型'},
+                {name: '18843255456',titles: '手机号码'},{name: '41000',titles: '邮政编码'},{name: '0797-3541339',titles: '传真'},
+                {name: '请输入股东、权益代码',titles: '股东、权益代码 '},{name: '请输入股东、权益密码',titles: '股东、权益密码'},
+            ]
+        },
+        methods: {
+            submitForm(){
+
+            }
+        },
+    })
+</script>

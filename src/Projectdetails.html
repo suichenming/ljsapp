@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>项目详情</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh">
+    </script>
+    <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js">
+    </script>
+    <style>
+        .top-nav{
+            overflow-y: hidden;
+        }
+        .top-nav > ul{
+            display: flex;
+        }
+        .top-nav::-webkit-scrollbar {display:none}
+        .top-nav > ul > li {
+            padding: 10px 0;
+            margin: 0 15px
+        }
+        .box{
+            margin: 15px;
+        }
+        .tit{
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .times{
+            text-align: right;
+            color: #999999;
+        }
+        .boxtit{
+            font-size: 18px;
+            color: #FF5617;
+            font-weight: 600;
+        }
+        .address > p{
+           display: flex;
+           padding: 5px 0;
+           justify-content: space-between;
+           margin-left: 10%;
+       }
+       .address > p > .colo{
+           width: 26%;
+           color: #999999;
+       }
+       .address > p > .dis{
+           width: 70%;
+       }
+       .huilist{
+           display: flex;
+           justify-content: space-between;
+           flex-wrap: wrap;
+           padding-bottom: 10px;
+           border-bottom: 1px solid #ccc;
+       }
+       .huilist > li {
+           text-align: center;
+           background: #DFF4FF;
+           color: #15AEFF;
+           width: 20%;
+           padding: 2px 0;
+           border-radius: 4px;
+           margin: 5px 5px;
+       }
+       .el-table__header-wrapper {
+                display: none
+        }
+        footer{
+            height: 60px;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            z-index: 99;
+            background: #fff;
+            -webkit-box-shadow: 0px -5px 7px #ccc;
+            box-shadow: 0px -5px 7px #ccc;
+            font-size: 18px;
+            text-align: center;
+        }
+        footer > button {
+            outline: none;
+            margin: 10px 10px;
+            padding: 10px 20px;
+        }
+        .guanzhu {
+            border: none;
+            background: #fff;
+            color: #707070;
+        }
+        .zaixian{
+            background: -webkit-gradient(linear, left top, right top, from(#FF8D00) , to(#FF5300));
+            background: linear-gradient(to right, #FF8D00 , #FF5300);
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+        }
+        .xiangmu{
+            background: -webkit-gradient(linear, left top, right top, from(#FFC809) , to(#FFA200));
+            background: linear-gradient(to right, #FFC809 , #FFA200);
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+        }
+        .showbox{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right:0;
+            bottom:0;
+            width:100%;
+            height:100%;
+            -moz-opacity: 0.8;
+            background:rgba(0,0,0,1);
+            opacity:0.2;
+            z-index:100;
+            filter: alpha(opacity=40);
+        }
+        .lockback{
+            height: 100%;
+            overflow: hidden;
+        }
+        .fenbox {
+            width: 80%;
+            background: #fff;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            margin: 0 auto;
+            right: 0;
+            z-index: 1010;
+            transform: translateY(-50%); 
+        }
+        .fentit {
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .boxcnet{
+            height: 80px;
+            border-bottom: 1px solid #ccc;
+            margin: 0 10px;
+        }
+        .cancels{
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            padding: 10px 0;
+            color: red;
+        }
+        .boxcnet > ul > li{
+            position: relative;
+        }
+        .boxcnet > ul > li > a > img {
+            width: 50px;
+            height: 50px;
+            image-rendering:auto;
+        }
+        .boxcnet > ul{
+            display: flex;
+            justify-content: space-between;
+        }
+        .boxcnet > ul > li > a{
+            display: block;
+            width: 50px;
+            height: 50px;
+            background: red !important;
+        }
+        .bshare-custom .bshare-weixin{
+            background: url(../images/weixin.jpg ) no-repeat !important;
+            background-size: 50px !important;
+        }
+        .bshare-custom .bshare-qqmb{
+            background: url(../images/timg.jpg) no-repeat !important;
+            background-size: 50px !important;
+        }
+        .bshare-custom .bshare-qqim{
+            background: url(../images/qq.jpg) no-repeat !important;
+            background-size: 50px !important;
+        }
+        .bshare-custom .bshare-sinaminiblog{
+            background: url(../images/xinlang.jpg) no-repeat !important;
+            background-size: 50px !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" v-cloak>
+            <div class="fenbox" v-show='showbox'>
+                <p class="fentit">分享</p>
+                <div class="boxcnet bshare-custom">
+                    <ul>
+                        <li v-for='(item,index) in imgarr' :key="index">
+                            <a href="javascript:void(0);" :title='item.titles' :class='item.class'></a>
+                            <p>{{item.name}}</p>
+                        </li>
+                    </ul>
+                </div>
+                <p class="cancels">
+                    <span @click='cancefen'>取消分享</span>
+                </p>
+            </div>
+            <div class="showbox" v-if='showbox' @click="modu()">
+            </div>
+        <header>
+            <img src="../images/back.png" alt="" @click='gobanck()' >
+            <i   class="iconfont icon-fenxiang" style='float: right;margin:0 10px;font-size:25px;color: #6F6F6F;' @click='fenxiang'></i>
+            <i   class="iconfont icon-xin" style='float: right;font-size:22px;color: #6F6F6F'></i>
+        </header>
+        <div class="top-nav">
+            <ul  :style='{width:arrwidth}'>
+                <li v-for='(item,index) in navarr' :key='index'>
+                    <img :src="item.img" alt="">
+                </li>
+            </ul>
+        </div>
+        <div class="box">
+            <p class="tit">南山区桃源街道龙井村南汾大厦物业招租信息公告</p>
+            <p class="times"> 发布时间：2019/01/02</p>
+        </div>
+        <div class="box">
+            <p class="boxtit"><i class="iconfont">&#xe614;</i> 项目详情</p>
+            <div class="address">
+                <p> <span class="colo">项目状态</span> <span class="dis">进行中</span></p>
+                <p> <span class="colo">项目编号</span> <span class="dis">JT04201900001</span></p>
+                <p> <span class="colo">联系方式</span> <span class="dis">杨先生：0755-26577573 <br>  杨小姐0755-86212738</span></p>
+            </div>
+        </div>
+        <div class="box">
+            <ul class="huilist">
+                <li v-for='(item,index) in huiarr' :key="index">
+                    {{item.name}}
+                </li>
+            </ul>
+        </div>
+        <div class="box">
+            <div class="address">
+                <p v-for='(item,index) in list' :key="index"> 
+                    <span class="colo"  >
+                        {{item.lefts}}
+                    </span> 
+                    <span class="dis">
+                        {{item.rights}}
+                    </span>
+                </p>
+            </div>
+        </div>
+        <div class="box" style="margin-bottom: 80px;">
+                <el-table :data="tableData" border style="width: 100%" :span-method="arraySpanMethod">
+                <el-table-column prop="date" label="项目编号" width="120"> </el-table-column>
+                <el-table-column prop="name" label="JT04201900001" width="100"> </el-table-column>
+                <el-table-column prop="address" label="JT04201900001" > </el-table-column>
+              </el-table>
+        </div>
+        <footer>
+            <button class="guanzhu">
+                <i class="iconfont">&#xe711;</i> 关注
+            </button>
+            <button class="zaixian">
+                在线报名
+            </button>
+            <button class="xiangmu">
+                项目咨询
+            </button>
+        </footer>
+    </div>
+   
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            panshouw: true,
+            navarr: [
+                {img: '../images/xuangmuimg.jpg'}, {img: '../images/xuangmuimg.jpg'}, {img: '../images/xuangmuimg.jpg'}, {img: '../images/xuangmuimg.jpg'},
+            ],
+            huiarr:[
+                {name: '会员留言'},{name: '三资交易'},{name: '资产租赁'},{name: '集体'},
+            ],
+            list:[
+                {lefts: '招租底价', rights: 'JT04201900001'},
+                {lefts: '项目来源', rights: '深圳联合产权交易所'},
+                {lefts: '项目编号', rights: 'G32019GD0000015'},
+                {lefts: '保证金', rights: '2.500.000.00元'},
+                {lefts: '企业性质', rights: '国资'},
+                {lefts: '支付方式', rights: '银行转账'},
+                {lefts: '转让方', rights: '东江环保股份公司'},
+                {lefts: '挂牌起止日期', rights: '2019-20-13至2019-03-12'},
+            ],
+            tableData:[
+                {
+                    date: '项目编号',
+                    name: 'JT04201900001',
+                    address: '深圳市龙井实业股份有限公司'
+                },
+                {
+                    date: '出租方基本情况',
+                    name: '出租方名称',
+                    address: '深圳市龙井实业股份有限公司'
+                },
+                {
+                    date: '',
+                    name: '出租方地址',
+                    address: '深圳市南山区桃源街道龙井 路龙井商业中心十楼'
+                },
+                {
+                    date: '公告起始时间',
+                    name: '2019年1月3日',
+                    address: ''
+                },
+                {
+                    date: '公告期满时间',
+                    name: '2019年1月9日(挂牌期满，未征集到符合条件的意向承租方，不变更招租条件，延长信息公告期限，每次延长5个工作日，延长次数不超过2周期）',
+                    address: ''
+                },
+
+                {
+                    date: '出租资产基本信息',
+                    name: '出租资产概括',
+                    address: '物业位于深圳市南山区龙珠5路75号，出租总面积11207.66平方米（位置界限以红线坐标为准，面积以出租方实际测绘面积为准），其中A栋出租面积为4823.66平方米，B栋出租面积为i4823.65平方米。租赁物业位于深圳市龙井实业股份有限公司集体资产，不存在产权争议纠纷、来源合法，属于历史遗留问题房产，目前尚未办理房屋产权证书，有权属说明。'
+                },
+                {
+                    date: '',
+                    name: '出租用途',
+                    address: '商业、办公'
+                },
+                {
+                    date: '',
+                    name: '出租面积',
+                    address: '11207，66m²'
+                },
+            ],
+            showbox: false,
+            imgarr:[
+                {imgs: '../images/weixin.jpg',name: '微信好友',titles: '分享到微信',class:'bshare-weixin'},
+                {imgs: '../images/timg.jpg',name: '腾讯微博',titles: '分享到腾讯微博',class:'bshare-qqmb'},
+                {imgs: '../images/qq.jpg',name: 'qq好友',titles: '分享到qq好友',class:'bshare-qqim'},
+                {imgs: '../images/xinlang.jpg',name: '新浪微博',titles: '分享到新浪微博',class:'bshare-sinaminiblog'},
+            ]
+        },
+        methods: {
+            gobanck(){
+                window.history.go(-1)
+            },
+            //  合并列行
+            arraySpanMethod({row, column, rowIndex, columnIndex}){
+                //  合并行
+                if(rowIndex === 0) {
+                    if (columnIndex === 1) {
+                        return [1, 2];
+                    } else if (columnIndex === 2) {
+                        return [0, 0];
+                    }
+                }
+
+                if(rowIndex === 3) {
+                    if (columnIndex === 1) {
+                        return [1, 2];
+                    } else if (columnIndex === 2) {
+                        return [0, 0];
+                    }
+                }
+
+                if(rowIndex === 4) {
+                    if (columnIndex === 1) {
+                        return [1, 2];
+                    } else if (columnIndex === 2) {
+                        return [0, 0];
+                    }
+                }
+
+                //  合并列
+                if(columnIndex  === 0 ){
+                    if(rowIndex === 1) {
+                        return {
+                            rowspan: 2,
+                            colspan: 1
+                        };
+                    } else if(rowIndex === 2){
+                        return {
+                            rowspan: 0,
+                            colspan: 0
+                        };
+                    }
+                }
+
+                if(columnIndex  === 0 ){
+                    if(rowIndex === 5) {
+                        return {
+                            rowspan: 3,
+                            colspan: 1
+                        };
+                    } else if(rowIndex > 5){
+                        return {
+                            rowspan: 0,
+                            colspan: 0
+                        };
+                    }
+                }
+
+            },
+            fenxiang(){
+                this.showbox = true
+                $('html, body').addClass('lockback');
+            },
+            modu() {
+                this.showbox = false
+                $('html, body').removeClass('lockback');
+            },
+            cancefen(){
+                this.modu()
+            }
+        },
+        computed: {
+            arrwidth(){
+                return this.navarr.length * 190 + 'px'
+            }
+        },
+    })
+</script>

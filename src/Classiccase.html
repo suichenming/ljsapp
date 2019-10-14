@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>经典案例</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <style>
+        .box{
+            margin:0 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid #ccc;
+        }
+        .box > .tit{
+            font-size:16px;
+            font-family:PingFang SC;
+            font-weight:500;
+            color:rgba(51,51,51,1);
+        }
+        .box > .times {
+            text-align: right;
+            font-size: 13px;
+            color:rgba(153,153,153,1);
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <headers>
+            经典案例
+        </headers>
+        <div class="box" v-for='(item,index) in arr' :key="index">
+            <p class="tit">{{item.name}}</p>
+            <p class="times">{{item.ti}}</p>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            arr: [
+                {name: '“阳光交易、价值发现”------泰州市鹏翔置业有限公司100%股权转让以高溢价成交告', ti: '2018-12-19'},
+                {name: '中铝瑞闽股份有限公司增资项目', ti: '2018-12-19'},
+                {name: '现代农装科技股份有限公司定向融资增资项目 ', ti: '2018-12-19'},
+                {name: '深圳市建筑科学研究院有限公司增资40%股权项目 ', ti: '2018-12-19'},
+                {name: '深圳市高新投集团有限公司增资项目 ', ti: '2018-12-19'},
+                {name: '深圳力合创业投资有限公司增资项目 ', ti: '2018-12-19'},
+                {name: '深影院线增资项目增资项目 ', ti: '2018-12-19'},
+                {name: '深圳市住宅开发修缮租赁中心湛江公司100%股权公开拍卖成交案例 ', ti: '2018-12-19'},
+            ]
+        },
+        methods: {
+          
+           
+        },
+    })
+</script>

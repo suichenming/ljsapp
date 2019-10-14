@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>不良资产</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <style>
+         nav{
+            height: 50px;
+            border-bottom: 1px solid #ccc;
+        }
+        nav > ul{
+            height: 100%;
+            display: flex;
+            justify-content: space-around;;
+            align-items: center;
+        }
+        nav > ul > li{
+            color: #666666;
+            line-height: 47px
+        }
+        .colo{
+            color:rgba(153,153,153,1);
+            font-size: 12px;
+        }
+        .box {
+            margin: 10px;
+            padding: 10px;
+            box-shadow:0px 1px 4px 0px rgba(4,0,0,0.1);
+        }
+        .tit{
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .list {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .list > p{
+            padding: 5px 0;
+            width: 50%;
+       }
+        .dis{
+                font-size: 12px;
+        }
+        .conten{
+            font-size:12px;
+            font-family:PingFang SC;
+            font-weight:500;
+            color:rgba(102,102,102,1);
+            padding: 10px 0;
+        }
+        .contens{
+            font-size:12px;
+            font-family:PingFang SC;
+            font-weight:500;
+            color:rgba(102,102,102,1);
+        }
+        .pad{
+            padding: 5px 0;
+        }
+        .xiabiao{
+            color: #CCCCCC
+        }
+        .shangbiao{
+            color: #FF8E00
+        }
+        .slide-fade-enter-active {
+            -webkit-transition: all .3s ease;
+            transition: all .3s ease;
+        }
+        .slide-fade-leave-active {
+            -webkit-transition: all .3s cubic-bezier(1.0, 0.5, 8, 1.0);
+            transition: all .3s cubic-bezier(1.0, 0.5, 8, 1.0);
+        }
+        .slide-fade-enter, .slide-fade-leave-to
+            /* .slide-fade-leave-active for below version 2.1.8 */ {
+            -webkit-transform: translateY(-10px);
+                    transform: translateY(-10px);
+            opacity: 0;
+        }
+        .showbox{
+            position: absolute;
+            top: 88px;
+            left: 0;
+            right:0;
+            bottom:0;
+            width:100%;
+            height:100%;
+            -moz-opacity: 0.8;
+            background:rgba(0,0,0,1);
+            opacity:0.2;
+            z-index:1;
+            filter: alpha(opacity=40);
+        }
+        .lockback{
+            height: 100%;
+            overflow: hidden;
+        }
+        .showlist{
+            position: absolute;
+            background: #fff;
+            width: 100%;
+            z-index: 1002;
+        }
+        .showlist > .twolist{
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-box-pack: end;
+            -ms-flex-pack: end;
+            justify-content: flex-start;
+        }
+        .showlist > .twolist > li{
+            width: 30%;
+            text-align: center;
+            padding:8px 10px;
+            border:1px solid #DEDEDE;
+            margin: 6px;
+            border-radius: 8px;
+            color: #757575
+        }
+    </style>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <transition name="slide-fade">
+            <div class="showbox" v-if='showbox' @click="modu()"></div>
+        </transition>
+        <headers>
+            不良资产
+        </headers>
+        <nav>
+            <ul>
+                <li v-for='(item,index) in list' :key='index' 
+                :style="{color: num === index? '#FF8E00' : '#666666',borderBottom: num ===index? '1px solid #FF8E00' :'' }" @click='listclik(item,index)' >
+                    {{item.name}}
+                    <i :class="item.icon"></i>
+                </li>
+            </ul>
+            <transition name="slide-fade">
+                    <div class="showlist" v-if='showbox'>
+                        <ul class="twolist">
+                            <li v-for='(item,index) in alllist' :key='index' @click='listarrs(item,index)'
+                                :style="{borderColor: index === listnum ? '#FFB65B' : '',background: index === listnum ? '#FFF3E5' : '',color: index === listnum ? '#FFAE53' : ''}"
+                            >
+                                {{item.name}}
+                            </li>
+                        </ul>
+                    </div>
+            </transition>
+        </nav>
+        <div class="box" v-for='(item,index) in arr' :key="index">
+            <p class="tit">
+                {{item.title}}
+            </p>
+            <div class="list">
+                <p>
+                    <span class="colo">债权利息(含罚息、复利):</span> <span class="dis">{{item.lixi}}</span>
+                </p>
+                <p>
+                    <span class="colo">所在地区：</span> <span class="dis">{{item.address}}</span>
+                </p>
+                <p>
+                    <span class="colo">债权本金余额：</span> <span class="dis">{{item.jine}}</span>
+                </p>
+                <p>
+                    <span class="colo">经营情况:</span> <span class="dis">{{item.qingkuan}}</span>
+                </p>
+                <p>
+                    <span class="colo">担保方式:</span> <span class="dis">{{item.fangshi}}</span>
+                </p>
+            </div>
+            <p>
+                <span class="colo">企业所有负债总金额：</span> <span class="dis">{{item.qiyejine}}</span>
+            </p>
+            <p class="colo" style="padding-top:10px;">经营范围：</p>
+            <p class="conten">{{item.jinyin}}</p>
+            <p class="colo">保证人：</p>
+            <p class="contens">{{item.baozheng1}}</p>
+            <p class="contens">{{item.baozheng2}}</p>
+            <p class="contens">{{item.baozheng3}}</p>
+            <p class="colo pad">抵押物(不动产):</p>
+            <p class="contens">{{item.diya}}</p>
+            <p class="colo pad">备注:</p>
+            <p class="contens">{{item.beizhu}}</p>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            list: [
+                {name: '拟引进战略投资者',icon: 'el-icon-caret-bottom xiabiao'},{name: '司法拍卖资产',icon: 'el-icon-caret-bottom xiabiao'},{name: '抵债资产',icon: 'el-icon-caret-bottom xiabiao'},
+            ],
+            num: -1,
+            arr: [
+                {
+                    title: '上海誉丰实业(集团)有限公司',
+                    lixi: '0',
+                    address: '上海市青浦区',
+                    jine: '39786109.84',
+                    qingkuan: '停产',
+                    fangshi: '抵押',
+                    qiyejine: '670,406,723.54',
+                    jinyin: '从事货物及技术的进出口业务；片剂（含激素类、抗肿瘤药）、硬胶囊剂（激素类）、原料药',
+                    baozheng1:'保证人1：浙江凯迪药业有限公司',
+                    baozheng2: '保证人2：仙居凯迪投资有限公司；',
+                    baozheng3: '保证人3：周秋火；',
+                    diya: '上海誉丰实业(集团)有限公司名下的工业厂房，位于上海市青浦区练塘镇蒸夏路568号1-8幢厂房，建筑面积18416.53平方米',
+                    beizhu: '企业已进入破产重整程序，拟招募投资人'
+                },
+                {
+                    title: '汕头市荣泰贸易有限公司',
+                    lixi: '0',
+                    address: '上海市青浦区',
+                    jine: '39786109.84',
+                    qingkuan: '停产',
+                    fangshi: '抵押',
+                    qiyejine: '670,406,723.54',
+                    jinyin: '从事货物及技术的进出口业务；片剂（含激素类、抗肿瘤药）、硬胶囊剂（激素类）、原料药',
+                    baozheng1:'保证人1：浙江凯迪药业有限公司',
+                    baozheng2: '保证人2：仙居凯迪投资有限公司；',
+                    baozheng3: '保证人3：周秋火；',
+                    diya: '上海誉丰实业(集团)有限公司名下的工业厂房，位于上海市青浦区练塘镇蒸夏路568号1-8幢厂房，建筑面积18416.53平方米',
+                    beizhu: '企业已进入破产重整程序，拟招募投资人'
+                },
+            ],
+            showbox: false,
+            listnum: -1,
+            alllist: [
+                {name: '深圳'},{name: '深圳'},{name: '深圳'},{name: '深圳'},{name: '深圳'},{name: '深圳'},{name: '深圳'},{name: '深圳'},
+            ],
+            tuozhi:[
+                {name: '深圳'},{name: '深圳'},{name: '深圳'},{name: '深圳'},{name: '深圳'},{name: '深圳'},{name: '深圳'},{name: '深圳'},
+            ],
+            zichan: [
+                {name: '深圳1'},{name: '深圳2'},{name: '深圳3'},{name: '深圳4'},{name: '深圳5'},{name: '深圳6'},{name: '深圳6'},{name: '深圳7'},
+            ],
+            dizhai: [
+                {name: '深圳3'},{name: '深圳3'},{name: '深圳3'},{name: '深圳3'},{name: '深圳3'},{name: '深圳3'},{name: '深圳3'},{name: '深圳3'},
+            ],
+            pandun: false,
+            tuozhiindex: -1,
+            zichanindex: -1,
+            dizhaiindex: -1
+
+        },
+        methods: {
+            listclik(item,index){
+                this.showbox = true
+                if(index === 0) {
+                    this.alllist = this.tuozhi
+                    this.listnum = this.tuozhiindex
+                } else if(index === 1) {
+                    this.alllist = this.zichan
+                    this.listnum = this.zichanindex
+                } else if(index === 2) {
+                    this.alllist = this.dizhai
+                    this.listnum = this.dizhaiindex
+                }
+                if(this.num === index) {
+                    this.pandun = !this.pandun
+                    if(this.pandun){
+                        this.num = -1
+                        this.list.map(function(item){
+                            item.icon = 'el-icon-caret-bottom xiabiao'
+                        })
+                        this.modu()
+                    }
+                } else {
+                    this.pandun = false
+                    this.num = index
+                    this.list.map(function(item){
+                        item.icon = 'el-icon-caret-bottom xiabiao'
+                    })
+                    this.$nextTick(function(){
+                        this.list[index].icon = 'el-icon-caret-top shangbiao'
+                    })
+                }
+                if(this.showbox){
+                    $('html, body').addClass('lockback');
+                } else {
+                    $('html, body').removeClass('lockback');
+                }
+            
+            },
+            listarrs(item,index){
+                this.listnum = index
+                if(this.num === 0){
+                    this.tuozhiindex = index
+                }
+                if(this.num === 1){
+                    this.zichanindex = index
+                }
+                if(this.num === 2){
+                    this.dizhaiindex = index
+                }
+                this.modu()
+            },
+            modu(){
+                this.list.map(function(item){
+                    item.icon = 'el-icon-caret-bottom xiabiao'
+                })
+                this.showbox = false
+                $('html, body').removeClass('lockback');
+                this.listnum = -1
+                this.num = -1
+            },
+        },
+    })
+</script>

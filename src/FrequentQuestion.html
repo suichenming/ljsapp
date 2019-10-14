@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>常见问题答疑</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <style>
+         header > p > div {
+             position: absolute;
+             right: 10px;
+             top: 0
+         }
+         header > p > div > i {
+             color: #757575;
+             font-size: 20px !important;
+            font-weight: 500;
+            padding: 0 5px
+         }
+         .top-nav{
+            overflow-y: hidden;
+            border-bottom: 1px solid #ccc
+        }
+        .top-nav > ul{
+            display: flex;
+        }
+        .top-nav::-webkit-scrollbar {display:none}
+        .top-nav > ul > li {
+            padding: 10px 0;
+            margin: 0 22px
+        }
+        .centers {
+            border-bottom: 1px solid #ccc;
+        }
+        .centers > .ce{
+            padding: 15px 0;
+            padding-right: 20px;
+            position: relative;
+        }
+        .centers > .ce >span{
+            font-size:16px;
+            font-family:PingFang SC;
+            font-weight:500;
+            color:rgba(51,51,51,1);
+        }
+        .centers > div > i{
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #D1D1D1
+        }
+        .childrens{
+             background: #F6F6F6;
+             padding: 10px;
+             margin-bottom: 10px;
+             color: #666666;
+             border-radius: 4px
+        }
+        .row{
+            margin: 0
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <headers>
+            常见问题答疑
+           <div>
+                <i class="iconfont">&#xe642;</i>
+                <i class="el-icon-search"></i>
+           </div>
+        </headers>
+        <nav>
+            <div class="top-nav">
+                <ul :style='{width:arrwidth}'>
+                    <li v-for='(item,index) in navarr' :key='index' 
+                    :style="{color: num === index? '#FF8E00' : '#666666',borderBottom: num ===index? '1px solid #FF8E00' :'' }" 
+                    @click='listclik(item,index)'>
+                        {{item.name}}
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12" v-for="(item,index) in conte" :key='index'>
+                <div class="centers ">
+                    <div class="ce">
+                        <span> {{item.contents}} </span>
+                        <i class="el-icon-arrow-down" @click='iconclick(item,index)'></i>
+                    </div>
+                    <div class="childrens" v-if='index === contenum'> {{item.childrens}} </div>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            num: 0,
+            navarr: [
+                {name:'托管专题'},{name:'租赁专题'},{name:'增资专题'},{name:'三资专题'}
+            ],
+            conte: [
+                {
+                    contents: '如何查询已托管企业信息',
+                     childrens: '您好！在本所网站http://www.sotcbb.com/ 业务导航-托管专题 可查询已托管企业名称 业务咨询电话：0755-8635 8790 '
+                },
+                {
+                    contents: '我想把公司的股权进行挂牌交易，登记时需要的费用是多少？',
+                     childrens: '您好！在本所网站http://www.sotcbb.com/ 业务导航-托管专题 可查询已托管企业名称 业务咨询电话：0755-8635 8790 '
+                },
+                {
+                    contents: '我想把公司的股权进行挂牌交易，登记时需要的费用是多少？',
+                     childrens: '您好！在本所网站http://www.sotcbb.com/ 业务导航-托管专题 可查询已托管企业名称 业务咨询电话：0755-8635 8790 '
+                },
+                {
+                    contents: '我想把公司的股权进行挂牌交易，登记时需要的费用是多少？',
+                     childrens: '您好！在本所网站http://www.sotcbb.com/ 业务导航-托管专题 可查询已托管企业名称 业务咨询电话：0755-8635 8790 '
+                },
+                {
+                    contents: '我想把公司的股权进行挂牌交易，登记时需要的费用是多少？',
+                     childrens: '您好！在本所网站http://www.sotcbb.com/ 业务导航-托管专题 可查询已托管企业名称 业务咨询电话：0755-8635 8790 '
+                },
+                {
+                    contents: '我想把公司的股权进行挂牌交易，登记时需要的费用是多少？',
+                     childrens: '您好！在本所网站http://www.sotcbb.com/ 业务导航-托管专题 可查询已托管企业名称 业务咨询电话：0755-8635 8790 '
+                },
+            ],
+            contenum: -1
+        },
+        computed: {
+            arrwidth(){
+                return this.navarr.length * 100 + 'px'
+            }
+        },
+        methods: {
+            listclik(item,index){
+                this.num = index
+            },
+            iconclick(item,index){
+                if(this.contenum === index) {
+                    this.contenum = -1
+                } else {
+                    this.contenum =index
+                }
+                
+            }
+        },
+    })
+</script>

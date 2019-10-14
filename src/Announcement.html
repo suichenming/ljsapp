@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>公告信息</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <link rel="stylesheet" href="../css/Announcement.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <transition name="slide-fade">
+            <div class="showbox" v-if='showbox' @click="modu()"></div>
+        </transition>
+        <headers  :ishows='true'>
+                公告信息
+        </headers>
+        <nav>
+            <ul>
+                <li v-for='(item,index) in navlist' :key='index' :style='{color: index === iconshow ? "#FF8E00" : ""}' @click='liclick(item,index)'>
+                    {{item.name}}  
+                    <i :class="item.icon"></i>
+                </li>
+                <li @click='liclick()' :style='{color: -2 === iconshow ? "#FF8E00" : ""}'>
+                    <i class="iconfont icon-filter"></i>
+                </li>
+            </ul>
+            <transition name="slide-fade">
+                <div class="showlist" v-if='showbox'>
+                    <ul class="twolist" v-if='cations && Amount'>
+                        <li v-for='(item,index) in alllist' :key='index' @click='listarrs(item,index)'
+                            :style="{borderColor: index === listnum ? '#FFB65B' : '',background: index === listnum ? '#FFF3E5' : '',color: index === listnum ? '#FFAE53' : ''}"
+                        >
+                            {{item.name}}
+                        </li>
+                    </ul>
+                    <div class="screens" v-if='!cations && Amount'>
+                        <p>业务类型</p>
+                        <ul class="screensul">
+                            <li v-for="(item,index) in cationarr" :key='index' @click='screens(item,index)'
+                            :style="{borderColor: index === screensnum ? '#FFB65B' : '',background: index === screensnum ? '#FFF3E5' : '',color: index === screensnum ? '#FFAE53' : ''}"
+                            >
+                                {{item.name}}
+                            </li>
+                        </ul>
+                        <p>公告类型</p>
+                        <ul class="screensul" style="margin-bottom: 10px">
+                            <li v-for="(item,index) in cationarr1" :key='index' @click='screens1(item,index)'
+                            :style="{borderColor: index === screensnum1 ? '#FFB65B' : '',background: index === screensnum1 ? '#FFF3E5' : '',color: index === screensnum1 ? '#FFAE53' : ''}"
+                            >
+                                {{item.name}}
+                            </li>
+                        </ul>
+                        <div class="btns">
+                            <button class="chongzhi" @click="Resets()">重置</button>
+                            <button class="queding" @click='Determine()'>确定</button>
+                        </div>
+                    </div>
+                    <div class="moneys" v-if="!Amount">
+                        <ul>
+                            <li v-for="(item,index) in moneysarr" :key="index" @click="clickmoneys(item,index)"
+                            :style="{color: index === moneysnum ?  '#FFAE53' : ''}"
+                            >
+                                {{item.name}}
+                            </li>
+                        </ul>
+                        <p>
+                            {{moneys}}
+                        </p>
+                        <div class="block">
+                            <el-slider
+                                v-model="value9"
+                                @change='clickslider'
+                                range
+                                :max="5">
+                            </el-slider>
+                        </div>
+                        <div class="btns" style="border: none">
+                            <button class="chongzhi" @click='moneysResets()'>重置</button>
+                            <button class="queding"  @click='moneysDetermine()'>确定</button>
+                        </div>
+                    </div>
+                </div>
+            </transition>
+        </nav>
+        <div class="refreshText">
+            <p >{{refreshText}}</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 content" 
+        @touchstart='touchstarts'
+        @touchmove='touchmoves'
+        @touchend='touchend'
+        :style='{transform: touchmove,transition: transitions}'
+        >
+       
+           <div class="gonggaoconten"  v-for='(item,index) in arr' :key='index'>
+                <p class="fonts">
+                    <span :class="{jianbian: (item.states === '进行中'), jianbian1: (item.states !== '进行中')}">进行中</span>
+                    {{item.titname}}
+                </p>
+                <div class="box">
+                    <div>
+                        <p><span class="clo">项目编号：</span>{{item.nums}}</p>
+                        <p><span class="clo">发布时间：</span>{{item.times}} </p>
+                    </div>
+                    <div>
+                        <p><span class="clo">挂牌价格：</span> <span style="color: #FF8E00">{{item.prices}}万元</span></p>
+                    </div>
+                </div>
+           </div>
+        </div>
+        <!-- tab -->
+        <div class="footers col-xs-12 col-sm-12">
+            <div class="footerlist">
+                    <ul>
+                        <li v-for='(item,index) in footerlist' :key='index' :style="{color: num === index? '#FF6E00' : '#6D6D6D'}" @click='listclick(index)'>
+                            <i :class="item.icon"></i>
+                            <p>{{item.name}}</p>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            navlist: [
+                {name: '默认', icon: 'el-icon-caret-bottom xiabiao'},
+                {name: '类型',icon: 'el-icon-caret-bottom xiabiao'},
+                {name: '金额',icon: 'el-icon-caret-bottom xiabiao'},
+                {name: '行业',icon: 'el-icon-caret-bottom xiabiao'},
+            ],
+            footerlist: [
+                {icon: 'iconfont icon-shouye',name: '首页'},{icon: 'iconfont icon-qianshuigonggao',name: '公告'},{icon: 'iconfont icon-wode1',name: '我的'},
+            ],
+            num: 1,
+            pandun: false,
+            arr: [
+                {
+                    titname: '湖南省湘诚誉峰房地产开发有限公司70%去玩儿若群翁群翁无群二无群二无群无',
+                    nums: ' JT01201800093',
+                    times: '2019年1月15日',
+                    prices: '2428.03',
+                    states: '进行中'
+                },
+                {
+                    titname: '湖南省湘诚誉峰房地产开发有限公司70%',
+                    nums: ' JT01201800093',
+                    times: '2019年1月15日',
+                    prices: '2428.03',
+                    states: '已结束'
+                },
+                {
+                    titname: '湖南省湘诚誉峰房地产开发有限公司70%',
+                    nums: ' JT01201800093',
+                    times: '2019年1月15日',
+                    prices: '2428.03',
+                    states: '进行中'
+                },
+                {
+                    titname: '湖南省湘诚誉峰房地产开发有限公司70%',
+                    nums: ' JT01201800093',
+                    times: '2019年1月15日',
+                    prices: '2428.03',
+                    states: '进行中'
+                },
+                {
+                    titname: '湖南省湘诚誉峰房地产开发有限公司70%',
+                    nums: ' JT01201800093',
+                    times: '2019年1月15日',
+                    prices: '2428.03',
+                    states: '进行中'
+                },
+                {
+                    titname: '湖南省湘诚誉峰房地产开发有限公司70%',
+                    nums: ' JT01201800093',
+                    times: '2019年1月15日',
+                    prices: '2428.03',
+                    states: '进行中'
+                },
+                {
+                    titname: '湖南省湘诚誉峰房地产开发有限公司70%',
+                    nums: ' JT01201800093',
+                    times: '2019年1月15日',
+                    prices: '2428.03',
+                    states: '进行中'
+                },
+                {
+                    titname: '湖南省湘诚誉峰房地产开发有限公司70%',
+                    nums: ' JT01201800093',
+                    times: '2019年1月15日',
+                    prices: '2428.03',
+                    states: '进行中'
+                },
+                {
+                    titname: '湖南省湘诚誉峰房地产开发有限公司70%',
+                    nums: ' JT01201800093',
+                    times: '2019年1月15日',
+                    prices: '2428.03',
+                    states: '进行中'
+                },{
+                    titname: '湖南省湘诚誉峰房地产开发有限公司70%',
+                    nums: ' JT01201800093',
+                    times: '2019年1月15日',
+                    prices: '2428.03',
+                    states: '进行中'
+                },{
+                    titname: '湖南省湘诚誉峰房地产开发有限公司70%',
+                    nums: ' JT01201800093',
+                    times: '2019年1月15日',
+                    prices: '2428.03',
+                    states: '进行中'
+                },{
+                    titname: '湖南省湘诚誉峰房地产开发有限公司70%',
+                    nums: ' JT01201800093',
+                    times: '2019年1月15日',
+                    prices: '2428.03',
+                    states: '进行中'
+                },{
+                    titname: '湖南省湘诚誉峰房地产开发有限公司70%',
+                    nums: ' JT01201800093',
+                    times: '2019年1月15日',
+                    prices: '2428.03',
+                    states: '进行中'
+                },{
+                    titname: '湖南省湘诚誉峰房地产开发有限公司70%',
+                    nums: ' JT01201800093',
+                    times: '2019年1月15日',
+                    prices: '2428.03',
+                    states: '进行中'
+                },{
+                    titname: '湖南省湘诚誉峰房地产开发有限公司70%',
+                    nums: ' JT01201800093',
+                    times: '2019年1月15日',
+                    prices: '2428.03',
+                    states: '进行中'
+                },{
+                    titname: '湖南省湘诚誉峰房地产开发有限公司70%',
+                    nums: ' JT01201800093',
+                    times: '2019年1月15日',
+                    prices: '2428.03',
+                    states: '进行中'
+                },
+            ],
+            showbox: false,
+            lockback:true,
+            iconshow: -1,
+            shaipanduan: false,
+            alllist: [],
+            listarr:[
+                {name: '不限'},{name: '股权转让'},{name: '实物资产转让'},{name: '房地产转让'},{name: '企业增资'},{name: '资产租赁'},{name: '登记托管'},{name: '诉讼资产'},
+                {name: '合作开发'},{name: '大宗采购'},{name: '技术产权类项目'},{name: '文化产品'},{name: '投融资'},{name: '电子商务'},{name: '创新类'},{name: '其他业务'},
+            ],
+            listnum: -1,
+            hangye:[
+                {name: '不限'},{name: '房地产业'},{name: '金融业'},{name: '建筑业'},{name: '信息传输、计算机行业'},{name: '住宿和餐饮业'},{name: '交通运输、仓储和邮政'},{name: '交通运输、仓储和邮政'},
+                {name: '采矿业'},{name: '制造业'},{name: '教育'},{name: '国际组织'},{name: '电力、燃气及水的生产和供应'},{name: '批发和零售业'},{name: '租赁和商务服务'},{name: '科学研究、技术服务和地质勘查'},
+                {name: '水利、环境和公共设施管理'},{name: '居民服务和其他服务'},{name: '卫生、社会保障和社会福利'},{name: '公共管理和社会组织'},
+            ],
+            cations: null,
+            cationarr: [
+                {name: '不限'},{name: '股权转让'},{name: '实物资产转让'},{name: '房地产转让'},{name: '企业增资'},{name: '资产租赁'},{name: '登记托管'},{name: '诉讼资产'},
+                {name: '合作开发'},{name: '大宗采购'},{name: '文化产品'},{name: '投融资'},{name: '电子商务'},{name: '创新类'},{name: '其他业务'},{name: '技术产权类项目'},
+
+            ],
+            cationarr1: [
+                {name: '全部'}, {name: '预挂牌公告'}, {name: '挂牌公告'}, {name: '竞价公告'}, {name: '延期公告'}, {name: '中止公告'},
+                {name: '终结公告'}, {name: '恢复公告'}, {name: '成交公告/公示'}, {name: '一般信息披露'}, {name: '重点推荐'},
+            ],
+            screensnum: -1,
+            screensnum1: -1,
+            screenname: '',
+            screenname1: '',
+            types: [
+                {name: '公告'}
+            ],
+            allindex0: -1,
+            allindex1: -1,
+            allindex2: -1,
+            Amount: true,
+            moneysarr: [
+                {name: '不限'},{name: '100万内'},{name: '100万~500万'},{name: '500万~2000万'},{name: '2000万~5000万'},{name: '5000万以上'},
+            ],
+            moneysnum: -1,
+            value9: [0, 1],
+            moneys: '100万内',
+            //  点击位置
+            touchstart: 0,
+            touchmove: 0,  // 移动位置
+            refreshText: '下拉刷新',
+            transitions: ''
+        },
+        methods: {
+            liclick(item,index){
+                if(index === 3){
+                    this.listnum = this.allindex2
+                    this.alllist = this.hangye
+                } else if (index === 1) {
+                    this.listnum = this.allindex1
+                    this.alllist = this.listarr 
+                } else if(index === 0){
+                    this.listnum = this.allindex0
+                    this.alllist = this.types
+                }
+                if(index !== undefined){
+                    if (item.name === '金额'){
+                        this.cations = null
+                        this.Amount = false
+                    } else {
+                        this.cations = true
+                        this.Amount = true
+                    }
+                    this.shaipanduan = false
+                    if(this.iconshow === index) {
+                        this.pandun = !this.pandun
+                        if(this.pandun){
+                            this.showbox = false
+                            this.iconshow = -1
+                            this.navlist.map(function(item){
+                                item.icon = 'el-icon-caret-bottom xiabiao'
+                            })
+                        } 
+                    } else {
+                        this.showbox = true
+                        this.pandun = false
+                        this.navlist.map(function(item){
+                            item.icon = 'el-icon-caret-bottom xiabiao'
+                        })
+                        this.iconshow = index
+                        this.$nextTick(function(){
+                            this.navlist[index].icon = 'el-icon-caret-top shangbiao'
+                        })
+                    }
+                } else {
+                    this.cations = false
+                    this.Amount = true
+                    this.shaipanduan = !this.shaipanduan
+                    if(this.showbox) {
+                        this.navlist.map(function(item){
+                            item.icon = 'el-icon-caret-bottom xiabiao'
+                        })
+                        if(this.shaipanduan){
+                            this.iconshow = -2
+                        } else {
+                            this.iconshow = -1
+                            this.showbox = false
+                        }
+                    } else {
+                        if(this.shaipanduan){
+                            this.iconshow = -2
+                            this.showbox = true
+                        } else {
+                            this.iconshow = -1
+                            this.showbox = false
+                        }
+                    }
+                }
+                if(this.showbox){
+                    $('html, body').addClass('lockback');
+                } else {
+                    $('html, body').removeClass('lockback');
+                }
+            },
+            listclick(index){
+                this.num = index
+                if(index === 0){
+                    window.location.href = './homepage.html'
+                } else if(index === 2){
+                    window.location.href = './MemberCenter.html'
+                }
+            },
+            //  遮隐层事件
+            modu(){
+                this.navlist.map(function(item){
+                    item.icon = 'el-icon-caret-bottom xiabiao'
+                })
+                this.showbox = false
+                this.lockback = true
+                this.iconshow = -1
+                this.shaipanduan = false
+                $('html, body').removeClass('lockback');
+            },
+            listarrs(item,index){
+                if(this.iconshow === 0) {
+                    this.allindex0 = index
+                } else if(this.iconshow === 1){
+                    this.allindex1 = index
+                } else if (this.iconshow === 3){
+                    this.allindex2 = index
+                }
+                this.listnum = index;
+                this.modu()
+            },
+            screens(item,index){
+                this.screensnum = index
+                this.screenname = item.name
+            },
+            screens1(item,index){
+                this.screensnum1 = index
+                this.screenname1 = item.name
+            },
+            //  筛选的确定按钮
+            Determine(){
+                this.modu()
+            },
+            //  筛选的重置按钮
+            Resets(){
+                this.screenname = ''
+                this.screenname1 = ''
+                this.screensnum = -1
+                this.screensnum1 = -1
+            },
+            clickmoneys(item,index){
+                this.moneysnum = index
+                this.moneys = item.name
+                if(index === 0){
+                    this.value9 = [0,0]
+                } else if (index === 1){
+                    this.value9 = [0,1]
+                } else if (index === 2){
+                    this.value9 = [0,2]
+                } else if (index === 3){
+                    this.value9 = [0,3]
+                } else if (index === 4){
+                    this.value9 = [0,4]
+                } else if (index === 5){
+                    this.value9 = [0,5]
+                }
+            },
+            clickslider(rest){
+               if(rest[1] === 0){
+                   this.moneys = '不限'
+               } else if(rest[1] === 1){
+                this.moneys = '100万内'
+               }else if(rest[1] === 2){
+                this.moneys = '100万~500万'
+               }else if(rest[1] === 3){
+                this.moneys = '500万~2000万'
+               }else if(rest[1] === 4){
+                this.moneys = '2000万~5000万'
+               }else if(rest[1] === 5){
+                this.moneys = '5000万以上'
+               }
+            },
+            moneysResets(){
+                this.value9 = [0,1]
+                this.moneys = '100万内'
+                this.moneysnum = -1
+            },
+            moneysDetermine(){
+                console.log(this.moneys)
+            },
+            //  点击页面获取当前坐标
+            touchstarts(e){
+                this.touchstart = e.touches[0].pageY
+               
+            },
+            //  移动坐标
+            touchmoves(e){
+                if($('.content').scrollTop() === 0) {
+                    if(e.touches[0].pageY - this.touchstart > 50) {
+                        this.refreshText = '释放更新'
+                        } 
+                    if (e.touches[0].pageY - this.touchstart > 50) {
+                        return false
+                    } else if (e.touches[0].pageY - this.touchstart < 0){
+                        return false
+                    } else {
+                        this.touchmove ='translateY'+ '('+ (e.touches[0].pageY - this.touchstart + 'px') + ')'
+                    }
+                } else {
+                    if($('.content')[0].scrollHeight -  $('.content').height() - $('.content').scrollTop() === 0) {
+                        if (e.touches[0].pageY - this.touchstart < -50  ) {
+                        } else {
+                            if(e.touches[0].pageY - this.touchstart < 0) {
+                                this.touchmove ='translateY'+ '('+ (e.touches[0].pageY - this.touchstart + 'px') + ')'
+                            }
+                        }
+                    }
+                }
+            },
+            //  松开屏幕事件
+            touchend(){
+                this.refreshText = '更新中'
+                this.touchmove = 'translateY(0px)'
+                this.transitions = 'transform 0.5s ease 0.5s'
+                //  这里模拟1秒更新完成
+                setTimeout(() => {
+                    this.transitions = ''
+                },1000)
+            }
+        },
+    })
+</script>

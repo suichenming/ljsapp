@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>咨询答疑</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <script src="../js/gVerify.js"></script>
+    <style>
+        .box{
+            margin: 15px;
+        }
+        .box > div > .fon {
+            font-size: 16px;
+            margin-right: 15px;
+        }
+        .el-input__inner{
+            border-radius: 0;
+        }
+        .mar{
+            margin: 15px 0;
+            position: relative;
+        }
+        .mar > .el-input{
+            width: 30%;
+        }
+        .mar > .yzm_img{
+            position: absolute;
+            top: 0;
+            left: 51%;
+            
+        }
+        .btns { 
+            text-align: center; 
+            margin: 50px 0;
+            width: 100%;
+        }
+        .btns > button {
+            background: -webkit-gradient(linear, left top, right top, from(#FF8D00) , to(#FF5300));
+            background: linear-gradient(to right, #FF8D00 , #FF5300);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 60px;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <headers>
+            咨询答疑
+        </headers>
+        <div class="box">
+            <div>
+                <span class="fon">问题分类</span>   
+                <el-select v-model="value" placeholder="--问题类别--">
+                    <el-option
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.valu">
+                    </el-option>
+                </el-select>
+            </div>
+            <div>
+                <div class="fon" style="margin: 15px 0;">问题说明</div>
+                <el-input
+                    type="textarea"
+                    :autosize="{ minRows: 8, maxRows: 8}"
+                    placeholder="请输入你的问题"
+                    v-model="textarea3">
+                </el-input>
+            </div>
+            <div class="mar">
+                <span class="fon">验证码</span>
+                <el-input v-model="input" placeholder="请输入验证码"></el-input>
+                <div class="yzm_img" id="yzm_img" style="width: 30%;height: 40px;"> </div>
+                <span class="fon" style="float: right;line-height: 40px;color: #999999;font-size: 14px;" @click='shuaxin'>
+                    <i class="el-icon-refresh"></i>刷新
+                </span>
+            </div>
+            <div class="btns">
+                <button @click='btnclick'>提交咨询</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            options: [
+                {
+                    valu: '选项1',
+                    label: '没有问题'
+                }
+            ],
+            value: '',
+            textarea3: '',
+            input: ''
+        },
+        methods: {
+            btnclick(){
+                var codeO = this.input
+                if(verifyCode.validate(codeO)){ // codeO : 输入框里面的值
+                    console.log('验证码正确')
+                } else {
+                    console.log('验证码错误')
+                }
+            },
+            shuaxin(){
+                verifyCode.refresh()
+            }
+        },
+    })
+    var verifyCode = new GVerify("yzm_img");
+</script>

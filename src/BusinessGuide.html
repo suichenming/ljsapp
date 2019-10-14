@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>业务指南</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <style>
+        header > i {
+            position: absolute;
+            right: 5%;
+            top: 12px;
+            color: #888888;
+            font-size: 20px
+        }
+        nav{
+            height: 50px;
+            border-bottom: 1px solid #ccc;
+        }
+        nav > ul{
+            height: 100%;
+            display: flex;
+            justify-content: space-around;;
+            align-items: center;
+        }
+        nav > ul > li{
+            color: #666666;
+            line-height: 47px
+        }
+        footer{
+            display: flex;
+            flex-wrap: wrap;
+            
+        } 
+        footer > div {
+            position: relative;
+            width: 50%;
+            text-align: center;
+            margin:10px 0
+        }
+        footer > div > img{
+            width: 100%;
+            padding: 0 10px;
+            image-rendering: auto;
+            image-rendering: inherit;
+            image-rendering: initial;
+            image-rendering: optimizeQuality;
+            image-rendering: pixelated;
+        }
+        footer > div > p {
+            color: #fff;
+            padding: 5px;
+            background: #000;
+            opacity: 0.5;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 60%
+        }
+        .prope > ul > li {
+            padding: 15px 0;
+            border-bottom: 1px solid #ccc;
+            margin: 0 15px;
+            color: #454545;
+            font-weight: 600
+        }
+        .prope > ul > li > img{
+            float: right;
+            margin-right: 15px
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-if='showis === 1'>
+            <headers>
+                业务指南
+            </headers>
+            <nav>
+                <ul>
+                    <li v-for='(item,index) in list' :key='index' 
+                    :style="{color: num === index? '#FF8E00' : '#666666',borderBottom: num ===index? '1px solid #FF8E00' :'' }" @click='listclik(item,index)' >
+                        {{item.name}}
+                    </li>
+                </ul>
+            </nav>
+            <footer>
+                <div v-for='(item,index) in banli' :key='index' v-if='num === 0'>
+                    <img :src='item.img' alt="">
+                    <p>{{item.name}}</p>
+                </div>
+                <div v-for='(item,index) in banli1' :key='index' v-if='num === 1'>
+                    <img :src='item.img' alt="">
+                    <p>{{item.name}}</p>
+                </div>
+                <div v-for='(item,index) in banli2' :key='index' v-if='num === 2' @click='details(item,index)'>
+                    <img :src='item.img' alt="">
+                    <p>{{item.name}}</p>
+                </div>
+            </footer>
+        </div>
+        <div v-if='showis === 2'>
+            <headers :showid='panshouw' @getchilis='getchilis'>
+                    公有产权类
+            </headers>
+            <div class="prope">
+                <ul>
+                    <li v-for='(item,index) in Property' :key='index'>
+                        {{item.name}}
+                        <img src="../images/xiazai.png" alt="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            list: [
+                {name: '办理指南'},{name: '政策法规'},{name: '相关下载'},   
+            ],
+            num: 0,
+            banli: [
+                {img: '../images/gongyou.png',name: '公有集体产权业务'},
+                {img: '../images/paimai.png',name: '拍卖'},
+                {img: '../images/susong.png',name: '诉讼资产'}, 
+                {img: '../images/qiye.png',name: '企业商事服务'},
+                {img: '../images/dengji.png',name: '登记托管'},
+                {img: '../images/qitazc.png',name: '深柜市场'},
+                {img: '../images/jinrong.png',name: '金融资产'},
+                {img: '../images/shengui.png',name: '投资融'},
+                {img: '../images/zengzi.png',name: '增资业务'},
+            ],
+            banli1: [
+                {img: '../images/gonggong.png',name: '公共产权国家政策法规'},
+                {img: '../images/bangong.png',name: '公有产权深圳地方政策法规'},
+                {img: '../images/bangongs.png',name: '公共资源政策法规'},
+                {img: '../images/shuji.png',name: '金融资产政策法规'},
+                {img: '../images/fagui.png',name: '拍卖相关政策法规'},
+                {img: '../images/zu.png',name: '诉讼资产政策法规'},
+                {img: '../images/qitazc.png',name: '其他政策法规'},
+                {img: '../images/yingb.png',name: '增资相关政策法规'},
+            ],
+            banli2: [
+                {img: '../images/gongyou.png',name: '公有产权类'},
+                {img: '../images/paimai.png',name: '拍卖类'},
+                {img: '../images/zu.png',name: '诉讼资产类'}, 
+                {img: '../images/dengji.png',name: '企业商事服务'},
+                {img: '../images/shengui.png',name: '登记托管'},
+                {img: '../images/guquan.png',name: '深柜市场'},
+                {img: '../images/zhuanjia.png',name: '金融资产'},
+            ],
+            showis:1,
+            Property:[
+                {name:'产权转让委托协议（股权类）'},{name: '国有产权转让信息发布申请表（股权类）'},{name: '产权转让委托协议（资产类）'},{name: '国有产权转让信息发布申请表（资产类）'},
+                {name: '产权受让委托协议（股权类）'},
+                {name: '意向受让方登记表（股权类）'},{name: '资信承诺（公司）'},{name: '资信承诺（个人）'},{name: '委托付款通知书（已成交）'},{name: '委托付款通知书（未成交）'},
+            ],
+            panshouw:false
+        },
+        methods: {
+            listclik(item,index){
+                this.num =index
+            },
+            details(item,index){
+               this.showis = 2
+               this.panshouw =true
+            },
+            getchilis(val){
+                this.showis = val
+            }
+        },
+        mounted() {
+            
+        },
+    })
+    
+</script>

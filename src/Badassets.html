@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>不良资产</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <style>
+        .box{
+            margin: 10px 0;
+        }
+        .title {
+            text-align: center;
+            font-size:16px;
+            font-family:PingFang SC;
+            font-weight:bold;
+            color:rgba(51,51,51,1);
+        }
+        .chi{
+            text-align: center;
+        }
+        .colo{
+            color:rgba(102,102,102,1);
+        }
+        .contens {
+            text-indent: 2rem;
+            padding: 10px 0;
+        }
+        .btns { 
+            text-align: center; 
+            margin: 20px 0;
+            width: 100%;
+        }
+        .btns > button {
+            background: -webkit-gradient(linear, left top, right top, from(#FF8D00) , to(#FF5300));
+            background: linear-gradient(to right, #FF8D00 , #FF5300);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 60px;
+            outline: none;
+        }
+        .contacts { 
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+       
+       .address > p{
+           display: flex;
+           padding: 5px 0;
+           justify-content: space-between;
+       }
+       .address > p > .colo{
+           width: 26%;
+       }
+       .address > p > .dis{
+           width: 70%;
+       }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <headers>
+            不良资产
+        </headers>
+        <div class="col-xs-12 col-sm-12 box">
+            <p class="title">不良资产项目意向征集公告</p>
+            <p class="chi colo">（含抵债资产、司法拍卖资产、拟引进战略投资者）</p>
+            <p class="contens">
+                    受委托，我所拟对全国以下省市地区不良资产向广大投资者征集购买意向，请有意参与的意向方就项目相关详细信息及具 体安排与本所联系。
+            </p>
+           <div class="btns">
+                <button>项目详情</button>
+           </div>
+           <div class="sheng">
+               <p class="colo">声明：</p>
+               <p class="contens">
+                   本推介项目所披露的信息仅供参考，最终资产信息以意向受让方签订保密协议后，转让方提供的最终资料所记载的内容为准。相 关标的物信息以实物现状为准，房产及土地实际状况以产权证件记载为准。资产的瑕疵情况，意向受让方应自行了解并作出判断。本意向征 集公告不构成任何一项要约，转让方及本所不对其承担任何法律责任。
+                </p>
+           </div>
+           <div class="">
+               <p class="colo">联系方式：</p>
+               <p class="colo">业务咨询电话：</p>
+           </div>
+               <ul class='contacts'>
+                    <li v-for='(item,index) in arr' :key="index">
+                        {{item.name}}
+                    </li>
+               </ul>
+               <div class="address">
+                   <p> <span class="colo">业务投诉电话：</span> <span class="dis">0755-83690834</span></p>
+                   <p> <span class="colo">传 真：</span> <span class="dis">0755-26577562</span></p>
+                   <p> <span class="colo">联系地址：</span> <span class="dis">深圳市南山区沙河西路1809号深圳湾科技生态园一区2栋A座11层</span></p>
+                   <p> <span class="colo">网 址：</span><span class="dis"   >www.sotcbb.com</span></p>
+               </div>
+              
+        </div>
+    </div>
+    
+                   
+             
+                   
+             
+             
+                            
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            arr: [
+                {name: '0755-86671132 郑先生'}, {name: '0755-26569063 梁小姐'}, {name: '0755-86358791 江先生'}, {name: '0755-26569062 叶先生'}, {name: '0755-26577972 刘先生'},
+                {name: '0755-26569065 赵小姐'}, {name: '0755-83690889 刘先生'}, {name: '0755-26569126 叶先生'}, {name: '0755-86358702 杨先生'}, {name: '0755-29957959 赵小姐'},
+            ]
+        }
+    })
+</script>

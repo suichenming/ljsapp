@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>服务规范</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <style>
+        .box {
+            margin: 10px 0;
+        }
+        .tit{
+            font-size:16px;
+            font-family:PingFang SC;
+            font-weight:bold;
+            color:rgba(51,51,51,1);
+        }
+        .chi{
+            margin: 5px;
+        }
+        .chi > li {
+            padding: 10px 0;
+            font-size: 15px;
+            font-family:PingFang SC;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <headers>
+            服务规范
+        </headers>
+        <div class="col-xs-12 col-sm-12 box" v-for='(result,index) in arr' :key="index">
+            <p class="tit">{{result.title}}</p>
+            <ul class="chi">
+                <li v-for='(item,indexs) in result.childrenarr' :key="indexs">
+                    {{item.name}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            arr: [
+                {
+                    title: '企业增资服务中心为企业提供以下服务：',
+                    childrenarr: [
+                        {name: '1、协助委托方编制增资方案，制订进场征集、遴选投资人方案（包括不限于竞价、竞争性谈判或综合评审等）'},
+                        {name: '2、深入挖掘标的企业投资亮点，进行项目前期推介，有效筛选潜在投资方；'},
+                        {name: '3、向委托方提供初步意向投资方名单，组织意向投资方尽职调查，接受意向投资方反馈信息，及时协调投融资双方；'},
+                        {name: '4、准备增资相关推介材料（包括不限于路演材料、保密协议等文书）；'},
+                        {name: '5、制作增资项目挂牌公告，发布增资信息，广泛征集意向投资方；'},
+                        {name: '6、根据项目实际需要组织专场的增资路演推介会；'},
+                        {name: '7、接受意向投资人报名和咨询，并按照委托方的要求审核其资格；'},
+                        {name: '8、对本次增资履行相应的保证金监管职责；'},
+                        {name: '9、公告期满后，全程组织并参与意向投资方的竞价、竞争性谈判、综合评审过程并制作相关过程记录文件；'},
+                    ]
+                },
+                {
+                    title: '企业增资服务中心为企业提供以下服务：',
+                    childrenarr: [
+                        {name: '1、协助委托方编制增资方案，制订进场征集、遴选投资人方案（包括不限于竞价、竞争性谈判或综合评审等）'},
+                        {name: '2、深入挖掘标的企业投资亮点，进行项目前期推介，有效筛选潜在投资方；'},
+                        {name: '3、向委托方提供初步意向投资方名单，组织意向投资方尽职调查，接受意向投资方反馈信息，及时协调投融资双方；'},
+                        {name: '4、准备增资相关推介材料（包括不限于路演材料、保密协议等文书）；'},
+                        {name: '5、制作增资项目挂牌公告，发布增资信息，广泛征集意向投资方；'},
+                        {name: '6、根据项目实际需要组织专场的增资路演推介会；'},
+                        {name: '7、接受意向投资人报名和咨询，并按照委托方的要求审核其资格；'},
+                        {name: '8、对本次增资履行相应的保证金监管职责；'},
+                        {name: '9、公告期满后，全程组织并参与意向投资方的竞价、竞争性谈判、综合评审过程并制作相关过程记录文件；'},
+                    ]
+                },
+            ]
+        }
+    })
+</script>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>增资相关公告</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <style>
+        nav{
+            height: 50px;
+            border-bottom: 1px solid #ccc;
+        }
+        nav > ul{
+            height: 100%;
+            display: flex;
+            justify-content: space-around;;
+            align-items: center;
+        }
+        nav > ul > li{
+            color: #666666;
+            line-height: 47px
+        }
+        .box{
+            margin:0 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid #ccc;
+        }
+        .box > .tit{
+            font-size:16px;
+            font-family:PingFang SC;
+            font-weight:500;
+            color:rgba(51,51,51,1);
+        }
+        .box > .times {
+            text-align: right;
+            font-size: 13px;
+            color:rgba(153,153,153,1);
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <headers>
+            增资相关公告
+        </headers>
+        <nav>
+            <ul>
+                <li v-for='(item,index) in list' :key='index' 
+                :style="{color: num === index? '#FF8E00' : '#666666',borderBottom: num ===index? '1px solid #FF8E00' :'' }" @click='listclik(item,index)' >
+                    {{item.name}}
+                </li>
+            </ul>
+        </nav>
+        <div class="box" v-for='(item,index) in arr' :key="index">
+            <p class="tit">{{item.name}}</p>
+            <p class="times">{{item.ti}}</p>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            list: [
+                {name: '深圳联交所增资项目'},{name: '异地合作交易机构项目'},
+            ],
+            num: 0,
+            arr: [
+                {name: '南证大厦B栋11层物业招租信息公告', ti: '2018-12-19'},
+                {name: '国内货站B3-c贴建办公楼I207等5处物业自行招租信息公告', ti: '2018-12-19'},
+                {name: '南证大厦B栋11层物业招租信息公告', ti: '2018-12-19'},
+                {name: '南证大厦B栋11层物业招租信息公告', ti: '2018-12-19'},
+                {name: '南证大厦B栋11层物业招租信息公告', ti: '2018-12-19'},
+                {name: '南证大厦B栋11层物业招租信息公告', ti: '2018-12-19'},
+            ]
+        },
+        methods: {
+            listclik(item,index){
+                this.num =index
+            },
+           
+        },
+    })
+</script>
