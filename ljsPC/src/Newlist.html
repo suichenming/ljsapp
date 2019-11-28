@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>深圳联交所</title>
+    <link rel="icon" href="../images/logo.png">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headerpublic.js"></script>
+    <style>
+         .listtitle{
+            height: 64px;
+            background: #fff
+        }
+        .listtitle > ul {
+            display: flex;
+            justify-content: center;
+            
+        }
+        .listtitle > ul > li {
+            padding: 20px 50px;
+            cursor: pointer;
+        }
+        .listtitle > ul > li > i{
+            display: block;
+            padding-bottom: 20px
+        }
+        .listtitle > ul > li:hover  i{
+            border-bottom: 2px solid #3E4E80;
+            color: #445484;
+            text-decoration: none
+        }
+    </style>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <headers></headers>
+        <main>
+            <div class="main">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <p style="padding: 20px;background:#fff;border-bottom: 1px solid #ccc;">首页 > 关于我们 > 公司动态</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <article>
+            <div class="main">
+                <div class="listtitle">
+                    <ul>
+                        <li v-for='(item,index) in clicklist' :style='{color: num === index ? "#3E4E80" : ""}' :key='index' @click='clicklists(item,index)'>
+                        <i :style='{borderBottom: num === index ? "2px solid #3E4E80" : "" }'>{{item.name}}</i></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+        <div class="main" style="background: #fff;margin-top: 40px;">
+            <el-table :data="tableData" style="width: 100%" :header-cell-style='{background:"#E7F3FD"}'>
+                    <el-table-column prop="title" label="标题" show-overflow-tooltip>  </el-table-column>
+                <el-table-column prop="data" label="日期"  > </el-table-column>
+            </el-table>
+            <div class="text-right" style="padding-top: 20px">
+                    <el-pagination
+                        background
+                        @current-change="changes"
+                        layout="prev, pager, next"
+                        :page-size="pageSizes"
+                        :total="totals">
+                </el-pagination>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            num: 0,
+            clicklist:[
+                {name: '公司动态'},{name: '业务新闻'},{name: '成功案例'},{name: '年度报告'},{name: '社会责任报告'},
+            ],
+            tableData:[
+                {
+                    title: '   深圳联交所成功举办首个集体物业重点项目推介会',
+                    data: '2019-11-11'
+                },
+                {
+                    title: '   深圳联交所成功举办首个集体物业重点项目推介会',
+                    data: '2019-11-11'
+                },
+                {
+                    title: '   深圳联交所成功举办首个集体物业重点项目推介会',
+                    data: '2019-11-11'
+                },
+
+                {
+                    title: '   深圳联交所成功举办首个集体物业重点项目推介会',
+                    data: '2019-11-11'
+                },
+                {
+                    title: '   深圳联交所成功举办首个集体物业重点项目推介会',
+                    data: '2019-11-11'
+                },
+                {
+                    title: '   深圳联交所成功举办首个集体物业重点项目推介会',
+                    data: '2019-11-11'
+                },
+            ],
+            totals:6,
+            pageSizes: 3
+        },
+        methods: {
+            clicklists(val,index){
+                this.num = index
+            },
+            changes(currentPage) {
+                this.currentPage1s = currentPage
+            },
+        },
+    })
+
+</script>

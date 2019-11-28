@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/jquery.js"></script>
+</head>
+<body>
+        <input  type="file" id="file2"  name="file2" placeholder="上传"   >
+        <button onclick="aa()">测试</button>
+</body>
+</html>
+<script>
+ var a = ' asdgfh'
+ console.log(a == null,a== '',$("#file2").val())
+  function aa(){
+      console.log($("#file2").val(),1)
+      if($("#file2").val() == null || $("#file2").val() == ''){
+          console.log('空')
+      } else {
+          console.log('非空')
+      }
+  }
+</script>

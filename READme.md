@@ -36,7 +36,13 @@ Badassets  不良资产
 Badassetsitems  不良资产 -- 项目类表
 Projectdetails   项目详情
 answerquestions 咨询答疑
+ThestyleofPartyBuilding  党建风采
 
+Aboutus 关于我们
+Companyintroduction   公司介绍
+organizationalstructure  组织架构
+Developmenthistory  发展历史
+Contactus  联系我们
 判断验证是否正确
 if(!verifyCode.validate(codeO)){ // codeO : 输入框里面的值
 

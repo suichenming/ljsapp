@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>联系我们</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <link rel="stylesheet" href="../css/bmap.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <script src="../js/Maps.js"></script>
+    <style>
+        #app {
+            overflow-x: hidden;
+        }
+
+        .maps {
+            text-align: center;
+            margin: 10px;
+        }
+
+        .lianxibox {
+            margin: 0;
+        }
+
+        .title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .title>i {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #000;
+        }
+
+        .boxtitle {
+            margin-bottom: 20px;
+        }
+
+        .boxtitle>p {
+            line-height: 24px;
+            font-size: 16px;
+        }
+
+        .nums {
+            display: flex;
+        }
+
+        .nums>p>span {
+            display: block;
+        }
+
+        .texti {
+            text-indent: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+          -->
+
+    <div id="app">
+        <headers>
+            联系我们
+        </headers>
+        <div class="row">
+            <div class="col-md-12 maps">
+                <!-- <img src="../images/mapimg.png" alt="" srcset=""> -->
+                <div style="width: 100%; height: 300px;" id="dituContent"></div>
+            </div>
+        </div>
+        <div class="row lianxibox">
+            <div class="col-md-12">
+                <p class="title"> <i></i> 联合产权交易所</p>
+                <div class="boxtitle">
+                    <p>中国（华南）国际技术产权交易中心</p>
+                    <p>邮编：518057 </p>
+                    <p> 电话：0755-86358999, 0755-83690670</p>
+                    <p> 地址：深圳南山区沙河西路1809号深圳湾科技生态园一区2栋A座11楼 </p>
+                </div>
+            </div>
+        </div>
+        <div class="row lianxibox">
+            <div class="col-md-12">
+                <p class="title"> <i></i> 各部门联系方式</p>
+                <div class="boxtitle" v-for='(item,index) in lianxiarr' :key="index">
+                    <p>{{item.title}}</p>
+                    <p>{{item.numbers}} &nbsp; &nbsp;{{item.emails}} </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row lianxibox">
+            <div class="col-md-12">
+                <p class="title"> <i></i> 深圳三资交易联系方式</p>
+                <div class="boxtitle" v-for='(item,index) in sanzilianxiarr' :key="index">
+                    <p>{{item.times}} </p>
+                    <p class="texti">{{item.ardess}} </p>
+                    <div class="boxtitle nums texti">
+                        <p>
+                            {{item.numbers}}
+                        </p>
+                        <p>
+                            <span>{{item.ipne}} </span>
+                            <span>{{item.ipne1}} </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+
+ 
+    var app = new Vue({
+        el: '#app',
+        data: {
+            lianxiarr: [
+                {
+                    title: '深国资交易部：',
+                    numbers: '0755-83002387',
+                    emails: 'E-mail： yl@sotcbb.com '
+                },
+                {
+                    title: '公共资源服务中心(采购服务中心)：',
+                    numbers: '0755-83002341',
+                    emails: ' E-mail： yl@sotcbb.com'
+                },
+                {
+                    title: '企业增资服务中心(电子商务中心)：',
+                    numbers: '0755-83690895',
+                    emails: ' E-mail：twg@sotcbb.com'
+                },
+                {
+                    title: '租赁权服务中心：',
+                    numbers: '0755-83881849',
+                    emails: 'E-mail：wk@sotcbb.com'
+                },
+                {
+                    title: '股权登记托管中心：',
+                    numbers: '0755-26569053',
+                    emails: 'E-mail：wxl@sotcbb.com'
+                },
+                {
+                    title: '金融服务中心：',
+                    numbers: '0755-26566637',
+                    emails: 'E-mail：hh@sotcbb.com'
+                },
+                {
+                    title: '技术转移中心：',
+                    numbers: '0755-26566445',
+                    emails: 'E-mail：gy@sotcbb.com'
+                },
+                {
+                    title: '拍卖公司：',
+                    numbers: '0755-26566458',
+                    emails: 'E-mail：lzy@sotcbb.com'
+                },
+            ],
+            sanzilianxiarr: [
+                {
+                    times: '总部（7*24小时）：',
+                    ardess: '联系地址：深圳市南山区沙河西路1809号深圳湾科 技生态园一区2栋A座11层',
+                    numbers: '联系电话：',
+                    ipne: '刘先生 13510060086 ',
+                    ipne1: '王小姐18676788630'
+                },
+                {
+                    times: '龙岗区办公点：',
+                    ardess: ' 联系地址：龙岗区中心城天昊华庭小区首层龙岗区国有集体产权交易中心',
+                    numbers: '联系电话：',
+                    ipne: '谢小姐15112290019',
+                    ipne1: ''
+                },
+                {
+                    times: '龙华区办公点：',
+                    ardess: '联系地址：深圳市龙华区梅龙大道2283号国鸿大厦7栋11层',
+                    numbers: '联系电话：',
+                    ipne: '湛先生18565847790',
+                    ipne1: ''
+                },
+                {
+                    times: '宝安区办公点：',
+                    ardess: '联系地址：深圳市宝安区湖滨东路40号',
+                    numbers: '联系电话：',
+                    ipne: '李小姐13510612189',
+                    ipne1: ''
+                },
+                {
+                    times: '南山区办公点：',
+                    ardess: '联系地址：深圳市南山区南新路3036号五楼507',
+                    numbers: ' 联系电话：',
+                    ipne: '王先生18576720610',
+                    ipne1: ''
+                },
+                {
+                    times: '光明区办公点：',
+                    ardess: '联系地址：深圳市光明新区观光路2533号招商局光明科技园A-3栋B单元八楼',
+                    numbers: '联系电话：',
+                    ipne: '行先生13510009483',
+                    ipne1: ''
+                },
+                {
+                    times: '福田区办公点：',
+                    ardess: '联系地址：深圳市南山区沙河西路1809号深圳湾科技生态园一区2栋A座11层',
+                    numbers: '联系电话：',
+                    ipne: '刘小姐15820778729',
+                    ipne1: ''
+                },
+                {
+                    times: '罗湖区办公点：',
+                    ardess: '联系地址：深圳市南山区沙河西路1809号深圳湾科技生态园一区2栋A座11层',
+                    numbers: '联系电话：',
+                    ipne: '王先生 13824395127',
+                    ipne1: ''
+                },
+                {
+                    times: '坪山、大鹏、深汕办公点：',
+                    ardess: '联系地址：深圳市南山区沙河西路1809号深圳湾科技生态园一区2栋A座11层',
+                    numbers: ' 联系电话：',
+                    ipne: ' 刘先生 13510060086',
+                    ipne1: ''
+                },
+
+                {
+                    times: '盐田区办公点：',
+                    ardess: '联系地址：深圳市南山区沙河西路1809号深圳湾科技生态园一区2栋A座11层',
+                    numbers: '联系电话：',
+                    ipne: '杨军13528768006',
+                    ipne1: ''
+                },
+
+            ]
+        }
+    })
+    //创建和初始化地图函数：
+    function initMap() {
+        createMap(113.9605181476, 22.5341691049); //创建地图
+        setMapEvent(); //设置地图事件
+        addMapControl(); //向地图添加控件
+        var points = [
+            {"lng":    113.9605181476 ,"lat":  22.5341691049 ,"url":"http://www.sotcbb.com/cn2019/index.html"  ,"id":"深圳联交所产权公司",   "name":"深圳湾科技生态园"}
+        ];
+        addMarker(points)
+    }
+    function addMarker(points) {
+        //循环建立标注点
+        for(var i=0, pointsLen = points.length; i<pointsLen; i++) {
+            var point = new BMap.Point(points[i].lng, points[i].lat); //将标注点转化成地图上的点
+            var marker = new BMap.Marker(point); //将点转化成标注点
+            var label1=points[i].name;
+            var label = new BMap.Label(label1, {offset: new BMap.Size(15, -25)});
+            marker.setLabel(label);
+            map.addOverlay(marker);  //将标注点添加到地图上
+        }
+    }
+    //创建地图函数：
+    function createMap(x, y) {
+        var map = new BMap.Map("dituContent"); //在百度地图容器中创建一个地图
+        var point = new BMap.Point(x, y); //定义一个中心点坐标
+        map.centerAndZoom(point, 14); //设定地图的中心点和坐标并将地图显示在地图容器中
+        window.map = map; //将map变量存储在全局
+    }
+    //地图事件设置函数：
+    function setMapEvent() {
+        map.enableDragging(); //启用地图拖拽事件，默认启用(可不写)
+        map.enableScrollWheelZoom(); //启用地图滚轮放大缩小
+        map.enableDoubleClickZoom(); //启用鼠标双击放大，默认启用(可不写)
+        map.enableKeyboard(); //启用键盘上下左右键移动地图
+    }
+    //地图控件添加函数：
+    function addMapControl() {
+        //向地图中添加缩放控件
+        var ctrl_nav = new BMap.NavigationControl({
+            anchor: BMAP_ANCHOR_TOP_LEFT,
+            type: BMAP_NAVIGATION_CONTROL_LARGE
+        });
+        map.addControl(ctrl_nav);
+        //向地图中添加缩略图控件
+        var ctrl_ove = new BMap.OverviewMapControl({
+            anchor: BMAP_ANCHOR_BOTTOM_RIGHT,
+            isOpen: 1
+        });
+        map.addControl(ctrl_ove);
+        //向地图中添加比例尺控件
+        var ctrl_sca = new BMap.ScaleControl({
+            anchor: BMAP_ANCHOR_BOTTOM_LEFT
+        });
+        map.addControl(ctrl_sca);
+    }
+    initMap(); //创建和初始化地图
+    //      $(function(){
+// //新建一个地图上点
+// // var points = [
+// //     {"lng":    116.29375 ,"lat":  39.837923 ,"url":"http://www.xinruihy.com/"  ,"id":"信睿浩扬",   "name":"深圳"}
+// // ];
+// //116.29375,39.837923
+// //创建标注点并添加到地图中
+// function addMarker(points) {
+//     //循环建立标注点
+//     for(var i=0, pointsLen = points.length; i<pointsLen; i++) {
+//         var point = new BMap.Point(points[i].lng, points[i].lat); //将标注点转化成地图上的点
+//         var marker = new BMap.Marker(point); //将点转化成标注点
+//         var label1=points[i].name;
+//         var label = new BMap.Label(label1, {offset: new BMap.Size(15, -25)});
+//         marker.setLabel(label);
+//        // map.addOverlay(marker);  //将标注点添加到地图上
+//       //  marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+//         //添加监听事件
+//         (function() {
+//             var thePoint = points[i];
+//             marker.addEventListener("click",
+//                 function() {
+//                     //showInfo(this,thePoint);
+//                 });
+//         })();
+//     }
+// }
+// function showInfo(thisMarker,point) {
+//     //获取点的信息
+//     var sContent =
+//         '<ul style="margin:0 0 5px 0;padding:0.2em 0">'
+//         +'<li style="line-height: 26px;font-size: 15px;">'
+//         +'<span style="width: 50px;display: inline-block;">名称：</span>' + 111 + '</li>'
+//         +'<li style="line-height: 26px;font-size: 15px;">'
+//         +'<span style="width: 50px;display: inline-block;">地址：</span>' + point.name + '</li>'
+//         +'<li style="line-height: 26px;font-size: 15px;"><span style="width: 50px;display: inline-block;">查看：</span><a href="'+point.url+'">详情</a></li>'
+//         +'</ul>';
+//     var infoWindow = new BMap.InfoWindow(sContent); //创建信息窗口对象
+//     thisMarker.openInfoWindow(infoWindow); //图片加载完后重绘infoWindow
+// }
+
+// //创建地图
+// //var map = new BMap.Map('container');
+// map.centerAndZoom(new BMap.Point(116.29375,39.837923), 14);  // 设置中心点
+// map.setCurrentCity("朝阳区");          //设置为
+// map.addControl(new BMap.MapTypeControl());
+// map.enableScrollWheelZoom(true);
+ 
+// //addMarker(points);
+//    })
+</script>
