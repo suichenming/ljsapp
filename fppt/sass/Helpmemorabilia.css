@@ -35,7 +35,7 @@
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
-  background: #ef1616;
+  background:#F79549;
 }
 
 .swiperbox {
@@ -44,7 +44,8 @@
 }
 
 .swiper-slide {
-  background: #fff;
+  /* background: #fff; */
+  cursor: pointer;
 }
 
 .swiper-slide .slidebox {
@@ -52,6 +53,10 @@
   height: 100%;
   margin: 0 auto;
   padding: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .swiper-slide .slidebox .toptime {
@@ -66,7 +71,7 @@
 
 .swiper-slide .slidebox .toptime .chakan {
   color: #fff;
-  background: #FFA4A4;
+  background: #F79549;
   line-height: 28px;
   padding: 0 15px;
   border-radius: 8px;
@@ -92,17 +97,22 @@
 
 .swiper-slide .slidebox .content {
   font-size: 18px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
+  height: 78px;
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
 }
 
 .swiper-slide img {
   width: 85%;
-  height: 150px;
+  height: 100%;
   margin: 0 auto;
 }
 
 .leftandright {
-  padding: 20px;
+  padding:40px 20px;
   display: flex;
   justify-content: space-between;
 }
@@ -134,7 +144,7 @@
 .topbottom ul li {
   margin: 20px 0;
   cursor: pointer;
-  color: #EF1616;
+  color: #fff;
   position: relative;
 }
 
@@ -146,7 +156,7 @@
   width: 6px;
   height: 6px;
   border-radius: 100%;
-  background-color: #EF1616;
+  background-color: #fff;
   -webkit-transform: scale(0);
   transform: scale(0);
   transition: .2s;
@@ -163,7 +173,7 @@
   width: 6px;
   height: 6px;
   border-radius: 100%;
-  background-color: #EF1616;
+  background-color: #fff;
   -webkit-transform: scale(1);
   transform: scale(1);
   transition: .2s;
@@ -179,5 +189,5 @@
   top: 0;
   height: 100%;
   width: 1px;
-  background-color: #EF1616;
+  background-color: #fff;
 }

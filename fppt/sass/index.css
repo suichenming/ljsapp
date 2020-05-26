@@ -47,9 +47,9 @@
 }
 
 .erbox .swimg img {
-  margin-top: 80px;
-  width: 273px;
-  height: 180px;
+  margin-top: 60px;
+  width: 70%;
+  height: 50%;
 }
 
 .erbox .righttitle {
@@ -81,6 +81,7 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
+  font-size: 16px;
 }
 
 .chakan {

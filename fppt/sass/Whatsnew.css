@@ -28,7 +28,7 @@
   color: #666666;
   cursor: pointer;
   position: relative;
-  width: 120px;
+  width: 140px;
 }
 
 .whtabox .boxleft .uls li p {
@@ -38,7 +38,7 @@
 
 .whtabox .boxleft .uls li i {
   position: absolute;
-  width: 100%;
+  width: 120px;
   height: 12px;
   bottom: 4px;
   left: 0;
@@ -63,6 +63,9 @@
 
 .whtabox .boxleft .list li .last {
   width: 80%;
+  text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
 }
 
 .whtabox .boxleft .list li .flase {

@@ -81,6 +81,13 @@
         .charbox .bannerbox .rightbanner{
             position: relative;
         }
+        .zysj{
+            font-size: 17px;
+            display:-webkit-box;
+            -webkit-line-clamp:2;
+            -webkit-box-orient:vertical;
+            overflow:hidden;
+        }
 </style>
 <body>
     <div id="app" v-cloak>
@@ -119,11 +126,10 @@
                                     <div class="boxcontent">
                                         <p class="names">
                                             {{item.name}}
+
+                                            <span style="font-size:14px"> {{item.dizhi}}</span>
                                         </p>
-                                        <p class="dizhi">
-                                            {{item.dizhi}}
-                                        </p>
-                                        <p>
+                                        <p class="zysj" style="">
                                             {{item.zhuyaoshiji}}
                                         </p>
                                     </div>
