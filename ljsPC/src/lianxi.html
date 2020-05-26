@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>联系我们</title>
+    <link rel="icon" href="../images/logo.png">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/bmap.css">
+    <script src="../js/swiper.min.js"></script>
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headerpublic.js"></script>
+    <script src="../js/Maps.js"></script>
+    <style>
+       html,body{
+             width: 100%;
+            height: 100%;
+            background:url(../images/xianxi.png) no-repeat  100% -6%;
+            background-size: 100% 150%;
+       }
+       .conters > p {
+           text-align: center;
+           font-size: 24px;
+           font-weight: 600;
+           color: #3E4E80;
+           padding: 20px 0;
+       }
+       .box {
+           background: rgba(255, 255, 255, 0.6);
+           padding: 20px;
+       }
+       .boxconter {
+           width: 90%;
+           margin: 0 auto;
+       }
+       .fontcolors {
+            font-size: 16px;
+            color: #6F6F6F;
+            margin: 10px;
+            width: 70%;
+            margin: 0 auto;
+        }
+        .fontcolors>p,.information > p {
+            padding-bottom: 5px
+        }
+        .information > p > span {
+            display: inline-block
+        }
+        .information > p > .names{
+            text-align: right;
+            width: 30%;
+        }
+        .information > p > .phonenum{
+            color: #000;
+            padding-left: 10px
+        }
+        .information > p >.emails{
+            margin-left: 20px
+        }
+        .information > p >.colo{
+            color: #000;
+        }
+        .threecapital {
+            padding: 6px 15px;
+        }
+        .threecapital > .toptit{
+            font-size: 18px;
+            color: #000;
+            padding-bottom: 5px
+        }
+        .threecapital>.contact{
+            color: #777777
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <headers></headers>
+        <main>
+            <div class="main">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <p style="padding: 20px;background:#fff;border-bottom: 1px solid #ccc;">首页 >
+                            联系我们</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div class="conters main">
+            <p>各业务部门联系方式</p>
+            <div class="box">
+                <div class="fontcolors">
+                        <div class="information" style="text-align: center;">
+                            <p v-for="(item,index) in inforarr" :key="index">
+                                <span class="names">{{item.title}}：</span> 
+                                <span class="phonenum">{{item.phonenum}}</span> 
+                                <span class="emails colo">{{item.emails}}：</span> 
+                                <span class="addres colo">{{item.addres}}</span>
+                            </p>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="conters main">
+            <p>深圳市三资交易联系方式</p>
+            <div class="box">
+                <div class="threecapital" v-for='(item,index) in attthree' :key='index'>
+                    <p class="toptit">{{item.title}}：</p>
+                    <p class="contact">联系地址：{{item.contactaddress}}</p>
+                    <p class="contact">联系电话：{{item.contactnum}}</p>
+                </div>
+            </div>
+        </div>
+        <footer style="padding-top: 100px">
+            <iframe style="width: 100%;height:200px;display: flex" src="./footer.html" frameborder="0"></iframe>
+        </footer>
+    </div>
+</body>               
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            inforarr: [
+                {
+                    title: '国资交易部',
+                    phonenum: '0755-83002387',
+                    emails:'E-mail',
+                    addres: 'yj@sotcbb.com'
+                },
+                {
+                    title: '国有企业增资服务中心',
+                    phonenum: '0755-83690895',
+                    emails:'E-mail',
+                    addres: 'twg@sotcbb.com'
+                },
+                {
+                    title: '租赁权交易部',
+                    phonenum: '0755-83690784',
+                    emails:'E-mail',
+                    addres: 'zgd@sotcbb.com'
+                },
+                {
+                    title: '涉诉资产及公共资源处置中心',
+                    phonenum: '0755-83690731',
+                    emails:'E-mail',
+                    addres: 'dll@sotcbb.com'
+                },
+                {
+                    title: '登记托管中心',
+                    phonenum: '0755-26569053',
+                    emails:'E-mail',
+                    addres: 'wxl@sotcbb.com'
+                },
+                {
+                    title: '拍卖业务',
+                    phonenum: '0755-26566548',
+                    emails:'E-mail',
+                    addres: 'lzy@sotcbb.com'
+                },
+                {
+                    title: '技术转移中心',
+                    phonenum: '0755-26566445',
+                    emails:'E-mail',
+                    addres: 'gy@sotcbb.com'
+                },
+                {
+                    title: '电子商务公司',
+                    phonenum: '0755-26577553',
+                    emails:'E-mail',
+                    addres: 'houyi@sotcbb.com'
+                },
+                {
+                    title: '投融资部',
+                    phonenum: '0755-86309362',
+                    emails:'E-mail',
+                    addres: 'zf@sotcbb.com'
+                },
+            ],
+            attthree: [
+                {
+                    title:'-总部（7*24小时）',
+                    contactaddress: '深圳南山区沙河西路1809号深圳湾科技生态园一区2栋A座11楼',
+                    contactnum: '刘先生 13510060086、王小姐 18676788630'
+                },{    
+                    title:'-龙岗区办公点 ',
+                    contactaddress: '深圳市龙岗区中心城天昊华庭小区首层龙岗区国有集体产权交易中心',
+                    contactnum: '谢小姐 15112290019'
+                },{
+                    title:'-龙华区办公点 ',
+                    contactaddress: '深圳市龙华区梅龙大道2283号国鸿大厦7栋11层',
+                    contactnum: '湛先生 18565847790'
+                },{
+                    title:'-宝安区办公点 ',
+                    contactaddress: '深圳市宝安区湖滨东路40号',
+                    contactnum: '李小姐 13510612189'
+                },{
+                    title:'-南山区办公点 ',  
+                    contactaddress: '深圳南山区南新路3036号五楼507',
+                    contactnum: '王先生 18576720610'
+                },{
+                    title:'-光明区办公点',
+                    contactaddress: '深圳市光明新区观光路2522号招商局光明科技园A-3栋B单元八楼',
+                    contactnum: '行先生 13510009483'
+                },{
+                    title:'-福田区办公点',
+                    contactaddress: '深圳南山区沙河西路1809号深圳湾科技生态园一区2栋A座11楼',
+                    contactnum: '刘小姐 15820778729'
+                },{
+                    title:'-罗湖区办公点',
+                    contactaddress: '深圳南山区沙河西路1809号深圳湾科技生态园一区2栋A座11楼',
+                    contactnum: '王先生 13824395127'
+                },{
+                    title:'-盐田区办公点',
+                    contactaddress: '深圳南山区沙河西路1809号深圳湾科技生态园一区2栋A座11楼',
+                    contactnum: '杨军 13528768006'
+                },{
+                    title:'-坪山、大鹏、深汕办公点',
+                    contactaddress: '深圳南山区沙河西路1809号深圳湾科技生态园一区2栋A座11楼',
+                    contactnum: '刘先生 13510060086'
+                },
+
+            ]
+        },
+        created() {
+
+        },
+        methods: {
+
+        },
+    })
+   
+</script>

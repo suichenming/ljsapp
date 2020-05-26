@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>扶贫平台</title>
+  <link rel="stylesheet" href="../css/bootstrap.css">
+  <link rel="stylesheet" href="../css/amitate.css">
+  <link rel="stylesheet" href="../css/ele.css">
+  <link rel="stylesheet" href="../css/eleicon.css">
+  <link rel="stylesheet" href="../css/swiper.min.css">
+  <link rel="stylesheet" href="../css/jyjtpurchase.css">
+  <script src="../js/vue.min.js"></script>
+  <script src="../js/jquery.js"></script>
+  <script src="../js/bootstrap.js"></script>
+  <script src="../js/ele.js"></script>
+  <script src="../js/scrollrevealjs.js"></script>
+  <!-- 数字滚动插件 -->
+  <script src="../js/jquery.countup.js"></script>
+  <script src="../js/jquery.waypoints.min.js"></script>
+  <script src="../js/headerpublic.js"></script>
+  <script src="../js/footerpublic.js"></script>
+  <style>
+    .banfudt {
+      background: url(../images/bj.png) no-repeat;
+      background-size: 100% 100%;
+      height: 700px;
+    }
+
+    .banfudt .banfubox {
+      width: 1280px;
+      height: 100%;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .banfudt .banfubox .imgbox {
+      height: 500px;
+      width: 700px;
+      position: absolute;
+      right: 8%;
+      top: 10%;
+    }
+
+    .banfudt .banfubox .imgbox .ditu {
+      height: 100%;
+      width: 100%;
+    }
+
+    .banfudt .banfubox .imgbox .hovers {
+      cursor: pointer;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0px 0px 12px #fff;
+      position: absolute;
+    }
+
+    .banfudt .banfubox .imgbox .hovers:hover {
+      background: none;
+    }
+
+    .banfudt .banfubox .imgbox .hovers:hover .shows {
+      animation: flash infinite;
+      animation-duration: 3s;
+      background: #fff !important;
+    }
+
+    .banfudt .banfubox .imgbox .hovers p {
+      position: absolute;
+      width: 60px;
+      color: #fff;
+    }
+
+    .banfudt .banfubox .imgbox .hovers .nametop {
+      left: -25px;
+      top: -25px;
+      background: #fff;
+      color: #FA5B6C;
+      text-align: center;
+      padding: 2px;
+      border-radius: 4px;
+    }
+
+    .banfudt .banfubox .imgbox .hovers .namebottom {
+      bottom: -25px;
+      left: -25px;
+      background: #fff;
+      color: #FA5B6C;
+      text-align: center;
+      padding: 2px;
+      border-radius: 4px;
+    }
+
+    .banfudt .banfubox .imgbox .hovers .nameright {
+      left: 18px;
+      top: -5px;
+      background: #fff;
+      color: #FA5B6C;
+      text-align: center;
+      padding: 2px;
+      border-radius: 4px;
+    }
+
+    .banfudt .banfubox .imgbox .hovers .nameleft {
+      left: -65px;
+      top: -4px;
+      background: #fff;
+      color: #FA5B6C;
+      text-align: center;
+      padding: 2px;
+      border-radius: 4px;
+    }
+
+    .banfudt .banfubox .imgbox .sz {
+      right: 250px;
+      bottom: 44px;
+    }
+
+    .banfudt .banfubox .imgbox .gdhy {
+      right: 267px;
+      bottom: 30px;
+    }
+
+    .banfudt .banfubox .imgbox .gdsw {
+      right: 224px;
+      bottom: 50px;
+    }
+
+    .banfudt .banfubox .imgbox .gxbs {
+      left: 369px;
+      bottom: 58px;
+    }
+
+    .banfudt .banfubox .imgbox .gxhc {
+      right: 293px;
+      bottom: 72px;
+    }
+
+    .banfudt .banfubox .imgbox .gxhc p {
+      left: -4px !important;
+    }
+
+    .banfudt .banfubox .imgbox .gzbj {
+      right: 319px;
+      bottom: 90px;
+    }
+
+    .banfudt .banfubox .imgbox .xjxw {
+      right: 225px;
+      bottom: 90px;
+    }
+
+    .banfudt .banfubox .imgbox .cxws {
+      right: 308px;
+      bottom: 123px;
+    }
+
+    .banfudt .banfubox .imgbox .scgzsq {
+      right: 402px;
+      bottom: 161px;
+    }
+
+    .banfudt .banfubox .imgbox .scgzsq p {
+      top: -45px !important;
+      width: 100px !important;
+    }
+
+    .banfudt .banfubox .imgbox .xzco {
+      left: 130px;
+      bottom: 140px;
+    }
+
+    .banfudt .banfubox .imgbox .xjkm {
+      top: 160px;
+      left: 150px;
+    }
+
+    .banfudt .banfubox .imgbox .hljheb {
+      right: 46px;
+      top: 108px;
+    }
+
+    .banfudt .banfubox .imgbox .hljheb p {
+      width: 100px !important;
+    }
+
+    .banfudt .banfubox .banleft {
+      position: absolute;
+      top: 15%;
+      left: 10%;
+      color: #fff;
+      width: 400px;
+    }
+
+    .banfudt .banfubox .banleft .bfname {
+      font-size: 30px;
+      font-weight: 600;
+    }
+
+    .banfudt .banfubox .banleft .bfchakan {
+      background: #fff;
+      color: #F87784;
+      width: 106px;
+      line-height: 38px;
+      border-radius: 4px;
+      cursor: pointer;
+      left: 49%;
+      text-align: center;
+      margin: 60px 0 60px 20px;
+      font-size: 20px;
+    }
+
+    .banfudt .banfubox .banleft .shuliangbox {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .banfudt .banfubox .banleft .shuliangbox .shuliang {
+      width: 50%;
+      margin-top: 20px;
+    }
+
+    .banfudt .banfubox .banleft .shuliangbox .shuliang p .jia {
+      margin-top: -20px;
+      font-weight: 600;
+    }
+
+    .banfudt .banfubox .banleft .shuliangbox .shuliang p .nums {
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    .banfudt .banfubox .banleft .shuliangbox .shuliang p .nums:before {
+      content: "+";
+      margin-right: 4px;
+      float: left;
+      padding-top: -12px;
+      margin-top: -10px;
+      font-size: 20px;
+    }
+
+    .el-tooltip__popper.is-light {
+      border: none;
+    }
+
+    .el-tooltip__popper .popper__arrow,
+    .el-tooltip__popper .popper__arrow::after {
+      border-top-color: #fff !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <headers></headers>
+    <div class="banfudt">
+      <div class="banfubox">
+        <div class="banleft">
+          <p class="bfname">
+            帮 扶 地 图
+          </p>
+          <div class="bfchakan">
+
+          </div>
+          <div class="shuliangbox">
+            <div class="shuliang" v-for='(item,index) in shuliangarr' :key="index">
+              <p>
+                <span class="nums">
+                  {{item.nums}}
+                </span> {{item.price}}
+              </p>
+              <p>
+                {{item.title}}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="imgbox">
+          <img src="../images/dt.png" alt="" class="ditu" usemap="#Map">
+
+          <div class="hovers" v-for='(item,index) in dizhi' :class='item.classnamse'>
+            <div class="hovers shows"></div>
+            <el-tooltip class="item" effect="light" content="Top Center 提示文字" placement="top">
+              <div slot="content">
+                <p style="font-weight: 600;color: #FA5B6C;">{{item.name}}</p>
+                <p>
+                  <span style="color: #666666;">累积帮扶人口:</span> {{item.nums}}
+                </p>
+              </div>
+              <p :class="item.position">{{item.name}}</p>
+            </el-tooltip>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footers></footers>
+  </div>
+</body>
+
+</html>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      shuliangarr: [
+        {
+          nums: '330',
+          price: '亿',
+          title: '累计帮扶资金'
+        }, {
+          nums: '3200',
+          price: '人',
+          title: '选派驻点人员'
+        }, {
+          nums: '33',
+          price: '个',
+          title: '对口合作地落地合作项目'
+        }, {
+          nums: '40000',
+          price: '个',
+          title: '累计帮扶项目'
+        },
+      ],
+      dizhi: [
+        {
+          name: '广东深圳',
+          classnamse: 'sz',
+          position: 'nametop',
+          nums: 2123
+        },
+        {
+          name: '广东河源',
+          classnamse: 'gdhy',
+          position: 'namebottom',
+          nums: 2123
+        },
+        {
+          name: '广东汕尾',
+          classnamse: 'gdsw',
+          position: 'nameright',
+          nums: 4431
+        },
+        {
+          name: '广西白色',
+          classnamse: 'gxbs',
+          position: 'nameleft',
+          nums: 1992
+        },
+        {
+          name: '广西河池',
+          classnamse: 'gxhc',
+          position: 'nametop',
+          nums: 2231
+        },
+        {
+          name: '贵州毕节',
+          classnamse: 'gzbj',
+          position: 'nameleft',
+          nums: 2123
+        },
+        {
+          name: '江西寻乌',
+          classnamse: 'xjxw',
+          position: 'nameright',
+          nums: 2123
+        },
+        {
+          name: '重庆巫山',
+          classnamse: 'cxws',
+          position: 'nametop',
+          nums: 2123
+        },
+        {
+          name: '四川甘孜、石 渠、徳格',
+          classnamse: 'scgzsq',
+          position: 'nametop',
+          nums: 2123
+        },
+        {
+          name: '西藏察隅',
+          classnamse: 'xzco',
+          position: 'nametop',
+          nums: 2123
+        },
+        {
+          name: '新疆喀什',
+          classnamse: 'xjkm',
+          position: 'nametop',
+          nums: 2123
+        },
+        {
+          name: '黑龙江哈尔滨',
+          classnamse: 'hljheb',
+          position: 'nametop',
+          nums: 2123
+        },
+      ]
+    },
+    mounted: function () {
+      headersget($(".banfudt"))
+     },
+    methods: {
+
+    }
+  })
+  var slideUpleft1 = {
+    distance: '150%',
+    origin: 'left',
+    opacity: null,
+    reset: true,
+    delay: 100
+  };
+  var slideUpright = {
+    distance: '150%',
+    origin: 'right',
+    opacity: null,
+    reset: true,
+    delay: 500
+  };
+  ScrollReveal().reveal('.banleft', slideUpleft1);
+  ScrollReveal().reveal('.imgbox', slideUpright);
+</script>

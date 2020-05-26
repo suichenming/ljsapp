@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扶贫平台</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/amitate.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/jyjtpurchase.css">
+    <link rel="stylesheet" href="../sass/Characterstyle.css">
+    <link rel="stylesheet" href="../css/pcbanner3.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/swiper.min.js"></script>
+    <script src="../js/scrollrevealjs.js"></script>
+    <script src="../js/headerpublic.js"></script>
+    <script src="../js/footerpublic.js"></script>
+    <style>
+        .back {
+            background: url(../images/bfdt-bj-img.png) no-repeat 0 95%;
+            background-size: 100% 119%;
+            position: relative;
+            padding-bottom: 50px;
+        }
+
+        .pc-banner {
+            background: url(../images/xcwh-img.png ) no-repeat center top/100% auto !important;
+            width: 100%;
+            overflow: hidden;
+            height: 80%;
+        }
+
+        body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .swiper-container {
+            width: 100%;
+            margin: 4% 0;
+            height: 80%;
+        }
+
+        /* .pc-banner > .swiper-container .swiper-wrapper .swiper-slide */
+
+        .swiper-slide {
+            -webkit-transition: transform 1.0s;
+            -moz-transition: transform 1.0s;
+            -ms-transition: transform 1.0s;
+            -o-transition: transform 1.0s;
+            -webkit-transform: scale(0.7);
+            transform: scale(0.7);
+        }
+
+
+        .swiper-slide-active,
+        .swiper-slide-duplicate-active {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+
+
+        .none-effect {
+            -webkit-transition: none;
+            -moz-transition: none;
+            -ms-transition: none;
+            -o-transition: none;
+        }
+
+        .swiper-slide a {
+            background: #fff;
+            padding: 10px;
+            display: block;
+            border-radius: 14px;
+            height: 96%;
+        }
+
+
+        .swiper-slide-active a:after {
+            background: none;
+        }
+
+
+        .swiper-slide img {
+            width: 100%;
+            border-radius: 14px;
+            display: block;
+        }
+
+        .swiper-pagination {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .swiper-pagination-bullet {
+            background: #00a0e9;
+            margin-left: 4px;
+            margin-right: 4px;
+            width: 17px;
+            height: 17px;
+            opacity: 1;
+            margin-bottom: 4px;
+        }
+
+        .swiper-pagination-bullet-active {
+            width: 13px;
+            height: 13px;
+            background: #FFF;
+            border: 6px solid #00a0e9;
+            margin-bottom: 0;
+        }
+
+        .button {
+            width: 1000px;
+            margin: 0 auto;
+            bottom: 43px;
+            position: relative;
+        }
+
+
+        .button div:hover {
+            background-color: #2f4798;
+        }
+
+        .swiper-button-prev {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l4.2%2C4.2L8.4%2C22l17.8%2C17.8L22%2C44L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E") #00a0e9 center 50%/50% 50% no-repeat;
+        }
+
+        .swiper-button-next {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L5%2C44l-4.2-4.2L18.6%2C22L0.8%2C4.2L5%2C0z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E") #00a0e9 center 50%/50% 50% no-repeat;
+        }
+
+        @media screen and (max-width: 668px) {
+            .button {
+                width: 70%;
+                bottom: 22px;
+            }
+        }
+
+        * {
+            box-sizing: inherit
+        }
+
+        .imgsa {
+            width: 100%;
+            height: 100%;
+        }
+
+        .zhaopianname {
+            position: absolute;
+            bottom: 20px;
+            left: 10%;
+            color: #fff;
+            font-size: 30px;
+        }
+        .charbox{
+            background-image: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <headers></headers>
+        <div class="back">
+            <div class="charbox">
+                <ul class="toplist">
+                    <li v-for='(item,index) in listarr' :key='index' :style="{
+                        color: listnums === index ? '#333333' : '',
+                        fontWeight: listnums === index? '600':'',
+                        fontSize: listnums === index ? '30px' : ''
+                    }" @click='listclick(item,index)'>
+                        <p class="to"> {{item.name}}</p>
+                        <p class="bo" v-if='listnums === index'></p>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="pc-banner" v-show='listnums === 2'>
+                <div class="swiper-container pcbn">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" v-for='(item,index) in imgsarr' :key='index'>
+                            <a href="#"><img :src="item.imgs" class="imgsa"></a>
+                            <p class="zhaopianname">
+                                {{item.imgname}}
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- <div class="swiper-pagination"></div>
+            <div class="button">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div> -->
+            </div>
+        </div>
+        <footers></footers>
+    </div>
+</body>
+
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            listarr: [
+                { name: '人物风采' }, { name: '帮扶手记' }, { name: '乡村文化' },
+            ],
+            listnums: 2,
+            imgsarr: [
+                {
+                    imgname: '照片名',
+                    imgs: '../images/1-xcwh-img.png'
+                },
+                {
+                    imgname: '照片名',
+                    imgs: '../images/3-xcwh-img.png'
+                },
+                {
+                    imgname: '照片名',
+                    imgs: '../images/xcwh-img.png'
+                },
+                {
+                    imgname: '照片名',
+                    imgs: '../images/xcwh-img-2.png'
+                },
+
+            ]
+        },
+        mounted: function () {
+            headersget($('.back'))
+        },
+        methods: {
+            listclick: function (val, index) {
+                // this.listnums = index
+                if (index === 1) {
+                    window.location = './bangfushouji.html'
+                } else if (index === 0) {
+                    window.location = './Characterstyle.html'
+                }
+            },
+        }
+    })
+    window.onload = function () {
+        var pcswiper = new Swiper('.pcbn', {
+            // autoplay:3000,
+            speed: 1000,
+            autoplayDisableOnInteraction: false,
+            loop: true,
+            centeredSlides: true,
+            slidesPerView: 2,
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            prevButton: '.swiper-button-prev',
+            nextButton: '.swiper-button-next',
+            onInit: function (swiper) {
+                //swiper.slides[2].className = "swiper-slide swiper-slide-active";//第一次打开不要动画
+            },
+            breakpoints: {
+                668: {
+                    slidesPerView: 1,
+                }
+            }
+        });
+    }
+</script>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扶贫平台</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/amitate.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/jyjtpurchase.css">
+    <link rel="stylesheet" href="../sass/EducationAssistance.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/swiper.min.js"></script>
+    <script src="../js/scrollrevealjs.js"></script>
+    <script src="../js/headerpublic.js"></script>
+    <script src="../js/footerpublic.js"></script>
+    <style>
+        .swiper-container {
+            /* height: 400px; */
+            /* margin-bottom: 150px; */
+        }
+
+        .swiper-slide>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .ebanner {
+            background: url(../images/wbanner.png) no-repeat 100% 54%;
+            background-size: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <headers></headers>
+        <div class="ebanner">
+        <div class="elist">
+            <ul>
+                <li v-for='(item,index) in listarr' :key="index">
+                    {{item.name}}
+                </li>
+            </ul>
+        </div>
+       
+            <img src="../images/fubenleft.png" alt="" class="btn1">
+            <img src="../images/fubenright.png" alt="" class="btn2">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-for="(item,index) in bannerimg" :key="index">
+                        <img :src="item.imgs" alt="">
+                        <div class="boxcentent" :style="
+                            { background: index % 2 == 0 ? 'rgba(255,22,22,0.7)' : 'rgba(249,151,71,0.7)'}
+                        ">
+                            <p class="titles">{{item.title}}</p>
+                            <p class="contents">
+                                {{item.content}}
+                            </p>
+                            <p class="chakanquanwen" @click='chakanquan()'>
+                                查看全文
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <footers></footers>
+    </div>
+</body>
+
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            listarr: [
+                {
+                    name: '教育帮扶'
+                }, {
+                    name: '金融帮扶'
+                }, {
+                    name: '消费扶贫中心'
+                }, {
+                    name: '农村产权交易'
+                }, {
+                    name: '生态碳汇交易'
+                },
+            ],
+            bannerimg: [
+                {
+                    imgs: '../images/5.png',
+                    title: '金融帮扶见真情 精准脱贫...',
+                    content: '最近，东部沿海某县与西部某县结成了“东西协作”教育帮扶关系。；西部组织职能部门负责人以及全县中小学骨干教师分期分批至东部学校听讲座、观摩公开课、参加教学研讨、跟岗培训学习。'
+                },
+                {
+                    imgs: '../images/6.png',
+                    title: '金融帮扶见真情 精准脱贫...',
+                    content: '最近，东部沿海某县与西部某县结成了“东西协作”教育帮扶关系。；西部组织职能部门负责人以及全县中小学骨干教师分期分批至东部学校听讲座、观摩公开课、参加教学研讨、跟岗培训学习。'
+                },
+                {
+                    imgs: '../images/7.png',
+                    title: '金融帮扶见真情 精准脱贫...',
+                    content: '最近，东部沿海某县与西部某县结成了“东西协作”教育帮扶关系。；西部组织职能部门负责人以及全县中小学骨干教师分期分批至东部学校听讲座、观摩公开课、参加教学研讨、跟岗培训学习。'
+                }, {
+                    imgs: '../images/5.png',
+                    title: '金融精准帮扶助力乡村振兴',
+                    content: '最近，东部沿海某县与西部某县结成了“东西协作”教育帮扶关系。；西部组织职能部门负责人以及全县中小学骨干教师分期分批至东部学校听讲座、观摩公开课、参加教学研讨、跟岗培训学习。'
+                },
+
+            ],
+        },
+        mounted: function () {
+            headersget($('.ebanner'))
+        },
+        methods: {
+            chakanquan: function () {
+            }
+        }
+    })
+    var mySwiper = new Swiper('.swiper-container', {
+        // 如果需要分页器
+        slidesPerView: 3,
+        spaceBetween: 20,
+    })
+    $('.btn1').click(function () {
+        mySwiper.slidePrev();
+    })
+    $('.btn2').click(function () {
+        mySwiper.slideNext();
+    })
+</script>

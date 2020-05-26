@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扶贫平台</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/amitate.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/jyjtpurchase.css">
+    <link rel="stylesheet" href="../sass/Characterstyle.css">
+    <link rel="stylesheet" href="../css/pcbanner3.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/swiper.min.js"></script>
+    <script src="../js/scrollrevealjs.js"></script>
+    <script src="../js/headerpublic.js"></script>
+    <script src="../js/footerpublic.js"></script>
+</head>
+<style>
+    .back {
+            background: url(../images/bfdt-bj-img.png) no-repeat 0 95%;
+            background-size: 100% 119%;
+            position: relative;
+            padding-bottom: 50px;
+        }
+        .charbox{
+            background-image: none;
+        }
+    .swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled{
+        opacity: 1;
+    }
+    .bangfubanner > .swiper-wrapper > .swiper-slide > .bangfutitle{
+        width: 100%;
+        left: 0;
+        background: rgba(239,22,22,0.3);
+        bottom: 0;
+        top: auto;
+        padding: 10px;
+        height: 150px;
+    }
+    .bangfubanner > .swiper-wrapper > .swiper-slide > .bangfutitle .ti{
+        margin-bottom: 10px;
+    }
+    .bangfubanner > .swiper-wrapper > .swiper-slide > .bangfutitle .co{
+        display:-webkit-box;
+        -webkit-line-clamp:3;
+        -webkit-box-orient:vertical;
+        overflow:hidden;
+    }
+    .swiper-slide {
+            -webkit-transition: transform 1.0s;
+            -moz-transition: transform 1.0s;
+            -ms-transition: transform 1.0s;
+            -o-transition: transform 1.0s;
+            -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+        }
+
+
+        .swiper-slide-active,
+        .swiper-slide-duplicate-active {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+        .swiper-pagination-bullet-active{
+            background: #E2202E;
+            width: 35px;
+            border-radius: 8px;
+        }
+        .swiper-pagination{
+            width: 100%;
+            margin-top: 10px;
+        }
+        .swiper-pagination-bullet{
+            margin: 0 10px;
+        }
+</style>
+<body>
+    <div id="app" v-cloak>
+        <headers></headers>
+        <div class="back">
+
+       
+        <div class="charbox">
+            <ul class="toplist">
+                <li v-for='(item,index) in listarr' :key='index' :style="{
+                        color: listnums === index ? '#333333' : '',
+                        fontWeight: listnums === index? '600':'',
+                        fontSize: listnums === index ? '30px' : ''
+                    }" @click='listclick(item,index)'>
+                    <p class="to"> {{item.name}}</p>
+                    <p class="bo" v-if='listnums === index'></p>
+                </li>
+            </ul>
+        </div>
+        <div class="bangfubox" v-show='listnums === 1'>
+            <div class="swiper-container bangfubanner">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-for='(item,index) in bangfuarr' :keyi='index'>
+                        <a href="#">
+                            <img :src="item.imgs">
+                        </a>
+                        <div class="bangfutitle">
+                            <p class="ti">{{item.title}}
+                                <span style="font-size: 12px; float: right; line-height: 44px;"> {{item.dizhi}}</span>
+                               
+                            </p>
+                             
+                            <p class="co">{{item.contents}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+        <footers></footers>
+    </div>
+</body>
+
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            listarr: [
+                { name: '人物风采' }, { name: '帮扶手记' }, { name: '乡村文化' },
+            ],
+            listnums: 1,
+
+            bangfuarr: [
+            {
+                    imgs: '../images/bfsj-img1.png',
+                    title: '三年把空心村变成小康村',
+                    contents: '明亮整洁的“农家书屋”文化服务中心、设施丰富的文化广场儿童乐园、热闹温馨的老人活动中心、整洁明亮的“爱心理发室”……这里是深圳市盐田港集团有限公司精准扶贫的村庄——石福村，位于河源市龙川县登云镇。当地村民说，三年前，这里还完全不是现在的样子。',
+                    dizhi: '深圳市盐田港集团有限公司',
+                },{
+                    imgs: '../images/bfsj-img1.png',
+                    title: '帮扶手记标题',
+                    contents: '帮扶手记内容帮扶手记内容，帮扶手记内容帮扶手记内容。帮扶手记内容帮扶手记内容，帮扶手记内容帮扶手记内容。帮扶手记内容帮扶手记内容，帮扶手记内容帮扶手记内容。',
+                    dizhi: '深圳市盐田港集团有限公司',
+                },{
+                    imgs: '../images/bfsj-img1.png',
+                    title: '帮扶手记标题',
+                    contents: '帮扶手记内容帮扶手记内容，帮扶手记内容帮扶手记内容。帮扶手记内容帮扶手记内容，帮扶手记内容帮扶手记内容。帮扶手记内容帮扶手记内容，帮扶手记内容帮扶手记内容。',
+                    dizhi: '深圳市盐田港集团有限公司',
+                },
+            ]
+
+        },
+        mounted: function () {
+            headersget($('.back'))
+        },
+        methods: {
+            listclick: function (val, index) {
+                if (index === 0) {
+                    window.location = './Characterstyle.html'
+                } else if(index === 2){
+                    window.location = './xiangcunwenhua.html'
+                }
+            },
+        }
+    })
+    var swiper = new Swiper('.bangfubanner', {
+       loop: true,
+        loopedSlides: 3,
+        spaceBetween: 20,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        
+    });
+</script>

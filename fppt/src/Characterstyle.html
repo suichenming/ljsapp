@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扶贫平台</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/amitate.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/jyjtpurchase.css">
+    <link rel="stylesheet" href="../sass/Characterstyle.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/swiper.min.js"></script>
+    <script src="../js/scrollrevealjs.js"></script>
+    <script src="../js/headerpublic.js"></script>
+    <script src="../js/footerpublic.js"></script>
+</head>
+<style>
+    .swiper-button-prev.swiper-button-white{
+        background-image:url(../images/lefticon.png);
+        width: 60px;
+        background-size: 44px 44px;
+        cursor: pointer;
+    }
+    .swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled{
+        opacity: 1;
+    }
+    .swiper-button-next.swiper-button-white{
+        background-image:url(../images/righticon.png);
+        width: 60px;
+        background-size: 44px 44px;
+        cursor: pointer;
+    }
+    .renwuname:before{
+        content: "";
+            position: absolute;
+            top: 8px;
+           left: 58px;
+            width: 6px;
+            height: 6px;
+            border-radius: 100%;
+            background-color: red;
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            transition: .2s;
+            -moz-transform: scale(0);
+            -ms-transform: scale(0);
+            -o-transform: scale(0);
+    }
+    .lishow:before {
+            content: "";
+            position: absolute;
+            top: 8px;
+           left: 58px;
+            width: 6px;
+            height: 6px;
+            border-radius: 100%;
+            background-color: red;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            transition: .2s;
+            -moz-transform: scale(1);
+            -ms-transform: scale(1);
+            -o-transform: scale(1);
+        }
+        .swiper-pagination-bullet-active{
+            background: #E2202E;
+            width: 35px;
+            border-radius: 8px;
+        }
+        .swiper-pagination{
+            width: 100%;
+            margin-top: 10px;
+        }
+        .charbox .bannerbox .rightbanner{
+            position: relative;
+        }
+</style>
+<body>
+    <div id="app" v-cloak>
+        <headers></headers>
+        <div class="charbox">
+            <ul class="toplist">
+                <li v-for='(item,index) in listarr' :key='index' :style="{
+                        color: listnums === index ? '#333333' : '',
+                        fontWeight: listnums === index? '600':'',
+                        fontSize: listnums === index ? '30px' : ''
+                    }" @click='listclick(item,index)'>
+                    <p class="to"> {{item.name}}</p>
+                    <p class="bo" v-if='listnums === index'></p>
+                   
+                </li>
+            </ul>
+            <div class="bannerbox" v-show='listnums === 0'>
+                <div class="leftnav">
+                    <img src="../images/shang-icon.png" alt="" class="btn1">
+                    <img src="../images/xia-icon.png" alt="" class="btn2">
+                    <div class="swiper-container left">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" v-for='(item,index) in othderarr' :key='index'>
+                                <p class="renwuname" :class="{lishow:namenums === index}" @click='nameclick(item,index)' :style="{color: namenums === index ? '#DB1316' : ''
+                            }">{{item.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rightbanner">
+                    <div class="swiper-container rights">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" v-for='(item,index) in rightarr' :key='index'>
+                                <img :src="item.imgs" alt="" class="imgwi">
+                                <div class="imgbox">
+                                    <div class="boxcontent">
+                                        <p class="names">
+                                            {{item.name}}
+                                        </p>
+                                        <p class="dizhi">
+                                            {{item.dizhi}}
+                                        </p>
+                                        <p>
+                                            {{item.zhuyaoshiji}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 如果需要导航按钮 -->
+                        <div class="swiper-button-prev swiper-button-white"></div>
+                        <div class="swiper-button-next swiper-button-white"></div>
+                    </div>
+                     <!-- 如果需要分页器 -->
+                     <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+        </div>
+        <footers></footers>
+    </div>
+</body>
+
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            listarr: [
+                { name: '人物风采' }, { name: '帮扶手记' }, { name: '乡村文化' },
+            ],
+            listnums: 0,
+            othderarr: [
+                {
+                    name: '张曼',
+                    arr: [
+                        {
+                            name: '张曼',
+                            dizhi: '驻村工作队队长张曼',
+                            zhuyaoshiji: '张曼，一位80后驻村干部，是深圳联合产权交易所股份有限公司驻麻布岗镇红阳村扶贫工作队队长，大年三十，她挨家挨户走访，给乡亲们拜个早年，第一家就来到她最不放心不下的贫困户温传海家，一进门，张曼就与温传海算起了帐',
+                            imgs: '../images/3bsfj-img.png'
+                        },
+                    ]
+                },
+                {
+                    name: '李琳媛',
+                    arr: [
+                        {
+                            name: '李琳媛',
+                            dizhi: '疫情防控“守门人”',
+                            zhuyaoshiji: '在红阳村健康检测点，该村驻村第一书记兼驻村扶贫工作队队长李琳媛正和村“两委”干部冒着大雨坚守在这里，一丝不苟地对来往人员登记信息、测量体温，这些成了她每天值守时的“规定动作”。',
+                            imgs: '../images/lly.jpg'
+                        }
+                    ]
+                }
+            ],
+            namenums: 0,
+            rightarr: [
+                {
+                    name: '张曼',
+                    dizhi: '驻村工作队队长张曼',
+                    zhuyaoshiji: '张曼，一位80后驻村干部，是深圳联合产权交易所股份有限公司驻麻布岗镇红阳村扶贫工作队队长，大年三十，她挨家挨户走访，给乡亲们拜个早年，第一家就来到她最不放心不下的贫困户温传海家，一进门，张曼就与温传海算起了帐',
+                    imgs: '../images/3bsfj-img.png'
+                },
+            ],
+        },
+        mounted: function () {
+            headersget($('.charbox'))
+        },
+        methods: {
+            listclick: function (val, index) {
+                if (index === 2) {
+                    window.location = './xiangcunwenhua.html'
+                } else if (index === 1) {
+                    window.location = './bangfushouji.html'
+                }
+            },
+            nameclick: function (val, index) {
+                this.namenums = index
+                
+                // this.rightarr.map(function (item) {
+                //     return item.name = val.name
+                // })
+               // this.rightarr = []
+               this.rightarr = val.arr
+                this.$nextTick(function(){
+                    var mySwiper2 = new Swiper('.rights', {
+                    observer: true,//修改swiper自己或子元素时，自动初始化swiper
+                    observeParents: true,//修改swiper的父元素时，自动初始化swiper
+                    // 如果需要分页器
+                    pagination: '.swiper-pagination',
+                    // 如果需要前进后退按钮
+                    nextButton: '.swiper-button-next',
+                    prevButton: '.swiper-button-prev',
+                })
+                })
+                
+            }
+        }
+    })
+    var mySwiper1 = new Swiper('.left', {
+        direction: 'vertical',
+        observer: true,//修改swiper自己或子元素时，自动初始化swiper
+        observeParents: true,//修改swiper的父元素时，自动初始化swiper
+        slidesPerView: 12,
+        spaceBetween: 20,
+        slidesOffsetAfter: 20,
+    })
+    $('.btn1').click(function () {
+        mySwiper1.slidePrev();
+    })
+    $('.btn2').click(function () {
+        mySwiper1.slideNext();
+    })
+    var mySwiper2 = new Swiper('.rights', {
+        //loop: true,
+        observer: true,//修改swiper自己或子元素时，自动初始化swiper
+        observeParents: true,//修改swiper的父元素时，自动初始化swiper
+        // 如果需要分页器
+        pagination: '.swiper-pagination',
+        // 如果需要前进后退按钮
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+    })
+
+</script>

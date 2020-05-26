@@ -1,0 +1,175 @@
+
+html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select {
+    margin: 0;
+    padding: 0;
+}
+*{box-sizing: border-box;}
+html, body {
+    min-height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: "Microsoft YaHei";
+    font-size:14px;
+    color:#333;
+}
+
+ul,ol {
+    list-style: none;
+}
+i,em{
+    font-style: normal
+}
+img {
+    border: none;
+    vertical-align: middle;
+}
+
+a {
+    text-decoration: none;
+    color: #232323;
+}
+
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+input, textarea {
+    outline: none;
+    border: none;
+}
+
+textarea {
+    resize: none;
+    overflow: auto;
+}
+[v-cloak] {
+    display: none;
+}
+header .headertop {
+    height: 20px;
+    background: #FF3B3B;
+    width: 100%;
+    text-align: right;
+    color: #fff;
+    padding-right: 11%;
+    cursor: pointer;
+  }
+  
+  header .navlist {
+    height: 42px;
+    width: 100%;
+    background: #FB1818;
+    color: #fff;
+    display: flex;
+  }
+  
+  header .navlist .title {
+    font-size: 26px;
+    text-align: center;
+    width: 40%;
+  }
+  
+  header .navlist .list {
+    width: 60%;
+  }
+  
+  header .navlist .list ul {
+    display: flex;
+  }
+  
+  header .navlist .list ul li {
+    margin-top: 12px;
+    cursor: pointer;
+  }
+  
+  header .navlist .list ul li:first-child {
+    padding: 0 20px;
+  }
+  
+  header .navlist .list ul li .el-dropdown {
+    padding: 0 20px;
+  }
+
+  .footers {
+    background: #FFE7E7;
+  }
+  
+  .footers .fottop {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  
+  .footers .fottop .foleft {
+    width: 250px;
+  }
+  
+  .footers .fottop .foleft .top {
+    width: 100%;
+    background: #F22C2F;
+    color: #fff;
+    text-align: center;
+    padding: 90px 0;
+    font-size: 20px;
+    border-radius: 4px 4px 0 0;
+  }
+  
+  .footers .fottop .foleft .bottom {
+    text-align: center;
+    background: #F99747;
+    color: #fff;
+    padding: 15px 0;
+    font-size: 20px;
+    border-radius: 0 0 4px 4px;
+  }
+  
+  .footers .fottop .forgith {
+    display: flex;
+    width: 80%;
+    justify-content: space-around;
+  }
+  
+  .footers .fottop .forgith ul li {
+    font-size: 16px;
+    cursor: pointer;
+    padding-bottom: 20px;
+  }
+  
+  .footers .fottop .forgith ul li:nth-child(1) {
+    font-weight: 600;
+    cursor: default;
+    font-size: 18px;
+  }
+  
+  .footers .footerbanner {
+    width: 70%;
+    margin: 0 auto;
+    padding-top: 30px;
+    border-top: 4px solid #F9A8AA;
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 50px;
+  }
+  
+  .footers .footerbanner div {
+    width: 25%;
+    text-align: center;
+    border-left: 1px solid #FCC7C8;
+  }
+  
+  .footers .footerbanner div:first-child {
+    border: none;
+  }
+  .el-dropdown{
+    color: #fff;
+}
+.el-dropdown-menu__item{
+    padding: 0;
+}
+  
+  

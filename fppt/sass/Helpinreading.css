@@ -1,0 +1,33 @@
+.backgbox {
+  display: flex;
+  width: 100%;
+  padding: 5% 0 0 0 ;
+}
+
+.backgbox .eachertsleft {
+  width: 60%;
+}
+
+.backgbox .eachertsleft .title {
+  font-size: 30px;
+  font-weight: 600;
+  padding-left: 89px;
+  padding-bottom: 34px;
+}
+
+.backgbox .eachertsleft #main {
+  margin: 0 auto;
+}
+
+.backgbox .eachertsleft .bottton {
+  font-size: 20px;
+  text-align: center;
+}
+
+.backgbox .right {
+  width: 40%;
+}
+
+.backgbox .right img {
+  margin-top: 50px;
+}

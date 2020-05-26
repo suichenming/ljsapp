@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扶贫平台</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/amitate.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/jyjtpurchase.css">
+    <link rel="stylesheet" href="../sass/Helpmemorabilia.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/swiper.min.js"></script>
+    <script src="../js/scrollrevealjs.js"></script>
+    <script src="../js/headerpublic.js"></script>
+    <script src="../js/footerpublic.js"></script>
+    <style>
+        .swiper-container {
+            height:100%;
+        }
+        .swiper-pagination{
+            width: 100%;
+            left: 0;
+            margin-top: 36px;
+        }
+        .swiper-pagination-bullet{
+            margin: 0 8px;
+
+        }
+        .swiper-pagination-bullet-active{
+            background: #E2202E;
+            width: 38px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <headers></headers>
+        <div class="backgbox">
+            <div class="hea">
+                <p>帮扶大事记</p>
+                <i></i>
+            </div>
+            <div class="topbottom">
+                <ul>
+                    <li v-for='(item,index) in nain' :key='index' @click='listclick(item,index)'
+                    :class="{lishow:listnum === index}"
+                    >
+                        {{item.year}}
+                    </li>
+                </ul>
+            </div>
+            <div class="swiperbox">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" v-for='(item,index) in slidearr' :key='index'>
+                            <div class="slidebox">
+                                <div class="toptime">
+                                    <p class="times">
+                                        {{item.timess}}
+                                    </p>
+                                    <p class="chakan">
+                                        查看全文
+                                    </p>
+                                </div>
+                                <div class="yuefen">
+                                    <span>
+                                       {{item.yue}}
+                                    </span>
+                                </div>
+                                <p class="dian"></p>
+                                <div class="content">
+                                    {{item.content}}
+                                </div>
+                                <div style="text-align: center;">
+                                    <img :src="item.imgs" alt="">
+                                </div>
+                               
+                            </div>
+                           
+                        </div>
+                       
+                    </div>
+                   
+                    
+                   
+                </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
+                <div class="leftandright">
+                    <img src="../images/lefticon.png" alt="" class="btn1">
+                    <img src="../images/righticon.png" alt="" class="btn2">
+                </div>
+            </div>
+        </div>
+
+        <footers></footers>
+    </div>
+</body>
+
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            slidearr: [
+                {
+                    timess: '2019',
+                    yue: ' 八月',
+                    content: '坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会',
+                    imgs: '../images/1-bfdsj-img.png'
+                },{
+                    timess: '2019',
+                    yue: ' 九月',
+                    content: '8月，《关于打赢脱贫攻坚战三年 行动的指导意见》公布；',
+                    imgs: '../images/2-bfdsj-img.png'
+                },{
+                    timess: '2019',
+                    yue: ' 十月',
+                    content: '坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会',
+                    imgs: '../images/3-bfdsj-img.png'
+                },{
+                    timess: '2019',
+                    yue: ' 十一月',
+                    content: '坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会',
+                    imgs: '../images/3-bfdsj-img.png'
+                },{
+                    timess: '2019',
+                    yue: ' 十一月',
+                    content: '坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会',
+                    imgs: '../images/3-bfdsj-img.png'
+                },
+
+            ],
+            nain: [
+                {
+                    year: '2016',
+                },{
+                    year: '2017',
+                },{
+                    year: '2018',
+                },{
+                    year: '2019',
+                },{
+                    year: '2020',
+                },
+            ],
+            listnum: 0
+        },
+        mounted: function () {
+            headersget($('.backgbox'))
+        },
+        methods: {
+            listclick:function(val,index){
+                this.listnum = index
+                this.slidearr.map(function(item){
+                    return item.timess = val.year
+                })
+            }
+        }
+    })
+
+    var mySwiper = new Swiper('.swiper-container', {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        // 如果需要分页器
+        pagination: '.swiper-pagination',
+    })      
+    $('.btn1').click(function () {
+        mySwiper.slidePrev();
+    })
+    $('.btn2').click(function () {
+        mySwiper.slideNext();
+    })
+</script>

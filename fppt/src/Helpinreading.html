@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扶贫平台</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/amitate.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/jyjtpurchase.css">
+    <link rel="stylesheet" href="../sass/Helpinreading.css">
+    <link rel="stylesheet" href="../css/eharts/style.min.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/swiper.min.js"></script>
+    <script src="../js/scrollrevealjs.js"></script>
+    <script src="../js/ehrats/echarts.min.js"></script>
+    <script src="../js/ehrats/index.min.js"></script>
+    <script src="../js/headerpublic.js"></script>
+    <script src="../js/footerpublic.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <headers></headers>
+        <div class="backgbox">
+            <div class="eachertsleft">
+                <p class="title">
+                    数读帮扶
+                </p>
+                <div id="main" style="width: 600px;height:400px;">
+                </div>
+                <p class="bottton">
+                    历年帮扶资金
+                </p>
+            </div>
+            <div class="right">
+                <img src="../images/eachartsimg.jpg" alt="">
+            </div>
+        </div>
+        <footers></footers>
+    </div>
+</body>
+
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+        },
+        mounted: function () {
+            headersget($(".backgbox"))
+        },
+        methdos: {
+
+        }
+    })
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图表的配置项和数据
+    option = {
+        tooltip: {
+            trigger: 'axis',
+        },
+        toolbox: {
+            feature: {
+                dataView: { show: true, readOnly: false },
+                magicType: { show: true, type: ['line', 'bar'] },
+                restore: { show: true },
+                saveAsImage: { show: true }
+            }
+        },
+        legend: {
+            data: ['教育帮扶', '金融帮扶', '平均']
+        },
+        xAxis: [
+            {
+                type: 'category',
+                data: ['2019Q1', '2019Q2', '2019Q3', '2019Q4', '2019Q5'],
+                axisPointer: {
+                    type: 'shadow'
+                }
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value',
+
+                min: 0,
+                max: 100,
+                interval: 20,
+                axisLabel: {
+                    formatter: '{value} %'
+                }
+            },
+          
+        ],
+        series: [
+            {
+                name: '教育帮扶',
+                type: 'bar',
+                data: [80, 40, 60, 70, 50],
+                itemStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: '#FF9B24'
+                        }, {
+                            offset: 1,
+                            color: '#FFD46C'
+                        }]),
+                        barBorderRadius: [50,50, 0,0]
+                    }
+                },
+            },
+            {
+                name: '金融帮扶',
+                type: 'bar',
+                data: [10, 30, 40, 50, 60],
+                itemStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: '#71D617'
+                        }, {
+                            offset: 1,
+                            color: '#77D622'
+                        }]),
+                        barBorderRadius: [50,50, 0,0]
+                    }
+                },
+            },
+            {
+                name: '平均',
+                type: 'line',
+                yAxisIndex: 0,
+                smooth: true,
+                data: [90, 70, 100, 90, 50, 90, 50, 10],
+                lineStyle:
+                    {
+                        color:'#2A70FB',
+                    }
+                
+            }
+        ]
+    };
+
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扶贫平台</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/amitate.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/jyjtpurchase.css">
+    <link rel="stylesheet" href="../sass/index.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/swiper.min.js"></script>
+    <script src="../js/scrollrevealjs.js"></script>
+    <!-- 数字滚动插件 -->
+    <script src="../js/jquery.countup.js"></script>
+    <script src="../js/jquery.waypoints.min.js"></script>
+    <script src="../js/headerpublic.js"></script>
+    <script src="../js/footerpublic.js"></script>
+    <style>
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .yi>.swiper-pagination>.swiper-pagination-bullet-active {
+            background: #ccc;
+        }
+
+        .yi>.swiper-pagination>.swiper-pagination-bullet {
+            width: 15px;
+            height: 15px;
+        }
+
+        .yi>.swiper-button-prev.swiper-button-white,
+        .yi>.swiper-container-rtl .swiper-button-next.swiper-button-white,
+        .yi>.swiper-button-next.swiper-button-white,
+        .yi>.swiper-container-rtl .swiper-button-prev.swiper-button-white {
+            background-size: 45px;
+        }
+
+        .yi>.swiper-button-next,
+        .yi>.swiper-button-prev {
+            width: 97px;
+            height: 76px;
+        }
+
+        .er>.swiper-pagination-bullets {
+            left: 35%;
+            bottom: 21%;
+        }
+
+        .er>.swiper-pagination {
+            text-align: left;
+        }
+
+        .er>.swiper-pagination-bullets>.swiper-pagination-bullet-active {
+            background: #E2202E !important;
+            width: 32px;
+            border-radius: 4px;
+        }
+
+        .er>.swiper-button-next,
+        .er>.swiper-button-prev {
+            top: auto;
+            bottom: 20%;
+            background-size: 30px 30px;
+            height: 30px;
+            width: 30px;
+        }
+
+        .er>.swiper-button-prev {
+            left: 47%;
+        }
+
+        .er>.swiper-button-next {
+            right: 47%;
+        }
+
+        .er>.swiper-button-prev {
+            background-image: url(../images/left.png)
+        }
+
+        .er>.swiper-button-next {
+            background-image: url(../images/right.png)
+        }
+
+        .slide-fade-enter-active {
+            transition: all .3s ease;
+        }
+
+        .slide-fade-leave-active {
+            transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+        }
+
+        .slide-fade-enter,
+        .slide-fade-leave-to {
+            transform: translateX(20px);
+            opacity: 0;
+        }
+
+        .swiper-pagination-bullet {
+            margin: 0 7px;
+        }
+        .el-dropdown{
+            color: #fff;
+        }
+        .el-dropdown-menu__item{
+            padding: 0;
+        }
+        .el-tooltip__popper.is-light{
+            border: none;
+        }
+        .el-tooltip__popper .popper__arrow, .el-tooltip__popper .popper__arrow::after{
+            border-top-color: #fff !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <!-- <div class='particle-network-animation'></div> -->
+        <!-- <div id="main" style="width: 600px;height:400px;"></div> -->
+        <headers></headers>
+        <div class="banner">
+            <div class="swiper-container yi">
+                <div class="swiper-wrapper ">
+                    <div class="swiper-slide" v-for="(item,index) in bannerimgs" :key='index'>
+                        <img :src="item.imgs" alt="">
+                    </div>
+                </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
+                <!-- 如果需要导航按钮 -->
+                <div class="swiper-button-prev swiper-button-white"></div>
+                <div class="swiper-button-next swiper-button-white"></div>
+
+            </div>
+
+            <div class="bannerlistimg" id="goto">
+                <a href="#goto">
+                <div v-for='(item,index) in bannerlistimg' :key="index"
+                    :style='{borderBottom:index === bannernum ? "8px solid #fff" : ""}' @mouseenter="enter(item,index)">
+                    <img :src="item.imgs" alt="">
+                    <p>
+                        {{item.name}}
+                    </p>
+                </div>
+            </a>
+            </div>
+        </div>
+        <div class="silist" >
+                <div class="swiper-container er animated fadeInLeft" v-show='bannernum === 0'>
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide erbox" v-for='(item,index) in erbanner' :key="index">
+                            <div class="swimg">
+                                <img :src="item.imgs" alt="">
+                            </div>
+                            <div class="righttitle">
+                                <p class="title">
+                                    {{item.title}}
+                                </p>
+                                <p class="contents">
+                                    {{item.contents}}
+                                </p>
+                                <p class="time">
+                                    {{item.time}}
+                                </p>
+                                <p class="content">
+                                    {{item.content}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 如果需要分页器 -->
+                    <div class="swiper-pagination"></div>
+                    <!-- 如果需要导航按钮 -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="chakan">查看更多</div>
+                </div>
+                <div class="swiper-container er animated fadeInLeft" v-show='bannernum === 1 '>
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide erbox" v-for='(item,index) in sanarrlist' :key="index">
+                            <div class="swimg">
+                                <img :src="item.imgs" alt="">
+                            </div>
+                            <div class="righttitle">
+                                <p class="title">
+                                    {{item.title}}
+                                </p>
+                                <p class="contents">
+                                    {{item.contents}}
+                                </p>
+                                <p class="time">
+                                    {{item.time}}
+                                </p>
+                                <p class="content">
+                                    {{item.content}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 如果需要分页器 -->
+                    <div class="swiper-pagination"></div>
+                    <!-- 如果需要导航按钮 -->
+                    <div class="swiper-button-prev swiper-button-black"></div>
+                    <div class="swiper-button-next swiper-button-black"></div>
+                    <div class="chakan">查看更多</div>
+                </div>
+                <div class="swiper-container er animated fadeInLeft" v-show='bannernum === 2 '>
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide erbox" v-for='(item,index) in siarrlist' :key="index">
+                            <div class="swimg">
+                                <img :src="item.imgs" alt="">
+                            </div>
+                            <div class="righttitle">
+                                <p class="title">
+                                    {{item.title}}
+                                </p>
+                                <p class="contents">
+                                    {{item.contents}}
+                                </p>
+                                <p class="time">
+                                    {{item.time}}
+                                </p>
+                                <p class="content">
+                                    {{item.content}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 如果需要分页器 -->
+                    <div class="swiper-pagination"></div>
+                    <!-- 如果需要导航按钮 -->
+                    <div class="swiper-button-prev swiper-button-black"></div>
+                    <div class="swiper-button-next swiper-button-black"></div>
+                    <div class="chakan">查看更多</div>
+                </div>
+                <div class="swiper-container er animated fadeInLeft" v-show='bannernum === 3'>
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide erbox" v-for='(item,index) in wuarrlist' :key="index">
+                            <div class="swimg">
+                                <img :src="item.imgs" alt="">
+                            </div>
+                            <div class="righttitle">
+                                <p class="title">
+                                    {{item.title}}
+                                </p>
+                                <p class="contents">
+                                    {{item.contents}}
+                                </p>
+                                <p class="time">
+                                    {{item.time}}
+                                </p>
+                                <p class="content">
+                                    {{item.content}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 如果需要分页器 -->
+                    <div class="swiper-pagination"></div>
+                    <!-- 如果需要导航按钮 -->
+                    <div class="swiper-button-prev swiper-button-black"></div>
+                    <div class="swiper-button-next swiper-button-black"></div>
+                    <div class="chakan">查看更多</div>
+                </div>
+            <!-- <transition name="slide-fade">
+                <div class="renwu" v-show='bannernum === 2 || bannernum === 3'>
+                    <p class="rwbf">
+                        {{rwarrname}}
+                    </p>
+                    <ul>
+                        <li v-for='(item,index) in rwarr' :key="index">
+                            <span>
+                                {{item.title}}
+                            </span>
+                            <span>
+                                {{item.time}}
+                            </span>
+                        </li>
+                    </ul>
+                    <div class="rwchakan">查看更多</div>
+                </div>
+            </transition> -->
+        </div>
+
+        <div class="banfudt">
+            <div class="banfubox">
+                <div class="banleft">
+                    <p class="bfname">
+                        帮 扶 地 图
+                    </p>
+                    <div class="bfchakan">
+                        查看更多
+                    </div>
+                    <div class="shuliangbox">
+                        <div class="shuliang" v-for='(item,index) in shuliangarr' :key="index">
+                            <p>
+                                <span class="nums">
+                                    {{item.nums}}
+                                </span> {{item.price}}
+                            </p>
+                            <p>
+                                {{item.title}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="imgbox">
+                    <img src="../images/dt.png" alt="" class="ditu" usemap="#Map">
+                    
+                    <div class="hovers" v-for='(item,index) in dizhi' :class='item.classnamse'>
+                        <div  class="hovers shows"></div>
+                        <el-tooltip class="item" effect="light" content="Top Center 提示文字" placement="top">
+                            <div slot="content">
+                               <p style="font-weight: 600;">{{item.name}}</p>
+                                <p>
+                                    累积帮扶人口: {{item.nums}}
+                                </p>
+                            </div>
+                            <p :class="item.position">{{item.name}}</p>
+                        </el-tooltip>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='tesebox'>
+            <div class="main">
+                <div class="teseleft">
+                    <p class="title">特色平台</p>
+                    <ul>
+                        <li v-for='(item,index) in tesearr' :key="index" :class="'qwer' + index">
+                            <img :src="item.imgs" alt="">
+                            <span>{{item.title}}</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="teseright">
+                    <p class="title">地域展示</p>
+                    <div class="titlebox">
+                        <div v-for='(item,index) in diyuarr' :key="index" class="titleboxlist" :class="'diyu' + index">
+                            <img :src="item.imgs" alt="">
+                            <div class="sheng">
+                                <p class="topname">
+                                    {{item.topname}}
+                                </p>
+                                <p class="bottomname">
+                                    {{item.bottomname}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+       
+        <footers></footers>
+    </div>
+</body>
+
+</html>
+<script>
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+           
+            bannerlistimg: [
+                { name: '最新资讯', imgs: '../images/zxzx.png' },
+                { name: '重点项目', imgs: '../images/zdxm.png' },
+                { name: '人物风采', imgs: '../images/rwfc.png' },
+                { name: '帮扶政策', imgs: '../images/bfzc.png' }
+            ],
+            bannerimgs:[
+                {imgs: '../images/1.png'},{imgs: '../images/20.png'},{imgs: '../images/30.png'},{imgs: '../images/4.jpg'},
+            ],
+            bannernum: 0,
+            erbanner: [
+                {
+                    imgs: '../images/fpimg.jpg',
+                    title: '扶贫动态',
+                    contents: '广东省决战决胜脱贫攻坚推进会在广州召开，李希马 兴瑞王伟中出席会议',
+                    time: '2020-03-29',
+                    content: '3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，'
+                },
+                {
+                    imgs: '../images/fpimg.jpg',
+                    title: '超级赛亚人',
+                    contents: '广东省决战决胜脱贫攻坚推进会在广州召开，李希马 兴瑞王伟中出席会议',
+                    time: '2020-03-29',
+                    content: '3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，'
+                },
+            ],
+            sanarrlist: [
+                {
+                    imgs: '../images/zdxmimg.png',
+                    title: '重点项目',
+                    contents: '广东省决战决胜脱贫攻坚推进会在广州召开，李希马 兴瑞王伟中出席会议',
+                    time: '2020-03-29',
+                    content: '3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，'
+                }, {
+                    imgs: '../images/zdxmimg.png',
+                    title: '重点项目1',
+                    contents: '广东省决战决胜脱贫攻坚推进会在广州召开，李希马 兴瑞王伟中出席会议',
+                    time: '2020-03-29',
+                    content: '3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，'
+                },
+            ],
+            wuarrlist:[
+                {
+                    imgs: '../images/zdxmimg.png',
+                    title: '帮扶政策',
+                    contents: '广东省决战决胜脱贫攻坚推进会在广州召开，李希马 兴瑞王伟中出席会议',
+                    time: '2020-03-29',
+                    content: '3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，'
+                },
+                {
+                    imgs: '../images/zdxmimg.png',
+                    title: '帮扶政策1',
+                    contents: '广东省决战决胜脱贫攻坚推进会在广州召开，李希马 兴瑞王伟中出席会议',
+                    time: '2020-03-29',
+                    content: '3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，'
+                },
+            ],
+            siarrlist: [
+                {
+                    imgs: '../images/zdxmimg.png',
+                    title: '人物风采',
+                    contents: '广东省决战决胜脱贫攻坚推进会在广州召开，李希马 兴瑞王伟中出席会议',
+                    time: '2020-03-29',
+                    content: '3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，'
+                }, {
+                    imgs: '../images/zdxmimg.png',
+                    title: '人物风采1',
+                    contents: '广东省决战决胜脱贫攻坚推进会在广州召开，李希马 兴瑞王伟中出席会议',
+                    time: '2020-03-29',
+                    content: '3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，  3月13日，广东省决战决胜脱贫攻坚推进会在广州召开。会议深 入学习贯彻习近平总书记在决战决胜脱贫攻坚座谈会上的重要讲 话精神，'
+                },
+            ],
+            rwarr: [
+                {
+
+                    title: '国务院扶贫开发领导小组关于建立防止返贫监测和帮扶机制的指导意见',
+                    time: '2020-04-01'
+                }, {
+                    title: '国务院扶贫开发领导小组关于建立防止返贫监测和帮扶机制的指导意见',
+                    time: '2020-04-01'
+                }, {
+                    title: '国务院扶贫开发领导小组关于建立防止返贫监测和帮扶机制的指导意见',
+                    time: '2020-04-01'
+                }, {
+                    title: '国务院扶贫开发领导小组关于建立防止返贫监测和帮扶机制的指导意见',
+                    time: '2020-04-01'
+                }, {
+                    title: '国务院扶贫开发领导小组关于建立防止返贫监测和帮扶机制的指导意见',
+                    time: '2020-04-01'
+                }, {
+                    title: '国务院扶贫开发领导小组关于建立防止返贫监测和帮扶机制的指导意见',
+                    time: '2020-04-01'
+                },
+            ],
+            rwarrname: '人物风采',
+            shuliangarr: [
+                {
+                    nums: '330',
+                    price: '亿',
+                    title: '累计帮扶资金'
+                }, {
+                    nums: '3200',
+                    price: '人',
+                    title: '选派驻点人员'
+                }, {
+                    nums: '33',
+                    price: '个',
+                    title: '对口合作地落地合作项目'
+                }, {
+                    nums: '40000',
+                    price: '个',
+                    title: '累计帮扶项目'
+                },
+            ],
+            tesearr: [
+                {
+                    imgs: '../images/xffpzx.png',
+                    title: '消费扶贫中心'
+                },
+                {
+                    imgs: '../images/nccqjy.png',
+                    title: '农村产权交易'
+                },
+                {
+                    imgs: '../images/stthjy.png',
+                    title: '生态碳汇交易'
+                },
+                {
+                    imgs: '../images/jybf.png',
+                    title: '教育帮扶'
+                }, {
+                    imgs: '../images/jrbf.png',
+                    title: '金融帮扶'
+                },
+            ],
+            diyuarr: [
+                {
+                    imgs: '../images/heyuangd.png',
+                    topname: '河源',
+                    bottomname: '广东'
+                }, {
+                    imgs: '../images/baisegx.png',
+                    topname: '百色',
+                    bottomname: '广西'
+                }, {
+                    imgs: '../images/kamexj.png',
+                    topname: '喀什',
+                    bottomname: '新疆'
+                },
+            ],
+            dizhi: [
+                {
+                    name: '广东深圳',
+                    classnamse: 'sz',
+                    position: 'nametop',
+                    nums:2123
+                },
+                {
+                    name: '广东河源',
+                    classnamse: 'gdhy',
+                    position: 'namebottom',
+                    nums:2123
+                },
+                {
+                    name: '广东汕尾',
+                    classnamse: 'gdsw',
+                    position: 'nameright',
+                    nums:4431
+                },
+                {
+                    name: '广西白色',
+                    classnamse: 'gxbs',
+                    position: 'nameleft',
+                    nums:1992
+                },
+                {
+                    name: '广西河池',
+                    classnamse: 'gxhc',
+                    position: 'nametop',
+                    nums:2231
+                },
+                {
+                    name: '贵州毕节',
+                    classnamse: 'gzbj',
+                    position: 'nameleft',
+                    nums:2123
+                },
+                {
+                    name: '江西寻乌',
+                    classnamse: 'xjxw',
+                    position: 'nameright',
+                    nums:2123
+                },
+                {
+                    name: '重庆巫山',
+                    classnamse: 'cxws',
+                    position: 'nametop',
+                    nums:2123
+                },
+                {
+                    name: '四川甘孜、石 渠、徳格',
+                    classnamse: 'scgzsq',
+                    position: 'nametop',
+                    nums:2123
+                },
+                {
+                    name: '西藏察隅',
+                    classnamse: 'xzco',
+                    position: 'nametop',
+                    nums:2123
+                },
+                {
+                    name: '新疆喀什',
+                    classnamse: 'xjkm',
+                    position: 'nametop',
+                    nums:2123
+                },
+                {
+                    name: '黑龙江哈尔滨',
+                    classnamse: 'hljheb',
+                    position: 'nametop',
+                    nums:2123
+                },
+            ]
+        },
+        mounted() {
+            var h = window.screen.availHeight -100
+            $('.banner').css({
+                'height': h   
+            })
+            $('.yi').css({
+                'height': h - 150 - 62
+            })
+        },
+        methods: {
+            enter: function (item, index) {
+                this.rwarrname = item.name
+                this.bannernum = index
+            }
+        },
+    })
+    var mySwiper1 = new Swiper('.yi', {
+        loop: true,
+        // 如果需要分页器
+        pagination: '.swiper-pagination',
+        // 如果需要前进后退按钮
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+    })
+    var mySwiper2 = new Swiper('.er', {
+        loop: true,
+        // 如果需要分页器
+        pagination: '.swiper-pagination',
+        observer: true,//修改swiper自己或子元素时，自动初始化swiper
+        observeParents: true,//修改swiper的父元素时，自动初始化swiper
+        // 如果需要前进后退按钮
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+    })
+    var slideUpleft1 = {
+        distance: '150%',
+        origin: 'left',
+        opacity: null,
+        reset: true,
+        delay: 100
+    };
+    var slideUpleft2 = {
+        distance: '150%',
+        origin: 'left',
+        opacity: null,
+        reset: true,
+        delay: 200
+    };
+    var slideUpleft3 = {
+        distance: '150%',
+        origin: 'left',
+        opacity: null,
+        reset: true,
+        delay: 300
+    };
+    var slideUpleft4 = {
+        distance: '150%',
+        origin: 'left',
+        opacity: null,
+        reset: true,
+        delay: 400
+    };
+    var slideUpleft5 = {
+        distance: '150%',
+        origin: 'left',
+        opacity: null,
+        reset: true,
+        delay: 500
+    };
+    var slideUptop1 = {
+        distance: '150%',
+        origin: 'top',
+        opacity: 0,
+        reset: true,
+        delay: 100
+    };
+    var slideUpright2 = {
+        distance: '150%',
+        origin: 'right',
+        opacity: null,
+        reset: true,
+        delay: 200
+    };
+    var slideUpbottom1 = {
+        distance: '150%',
+        origin: 'bottom',
+        opacity: null,
+        reset: true,
+        delay: 100
+    };
+    var slideUpright = {
+        distance: '150%',
+        origin: 'right',
+        opacity: null,
+        reset: true,
+        delay: 500
+    };
+
+    ScrollReveal().reveal('.banleft', slideUpleft1);
+    ScrollReveal().reveal('.silist', slideUpleft3);
+    ScrollReveal().reveal('.imgbox', slideUpright);
+
+    ScrollReveal().reveal('.qwer0', slideUpleft1);
+    ScrollReveal().reveal('.qwer1', slideUpleft2);
+    ScrollReveal().reveal('.qwer2', slideUpleft3);
+    ScrollReveal().reveal('.qwer3', slideUpleft4);
+    ScrollReveal().reveal('.qwer4', slideUpleft5);
+
+    ScrollReveal().reveal('.diyu0', slideUptop1);
+    ScrollReveal().reveal('.diyu1', slideUpright2);
+    ScrollReveal().reveal('.diyu2', slideUpbottom1);
+</script>
+<!-- <script src="../js/script.js"></script> -->

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>联系我们</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/purchase.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headers.js"></script>
+    <style>
+        .box{
+            width: 100%;
+            height: 750px;
+            background:url(../images/lianxi.png) no-repeat center;
+            background-size: 95% 95%;
+        }
+        .conter{
+            width: 90%;
+            margin: 0 auto;
+            padding-top:38px;
+        }
+        .conter > p{
+            text-align: center;
+            color:#3E4E80;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-family:lianmengqiyilushuaizhengruiheiti;
+        }
+        .title{
+            width: 100%;
+            background: #FBFDFF;
+            padding: 10px ;
+            font-size: 14px;
+            
+        }
+        .title > p {
+            line-height: 28px;
+        }
+        .col{
+            color: #666666;
+        }
+        .numcol {
+            color: #333333;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <headers>
+            联系我们
+        </headers>
+        <div class="box">
+            <div class="conter">
+                <p>各业务部门联系电话</p>
+                <div class="title">
+                    <p v-for='(item,index) in arr' :key="index">
+                        <span class="col">{{item.titile}}</span>
+                        <span class="numcol">{{item.num}}</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="conter" style="padding-top: 10px;">
+                <p>各业务部门联系电话</p>
+                <div class="title">
+                    <p v-for='(item,index) in arr1' :key="index">
+                        <span class="col">{{item.titile}}</span>
+                        <span>{{item.num}}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+           arr:[
+              {
+                titile: '租赁权交易部：',
+                num: '0755-83690784'
+              },
+              {
+                titile: '登记托管中心：',
+                num: '0755-26569053'
+              },
+              {
+                titile: '投融资部：',
+                num: '0755-86309362'
+              },
+              {
+                titile: '国资交易部：',
+                num: '0755-83690784'
+              },
+              {
+                titile: '电子商务公司：',
+                num: '0755-26577553'
+              },
+              {
+                titile: '技术转移中心：',
+                num: '0755-26566445'
+              },
+              {
+                titile: '拍卖业务：',
+                num: '0755-26566548'
+              },
+              {
+                titile: '国有企业增资服务中心：',
+                num: '0755-83690895'
+              },
+              {
+                titile: '涉诉资产及公共资源处置中心 ：',
+                num: '0755-83690731'
+              },
+           ],
+           arr1: [
+               {
+                    titile: '总 部：',
+                    num: '刘先生 13510060086、王小姐 18676788630'
+               },
+               {
+                    titile: '南山区：',
+                    num: '王先生 18576720610'
+               },
+               {
+                    titile: '龙华区：',
+                    num: '湛先生 18565847790'
+               },
+               {
+                    titile: '宝安区：',
+                    num: '李小姐 13510612189'
+               },
+               {
+                    titile: '龙岗区：',
+                    num: '谢小姐 15112290019'
+               },
+               {
+                    titile: '福田区：',
+                    num: '刘小姐 15820778729'
+               },
+               {
+                    titile: '光明区：',
+                    num: '行先生 13510009483'
+               },
+               {
+                    titile: '罗湖区：',
+                    num: '王先生 13824395127'
+               },
+               {
+                    titile: '盐田区：',
+                    num: '杨军 13528768006'
+               },
+               {
+                    titile: '坪山、大鹏、深汕区：',
+                    num: '刘先生 13510060086'
+               },
+
+           ]
+        }
+    })
+</script>

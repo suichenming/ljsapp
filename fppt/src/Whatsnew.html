@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扶贫平台</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/amitate.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/jyjtpurchase.css">
+    <link rel="stylesheet" href="../sass/Whatsnew.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/swiper.min.js"></script>
+    <script src="../js/scrollrevealjs.js"></script>
+    <script src="../js/headerpublic.js"></script>
+    <script src="../js/footerpublic.js"></script>
+</head>
+<style>
+    .swiper-button-prev,
+    .swiper-container-rtl .swiper-button-next {
+        background-image: url(../images/left.png)
+    }
+
+    .swiper-button-next,
+    .swiper-container-rtl .swiper-button-prev {
+        background-image: url(../images/right.png)
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        background-size: 40px 44px;
+        width: 57px;
+        top: 90%;
+    }
+
+    .swiper-button-prev {
+        left: 30%;
+    }
+
+    .swiper-button-next {
+        right: 60%;
+    }
+
+    .swiper-pagination {
+        text-align: right;
+        padding-right: 13%;
+    }
+
+    .swiper-container-horizontal>.swiper-pagination-bullets {
+        bottom: 10%
+    }
+
+    .swiper-pagination-bullet-active {
+        background: #E2202E;
+        width: 30px;
+        border-radius: 40px;
+    }
+</style>
+
+<body>
+    <div id="app" v-cloak>
+        <headers></headers>
+
+        <div class="newwhatbox">
+            <div class="swiper-container">
+                <div class="swiper-wrapper ">
+                    <div class="swiper-slide" v-for='(item,index) in allarr' :key='index'>
+                        <div class="whtabox">
+                            <div class="boxleft">
+                                <ul class="uls">
+                                    <li v-for='(item1,index) in item.navlist' :key='index' :style="{fontSize: index === nums ? '30px' : '',
+                                            color: index === nums ? '#333333': '',
+                                            fontWeight: index === nums ? '600': ''
+                                    }" @click='navclick(item1,index)'>
+                                        <p>{{item1.name}}</p>
+                                        <i :style="{background: nums === index ? '#EF1616' : ''}"></i>
+                                    </li>
+                                </ul>
+                                <ul class="list">
+                                    <li v-for='(item2,index) in item.list' :key="index">
+                                        <p class="last">
+                                            {{item2.name}}
+                                        </p>
+                                        <p class="flase">
+                                            {{item2.time}}
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="boxright">
+                                <img :src="item.imgs" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
+                <!-- 如果需要导航按钮 -->
+                <div class="swiper-button-prev "></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+        <footers></footers>
+    </div>
+</body>
+
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            nums: 0,
+            numsname: '最新资讯',
+            allarr: [
+                {
+                    imgs: '../images/zxzx-img.png',
+                    list: [
+                        {
+                            name: '驻村书记修危房',
+                            time: '2020-05-20'
+                        }, {
+                            name: '驻村书记修危房',
+                            time: '2020-05-20'
+                        }, {
+                            name: '驻村书记修危房',
+                            time: '2020-05-20'
+                        }, {
+                            name: '驻村书记修危房驻村书记修危房驻村书记修危房',
+                            time: '2020-05-20'
+                        }, {
+                            name: '驻村书记修危房驻村书记修危房驻村书记修危房',
+                            time: '2020-05-20'
+                        }, {
+                            name: '驻村书记修危房驻村书记修危房驻村书记修危房驻村书记修危房驻村书记修危房',
+                            time: '2020-05-20'
+                        }, {
+                            name: '驻村书记修危房',
+                            time: '2020-05-20'
+                        }, {
+                            name: '驻村书记修危房',
+                            time: '2020-05-20'
+                        },
+                    ],
+                    navlist: [
+                        { name: '最新资讯' }, { name: '各地新闻' }, { name: '扶贫政策' },
+                    ],
+                },
+                {
+                    imgs: '../images/gdxw-img.png',
+                    list: [
+                        {
+                            name: '驻村书记修危房',
+                            time: '2020-05-20'
+                        }, {
+                            name: '驻村书记修危房',
+                            time: '2020-05-20'
+                        }, {
+                            name: '驻村书记修危房',
+                            time: '2020-05-20'
+                        }, {
+                            name: '驻村书记修危房驻村书记修危房驻村书记修危房',
+                            time: '2020-05-20'
+                        }, {
+                            name: '驻村书记修危房驻村书记修危房驻村书记修危房',
+                            time: '2020-05-20'
+                        }, {
+                            name: '驻村书记修危房驻村书记修危房驻村书记修危房驻村书记修危房驻村书记修危房',
+                            time: '2020-05-20'
+                        }, {
+                            name: '驻村书记修危房',
+                            time: '2020-05-20'
+                        }, {
+                            name: '驻村书记修危房',
+                            time: '2020-05-20'
+                        },
+                    ],
+                    navlist: [
+                        { name: '最新资讯' }, { name: '各地新闻' }, { name: '扶贫政策' },
+                    ],
+                }
+            ]
+        },
+        mounted() {
+            this.nums = Number(localStorage.getItem('val'))
+            localStorage.clear()
+            headersget($('.newwhatbox'))
+        },
+        methods: {
+            navclick: function (val, index) {
+                this.nums = index
+            }
+        },
+    })
+    var flog = 0;
+    var mySwiper = new Swiper('.swiper-container', {
+
+        // 如果需要分页器
+        pagination: '.swiper-pagination',
+        // 如果需要前进后退按钮
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+
+    })
+</script>

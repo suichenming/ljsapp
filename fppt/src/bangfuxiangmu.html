@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扶贫平台</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/amitate.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/jyjtpurchase.css">
+    <link rel="stylesheet" href="../sass/Helpmemorabilia.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/swiper.min.js"></script>
+    <script src="../js/scrollrevealjs.js"></script>
+    <script src="../js/headerpublic.js"></script>
+    <script src="../js/footerpublic.js"></script>
+ 
+    <style>
+        .swiper-container {
+            height: 80%;
+        }
+
+        .swiper-pagination {
+            width: 100%;
+            left: 0;
+        }
+
+        .swiper-pagination-bullet {
+            margin: 0 8px;
+
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #E2202E;
+            width: 38px;
+            border-radius: 8px;
+        }
+
+        .backgbox {
+            width: 100%;
+            height: 700px;
+            background: url(../images/bfjn-bj.png) no-repeat 0 96%;
+            background-size: 100% 117%;
+            padding: 40px 220px 0 220px;
+            position: relative;
+        }
+
+        .topbottom ul li {
+            margin: 20px 0;
+            cursor: pointer;
+            color: #fff;
+            position: relative;
+        }
+
+        .topbottom ul li:before {
+            content: "";
+            position: absolute;
+            top: 8px;
+            right: -32.5px;
+            width: 6px;
+            height: 6px;
+            border-radius: 100%;
+            background-color: #fff;
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            transition: .2s;
+            -moz-transform: scale(0);
+            -ms-transform: scale(0);
+            -o-transform: scale(0);
+        }
+
+        .topbottom ul .lishow:before {
+            content: "";
+            position: absolute;
+            top: 8px;
+            right: -32.5px;
+            width: 6px;
+            height: 6px;
+            border-radius: 100%;
+            background-color: #fff;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            transition: .2s;
+            -moz-transform: scale(1);
+            -ms-transform: scale(1);
+            -o-transform: scale(1);
+        }
+
+        .topbottom ul:before {
+            content: "";
+            position: absolute;
+            right: -30px;
+            top: 0;
+            height: 100%;
+            width: 1px;
+            background-color: #fff;
+        }
+
+        .hea div {
+            width: 200px;
+            height: 100%;
+            position: relative;
+        }
+
+        .backgbox .hea {
+            display: flex;
+            font-size: 18px;
+            line-height: 40px;
+        }
+
+        .hea div p {
+            color: #fff;
+            cursor: pointer;
+
+        }
+
+        .backgbox .hea i {
+            background: #F79749;
+            width: 120px;
+
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #fff;
+        }
+
+        .swiper-slide {
+            height: 300px;
+            background: none;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+        }
+        .posi{
+            position: absolute;
+            left: 30px;
+            width: 500px;
+            bottom: 4%;
+            color: #fff;
+            
+        }
+        .dian{
+            height: 15px;
+            width: 15px;
+            border-radius: 100%;
+            background: #fff;
+            border: 3px solid rgba(225, 225, 225, 0.9);
+            box-sizing: content-box;
+        }
+        .xian{
+            width: 20px;
+            height: 20px;
+            border-left: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+            position: absolute;
+            top: 16px;
+            left: 11px;
+        }
+        .swiperbox{
+            height: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <headers></headers>
+        <div class="backgbox">
+            <div class="hea">
+                <div v-for='(item,index) in bangfuarr' :key='index'
+                    :style="{fontSize: bangnums === index? '30px' : ''}">
+                    <p @click='bangclick(item,index)'>{{item.name}}</p>
+                    <i v-if='bangnums === index'></i>
+                </div>
+            </div>
+            <div class="topbottom">
+                <ul>
+                    <li v-for='(item,index) in nain' :key='index' @click='listclick(item,index)'
+                        :class="{lishow:listnum === index}">
+                        {{item.year}}
+                    </li>
+                </ul>
+            </div>
+            <div class="swiperbox">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" v-for='(item,index) in slidearr' :key='index'>
+                            <img :src="item.imgs" alt="">
+                            <div class='posi  animated  fadeInDown' v-if='activeIndex === index'>
+                                <p class="dian"></p>
+                                <p class="xian"></p>
+                                <p style="padding: 3px 38px;">
+                                    {{item.content}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
+                <div class="leftandright">
+                    <img src="../images/lefticon.png" alt="" class="btn1">
+                    <img src="../images/righticon.png" alt="" class="btn2">
+                </div>
+            </div>
+        </div>
+
+        <footers></footers>
+    </div>
+</body>
+
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            slidearr: [
+                {
+                    timess: '2019',
+                    yue: ' 八月',
+                    content: '坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会',
+                    imgs: '../images/1-bfdsj-img.png'
+                }, {
+                    timess: '2019',
+                    yue: ' 九月',
+                    content: '8月，《关于打赢脱贫攻坚战三年 行动的指导意见》公布；',
+                    imgs: '../images/2-bfdsj-img.png'
+                }, {
+                    timess: '2019',
+                    yue: ' 十月',
+                    content: '坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会',
+                    imgs: '../images/3-bfdsj-img.png'
+                }, {
+                    timess: '2019',
+                    yue: ' 十一月',
+                    content: '坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会',
+                    imgs: '../images/3-bfdsj-img.png'
+                }, {
+                    timess: '2019',
+                    yue: ' 十一月',
+                    content: '坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会',
+                    imgs: '../images/3-bfdsj-img.png'
+                },
+
+            ],
+            nain: [
+                {
+                    year: '2016',
+                }, {
+                    year: '2017',
+                }, {
+                    year: '2018',
+                }, {
+                    year: '2019',
+                }, {
+                    year: '2020',
+                },
+            ],
+            listnum: 0,
+            bangfuarr: [
+               // { name: '帮扶纪年' }, 
+                { name: '帮扶项目' }, 
+                //{ name: '帮扶名录' }
+            ],
+            bangnums: 0,
+            activeIndex:2
+        },
+        mounted: function () {
+            headersget($('.backgbox'))
+        },
+        methods: {
+            listclick: function (val, index) {
+                this.listnum = index
+                this.slidearr.map(function (item) {
+                    return item.timess = val.year
+                })
+            },
+            bangclick: function (val, index) {
+                this.bangnums = index
+                if(index === 0) {
+                    window.location = './bangfujinian.html'
+                }
+            }
+        }
+    })
+
+    var mySwiper = new Swiper('.swiper-container', {
+        spaceBetween: 20,
+        initialSlide: 2,
+        // 如果需要分页器
+        pagination: '.swiper-pagination',
+        effect: 'coverflow',
+        slidesPerView: 3,
+        centeredSlides: true,
+        coverflow: {
+            rotate: 30,
+            stretch: 10,
+            depth: 60,
+            modifier: 2,
+            slideShadows: true,
+        },
+        onSlideChangeEnd: function (swiper) {
+            app.activeIndex = swiper.activeIndex
+            console.log(swiper.activeIndex)
+            //alert(swiper.activeIndex) //切换结束时，告诉我现在是第几个slide
+        }
+    })
+    $('.btn1').click(function () {
+        mySwiper.slidePrev();
+    })
+    $('.btn2').click(function () {
+        mySwiper.slideNext();
+    })
+</script>
