@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扶贫平台</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/jyjtpurchase.css">
+    <link rel="stylesheet" href="../sass/renwudetail.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headerpublic.js"></script>
+    <script src="../js/footerpublic.js"></script>
+    <style>
+        body{
+            background: url(../images/xcwh-bj-img.png) no-repeat 84% 100%;
+            background-size: 126% 105%;
+        }
+        .rwback {
+            
+            background: url(../images/xcwh-top-bj-img.png) no-repeat 0 -8%;
+           
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="posi">
+            <script>
+                window._bd_share_config = {
+                    "common": {
+                        "bdSnsKey": {},
+                        "bdText": "",
+                        "bdMini": "2",
+                        "bdMiniList": false,
+                        "bdPic": "",
+                        "bdStyle": "8",
+                        "bdSize": "16"
+                    },
+                    "slide":
+                    {
+                        "type": "slide",
+                        "bdImg": "0",
+                        "bdPos": "left",
+                    },
+                    "image": { "viewList": ["qzone", "tsina", "tqq", "renren", "weixin"], "viewText": "分享到：", "viewSize": "16" },
+                    "selectShare": { "bdContainerClass": null, "bdSelectMiniList": ["qzone", "tsina", "tqq", "renren", "weixin"] }
+                };
+                with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+            </script>
+            <div>
+                <ul class="icons">
+                    <li @click='dayin'>
+                        <span class="icon iconfont">&#xe6b9;</span>
+                        <div class="name">打印</div>
+                    </li>
+                    <li>
+                        <span class="icon iconfont">&#xe755;</span>
+                        <div class="name">收藏</div>
+                    </li>
+                    <li>
+                        <span class="icon iconfont">&#xe624;</span>
+                        <div class="name">咨询</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <headers></headers>
+        <div class="rwback">
+            <p class="p"></p>
+        <div class="detailbox">
+            <p class="dtitle">{{title}}</p>
+            <p class="child">
+                来源:&nbsp;&nbsp; {{wang}} &nbsp;&nbsp;&nbsp;&nbsp;{{times}}
+            </p>
+            <div class="dcontent">
+                <!-- <div class="top">
+                    <div class="dleftimg">
+                        <img src="../images/dzm.jpg" alt="">
+                    </div>
+                    <div class="jieshaoright">
+                        <div class="renwu">
+                            <p>人物简介</p>
+                            <i></i>
+                        </div>
+                        <div class="dboname">
+                            <p>
+                                <span>姓名:</span> 张曼
+                            </p>
+                            <p>
+                                <span>公司:</span> 深圳联合产权交易所股份有限公司
+                            </p>
+                            <p>
+                                <span>职务:</span> 驻麻布岗镇红阳村扶贫工作队队长
+                            </p>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="dbottom">
+                    <p>央广网河源1月31日消息（记者梁恒 通讯员蒋桂民 柳欢扬 陈振中
+                        戴平）新春佳节是万家团圆的日子，而在广东省河源市龙川县麻布岗镇红阳村，深圳联合产权交易所驻村干部张曼却选择留在村里与乡亲们一起过年，到底是什么原因呢，一起去看看。</p>
+                    <p>
+                        张曼，一位80后驻村干部，是深圳联合产权交易所股份有限公司驻麻布岗镇红阳村扶贫工作队队长，大年三十，她挨家挨户走访，给乡亲们拜个早年，第一家就来到她最不放心不下的贫困户温传海家，一进门，张曼就与温传海算起了帐。
+                    </p>
+                    <p>
+
+                        麻布岗镇红阳村贫困户温传海全家8口人，靠耕种一亩三分地为生，因其患病、小孩上学导致家庭负担重，被列入了精准扶贫对象，为帮助他早日摆脱贫困，驻村工作队免费给他送了鸡苗，增加了收入，一家人快快乐乐地过春节。
+                    </p>
+                    <p>
+
+                        温传海心存感激：“她（张曼）工作很认真，对我们这些老百姓嘘寒问暖，过年了她都没回家去过年，都跟我们在这里打成一片了，我心里非常激动，非常感谢张队长。
+                    </p>
+                    <p>
+                        “这里的人很热情，很淳朴，在村里感情会很深。”张曼的用心付出获得了当地村民的认可，她与村民的感情也越来越深厚。张曼：“走在路上，村民会说‘张队长来我家吃饭吧’，三婶说‘来我家吧’。好多人叫，非常热情。
+                    </p>
+                    <p>
+                        ”
+                        村里群众的热情，让这位千里之外老家河南的驻村干部在这个小山村里感受到了“家人” 般的温暖。而龙川县委书记黄添胜的看望慰问则让她有点惊喜。
+                    </p>
+                    <p>
+
+                        春节前夕，黄添胜专程来到麻布岗镇红阳村看望张曼，对她表示亲切慰问，对她真心、真情帮扶红阳村表示感谢。
+                    </p>
+                    <div class="deimgbox">
+                        <img src="../images/detail1.jpg" alt="">
+                        <p>
+                            (龙川县委书记黄添胜到麻布岗镇红阳村看望驻村干部张曼)
+                        </p>
+                    </div>
+                    <p>
+                        为更好地把驻村工作做好，春节这个万家团圆的节日，张曼都不顾家人劝说，决定留在村里与乡亲们一起过年。
+                    </p>
+                    <p>
+
+                        张曼：“我觉得就像结婚‘丑媳妇要见公婆’，村里面的老人和外出、在外的人想法是不一样的，很多时候，沟通交流起来会遇到一些阻碍，就像一些事情、一些好的技术和科技，带过来，没有人愿意去做，不敢尝试，所以也是想借用过年的时候，能够和外出回家的乡亲沟通，拉近感情，首先让他们理解，再让他们带动他们的家人，一个村要好，不是单靠我们，还是要靠自己人
+                    </p>
+                    <p>
+                        ”
+                        精准扶贫不仅表现在物质上，更重要的是理念，张曼真蹲实驻，主动与群众打成一片，用真心换真情；而得到的“回报”自然也是真心和真情。
+                    </p>
+                    <div class="deimgbox">
+                        <img src="../images/detail2.jpg" alt="">
+                        <p>
+                            (麻布岗镇红阳村村民)
+                        </p>
+                    </div>
+                    <p>
+                        “张队长经常到农户家里来，困难户也好，不是困难户也好，她都会去，她说有什么问题都会帮大家解决，我都当自己女儿一样对她。”麻布岗镇红阳村村民这样评价。
+                    </p>
+                    <div class="deimgbox">
+                        <img src="../images/detail3.jpg" alt="">
+                        <p>
+                            （红阳村党支部书记钟培良）
+                        </p>
+                    </div>
+                    <p>
+                        有了张曼这样的驻村干部，红阳村党支部书记钟培良带领村民致富奔康的信心也更足了：“她（张曼）自从进村以来，一直工作非常负责，非常认真，走遍了我们整个红阳村村村寨寨，每个地方都走过，都得到了我们村民的好评，大家都一致赞扬，像这样的扶贫干部，我们红阳的发展肯定是有希望的。
+                    </p>
+                    <p>
+                        ”
+                        据了解，龙川县麻布岗镇红阳村全村共有480户2059人，其中贫困户42户102人，村级收入只有1万元。深圳联合产权交易所股份有限公司进驻，改造了村道1.1公里，修缮了学校基础设施，免费为贫困户发放鸡苗500多只，村容村貌得到较大变化，让群众增强了脱贫的信心。
+                    </p>
+                    <p>
+
+                        编辑： 官文清
+                        关键词
+                    </p>
+                    <p>
+                        广东;扶贫;河源;春节
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+        <footers></footers>
+    </div>
+</body>
+
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            title: '河源龙川：过年不回家的驻村干部——张曼',
+            wang: '央广网',
+            times: '2020年5月13日'
+        },
+        mounted: function () {
+
+        },
+        methods: {
+            dayin:function(){window.print()}
+        }
+    })
+</script>

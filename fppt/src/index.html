@@ -125,6 +125,12 @@
         .el-tooltip__popper .popper__arrow, .el-tooltip__popper .popper__arrow::after{
             border-top-color: #fff !important;
         }
+        .content>p{
+            font-size: 20px;
+        }
+        .content>p >span {
+            color: red;
+        }
     </style>
 </head>
 
@@ -325,11 +331,17 @@
                     <div class="hovers" v-for='(item,index) in dizhi' :class='item.classnamse'>
                         <div  class="hovers shows"></div>
                         <el-tooltip class="item" effect="light" content="Top Center 提示文字" placement="top">
-                            <div slot="content">
+                            <div slot="content" class="content">
                                <p style="font-weight: 600;">{{item.name}}</p>
                                 <p>
-                                    累积帮扶人口: {{item.nums}}
+                                   累积投入 <span>{{item.xiangmu}}</span> 项目,<span>{{item.zijin}}</span> 万元资金，<span>{{item.renshu}}</span> 人
                                 </p>
+                                <p>
+                                    累积帮扶 <span>{{item.cun}}</span> 条村,<span>{{item.hu}}</span> 户，<span>{{item.renshu1}}</span> 人
+                                 </p>
+                                 <p>
+                                    已有<span> {{item.cun1}}</span> 条村,<span>{{item.hu1}}</span> 户，<span>{{item.renshu2}}</span> 人
+                                 </p>
                             </div>
                             <p :class="item.position">{{item.name}}</p>
                         </el-tooltip>
@@ -535,73 +547,169 @@
                     name: '广东深圳',
                     classnamse: 'sz',
                     position: 'nametop',
-                    nums:2123
+                    xiangmu:'0',
+                    zijin: '0',
+                    renshu:'0',
+                    cun:'0',
+                    hu: '0',
+                    renshu1:'0',
+                    cun1:'0',
+                    hu1: '0',
+                    renshu2:'0'
                 },
                 {
                     name: '广东河源',
                     classnamse: 'gdhy',
                     position: 'namebottom',
-                    nums:2123
+                    xiangmu:12,
+                    zijin: 27638.243515,
+                    renshu: 1130,
+                    cun:21,
+                    hu: 5192,
+                    renshu1:17328,
+                    cun1:16,
+                    hu1: 1479,
+                    renshu2:5064
                 },
                 {
                     name: '广东汕尾',
                     classnamse: 'gdsw',
                     position: 'nameright',
-                    nums:4431
+                    xiangmu:'0',
+                    zijin: '0',
+                    renshu:'0',
+                    cun:'0',
+                    hu: '0',
+                    renshu1:'0',
+                    cun1:'0',
+                    hu1: '0',
+                    renshu2:'0'
                 },
                 {
-                    name: '广西白色',
+                    name: '广西百色',
                     classnamse: 'gxbs',
                     position: 'nameleft',
-                    nums:1992
+                    xiangmu:'0',
+                    zijin: '0',
+                    renshu:'0',
+                    cun:'0',
+                    hu: '0',
+                    renshu1:'0',
+                    cun1:'0',
+                    hu1: '0',
+                    renshu2:'0'
                 },
                 {
                     name: '广西河池',
                     classnamse: 'gxhc',
                     position: 'nametop',
-                    nums:2231
+                    xiangmu:'0',
+                    zijin: '0',
+                    renshu:'0',
+                    cun:'0',
+                    hu: '0',
+                    renshu1:'0',
+                    cun1:'0',
+                    hu1: '0',
+                    renshu2:'0'
                 },
                 {
                     name: '贵州毕节',
                     classnamse: 'gzbj',
                     position: 'nameleft',
-                    nums:2123
+                    xiangmu:'0',
+                    zijin: '0',
+                    renshu:'0',
+                    cun:'0',
+                    hu: '0',
+                    renshu1:'0',
+                    cun1:'0',
+                    hu1: '0',
+                    renshu2:'0'
                 },
                 {
                     name: '江西寻乌',
                     classnamse: 'xjxw',
                     position: 'nameright',
-                    nums:2123
+                    xiangmu:'0',
+                    zijin: '0',
+                    renshu:'0',
+                    cun:'0',
+                    hu: '0',
+                    renshu1:'0',
+                    cun1:'0',
+                    hu1: '0',
+                    renshu2:'0'
                 },
                 {
                     name: '重庆巫山',
                     classnamse: 'cxws',
                     position: 'nametop',
-                    nums:2123
+                    xiangmu:'0',
+                    zijin: '0',
+                    renshu:'0',
+                    cun:'0',
+                    hu: '0',
+                    renshu1:'0',
+                    cun1:'0',
+                    hu1: '0',
+                    renshu2:'0'
                 },
                 {
                     name: '四川甘孜、石 渠、徳格',
                     classnamse: 'scgzsq',
                     position: 'nametop',
-                    nums:2123
+                    xiangmu:'0',
+                    zijin: '0',
+                    renshu:'0',
+                    cun:'0',
+                    hu: '0',
+                    renshu1:'0',
+                    cun1:'0',
+                    hu1: '0',
+                    renshu2:'0'
                 },
                 {
                     name: '西藏察隅',
                     classnamse: 'xzco',
                     position: 'nametop',
-                    nums:2123
+                    xiangmu:'0',
+                    zijin: '0',
+                    renshu:'0',
+                    cun:'0',
+                    hu: '0',
+                    renshu1:'0',
+                    cun1:'0',
+                    hu1: '0',
+                    renshu2:'0'
                 },
                 {
                     name: '新疆喀什',
                     classnamse: 'xjkm',
                     position: 'nametop',
-                    nums:2123
+                    xiangmu:'0',
+                    zijin: '0',
+                    renshu:'0',
+                    cun:'0',
+                    hu: '0',
+                    renshu1:'0',
+                    cun1:'0',
+                    hu1: '0',
+                    renshu2:'0'
                 },
                 {
                     name: '黑龙江哈尔滨',
                     classnamse: 'hljheb',
                     position: 'nametop',
-                    nums:2123
+                    xiangmu:'0',
+                    zijin: '0',
+                    renshu:'0',
+                    cun:'0',
+                    hu: '0',
+                    renshu1:'0',
+                    cun1:'0',
+                    hu1: '0',
+                    renshu2:'0'
                 },
             ]
         },

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扶贫平台</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/ele.css">
+    <link rel="stylesheet" href="../css/eleicon.css">
+    <link rel="stylesheet" href="../css/jyjtpurchase.css">
+    <link rel="stylesheet" href="../sass/newzxdetail.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ele.js"></script>
+    <script src="../js/headerpublic.js"></script>
+    <script src="../js/footerpublic.js"></script>
+    <style>
+        .posi {
+            position: fixed;
+            top: 260px;
+            left: 0;
+        }
+
+        .icons>li {
+            cursor: pointer;
+            text-align: center;
+            background: rgba(225, 225, 225, 0.3);
+            padding: 0 5px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .icons>li span {
+            font-size: 18px;
+            color: #999999;
+        }
+
+        .icons>li:hover {
+            color: #3E4E80;
+        }
+
+        .icons>li:hover span {
+            color: #3E4E80;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="posi">
+            <script>
+                window._bd_share_config = {
+                    "common": {
+                        "bdSnsKey": {},
+                        "bdText": "",
+                        "bdMini": "2",
+                        "bdMiniList": false,
+                        "bdPic": "",
+                        "bdStyle": "8",
+                        "bdSize": "16"
+                    },
+                    "slide":
+                    {
+                        "type": "slide",
+                        "bdImg": "0",
+                        "bdPos": "left",
+                    },
+                    "image": { "viewList": ["qzone", "tsina", "tqq", "renren", "weixin"], "viewText": "分享到：", "viewSize": "16" },
+                    "selectShare": { "bdContainerClass": null, "bdSelectMiniList": ["qzone", "tsina", "tqq", "renren", "weixin"] }
+                };
+                with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+            </script>
+            <div>
+                <ul class="icons">
+                    <li @click='dayin'>
+                        <span class="icon iconfont">&#xe6b9;</span>
+                        <div class="name">打印</div>
+                    </li>
+                    <li>
+                        <span class="icon iconfont">&#xe755;</span>
+                        <div class="name">收藏</div>
+                    </li>
+                    <li>
+                        <span class="icon iconfont">&#xe624;</span>
+                        <div class="name">咨询</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <headers></headers>
+        <div class="newback">
+            <p class="p">
+
+            </p>
+            <div class="detailbox">
+
+                <p class="dtitle">{{title}}</p>
+                <p class="newname">
+                    {{name}} &nbsp;&nbsp;&nbsp;&nbsp; {{times}}
+                </p>
+                <div class="newcontent">
+                    <p>
+                        本人是资本集团派驻瑚径村原驻村工作队队长，秉承“点滴记录，汇滴成河。实事求是，因地制宜。分类辅导，精准帮扶。”的指导思想，记录还原当下历史时间节点的真实状况，以做借鉴思考。
+                    </p>
+                    <p class="tiname">
+                        一、党建引领，助力瑚径快速发展
+                    </p>
+                    <p>
+                        红色故土、美丽瑚径正在逐步从自然资源匮乏、地理条件落后等先天条件不足的形势中走出来。当前，瑚径拥有富硒大米、水电站、光伏能源发电等特色产业，同时也着力谋划发展乡村旅游、温泉休闲等现代服务产业。在驻村工作第三年，也就是2018年，我们开通了微信公众号、推广使用为村平台、开展对口帮扶党建系列活动，多方尝试使用新工具、新方法，发表133篇软文，吸引了121个用户的关注，社会宣传、政策推广效果提升明显。
+                    </p>
+                    <p>
+
+                        驻村帮扶以来，驻村工作队始终坚持以系统化思维搭建帮扶项目体系，用“研究+实践”的思路引领党建工作。重点实施围绕农业基础设施建设，坚持以绿色生态可持续发展为中心指导思想，以对口帮扶基层党建为引领发展现代乡村经济，从持续推广富硒大米、研究富硒全产业链发展路径、推进红田水电站、光伏发电站建设，到集体入股深圳（宝安）工业园、发展高山有机农产品，进而打造红色旅游、温泉度假、丰富乡村休闲度假文化，建立起以党建为引领的系统化扶贫工作机制
+                    </p>
+                    <p>
+
+                        总结本轮脱贫经验，正是在以对口帮扶基层党建为引领，以产业为契机，以项目为实施路径的多层次、可持续发展思路指引下，驻村工作成果对瑚径村社会主义新农村建设发挥了关键而重要作用，为建设党建示范村打下了坚实基础。
+                    </p>
+                    <p class="tiname">
+                        二、富硒大米，带动产业转型升级
+                    </p>
+                    <p>
+                        2018年是三年攻坚战的关键一年，也是承上启下、不断规范总结再夯实基础的重要年份。这一年，从“八仙过海、各显神通”的局面逐步走向规范化和标准化。系统化、标准化思维逐步得到理解、认同、传播和称赞。从第一产业富硒大米，到大米加工、包装和运输，到第三产业乡村旅游、温泉度假，基础设施建设后的长效机制带动了一方水土，养育了一方百姓。
+                    </p>
+                    <p>
+
+                        驻村工作队按照“一镇一业”“一村一品”行动部署，建立了“公司+专业合作社+基地+农户”的长效脱贫合作机制，积极与对口帮扶市建立市场对接机制，拓宽富硒大米销售渠道，促进贫困户稳定增收脱贫。
+                    </p>
+                    <p class="tiname">
+                        三、展望未来，瑚径的明天更美好
+                    </p>
+                    <p>
+                        2018-2020，全面脱贫、全面巩固，让新农村建设变得更加美丽，奔小康、进一步实现人民对美好生活的向往。未来两年，更需要社会各方通过智慧和实践来巩固成果。
+                    </p>
+                    <p>
+
+                        自驻村以来，无数次的深河两地往返离别和重聚、辛勤和汗水，驻点扶贫工作有了质的提升，全面、多层次、无障碍的沟通打开了因信息不对称造成的不良影响，原来有的一些问题尽管仍然存在，却增加了面对现实问题的透明性、开放性、包容性和对解决实际问题的信心，切实保障了群众的知情权、参与权和监督权，让群众更加深刻的感受到来自国家政策的幸福感、收获感和荣誉感。
+                    </p>
+                    <p>
+
+                        响应组织安排，我于2019年6月从扶贫工作岗位返回原单位。回来后不时传来贫困户的来电来信问侯，不自觉的会去关注着村里发生的点滴变化，每每看到新的变化都为之深深触动。
+                    </p>
+                    <p>
+
+                        小我而言，我深信这样的一份人生经历将深深埋于心间播种生根发芽扩散传播。
+                    </p>
+                    <p>
+
+                        大我而言，社会主义制度集中力量办大事、办实事的制度优势体现的淋漓尽致。
+                    </p>
+                    <p>
+
+                        衷心祝福我们帮扶的瑚径村蒸蒸日上，老百姓们安居乐业，幸福安康！
+                        深圳资本集团原驻村工作队队长：钟欣明
+                        2020年5月13日
+                    </p>
+                    <div class="newbo">
+                        <p>
+                            深圳资本集团原驻村工作队队长：钟欣明
+                        </p>
+                        <p>
+
+                            2020年5月13日
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footers></footers>
+    </div>
+</body>
+
+</html>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            title: '2016-2018年度驻村工作感悟',
+            name: '--资本集团原驻村工作队队长钟欣明',
+            times: ' 2020年5月13日'
+        },
+        mounted: function () {
+
+        },
+        methods: {
+            dayin:function(){window.print()}
+        },
+    })
+</script>

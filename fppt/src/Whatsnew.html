@@ -24,14 +24,16 @@
 <style>
     .swiper-button-prev,
     .swiper-container-rtl .swiper-button-next {
-        background-image: url(../images/left.png)
+        background-image: url(../images/lefticon.png)
     }
 
     .swiper-button-next,
     .swiper-container-rtl .swiper-button-prev {
-        background-image: url(../images/right.png)
+        background-image: url(../images/righticon.png)
     }
-
+    .swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled{
+        opacity: 1;
+    }
     .swiper-button-next,
     .swiper-button-prev {
         background-size: 40px 44px;
@@ -83,7 +85,7 @@
                                     </li>
                                 </ul>
                                 <ul class="list">
-                                    <li v-for='(item2,index) in item.list' :key="index">
+                                    <li v-for='(item2,index) in item.list' :key="index" @click='listclick(item,index)'>
                                         <p class="last">
                                             {{item2.name}}
                                         </p>
@@ -194,6 +196,9 @@
         methods: {
             navclick: function (val, index) {
                 this.nums = index
+            },
+            listclick:function (val,inde){
+                window.location = './newzxdetail.html'
             }
         },
     })

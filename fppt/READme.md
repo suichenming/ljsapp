@@ -10,7 +10,9 @@ bangfumap  帮扶地图
 bangfujinian 帮扶纪年
 bangfuxiangmu 帮扶项目
 cangyebangfu  产业帮扶
-
+renwudetails  任务风采详情
+xiangcundetail   乡村
+newzxdetail  最新资讯详情
 
 
 

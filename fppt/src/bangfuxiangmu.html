@@ -20,7 +20,7 @@
     <script src="../js/scrollrevealjs.js"></script>
     <script src="../js/headerpublic.js"></script>
     <script src="../js/footerpublic.js"></script>
- 
+
     <style>
         .swiper-container {
             height: 80%;
@@ -46,9 +46,10 @@
         .backgbox {
             width: 100%;
             height: 700px;
-            background-size: 100% 117%;
+            background-size: 102% 117%;
             padding: 40px 120px 0 220px;
             position: relative;
+            background: url(../images/bfdSj-img.png) no-repeat -14px 96%;
         }
 
         .topbottom ul li {
@@ -136,15 +137,17 @@
             width: 100%;
             height: 100%;
         }
-        .posi{
+
+        .posi {
             position: absolute;
             left: 30px;
             width: 500px;
             bottom: 4%;
             color: #fff;
-            
+
         }
-        .dian{
+
+        .dian {
             height: 15px;
             width: 15px;
             border-radius: 100%;
@@ -152,7 +155,8 @@
             border: 3px solid rgba(225, 225, 225, 0.9);
             box-sizing: content-box;
         }
-        .xian{
+
+        .xian {
             width: 20px;
             height: 20px;
             border-left: 1px solid #fff;
@@ -161,8 +165,96 @@
             top: 16px;
             left: 11px;
         }
-        .swiperbox{
+
+        .swiperbox {
             height: 80%;
+        }
+
+        /* .swiper-slide:hover .boxcentent {
+            animation: mymove 1s ease 1 forwards;
+            -webkit-animation: mymove 1s ease 1 forwards;
+        } */
+
+        .swiper-slide .boxcentent {
+            height: 50px;
+            position: absolute;
+            width: 100%;
+            color: #fff;
+            bottom: 0;
+            padding: 0 20px;
+            cursor: pointer;
+            z-index: 99;
+        }
+
+        /* .swiper-slide .boxcentent:hover {
+            animation: mymove 1s ease 1 forwards;
+            -webkit-animation: mymove 1s ease 1 forwards;
+        } */
+
+        @keyframes mymove {
+            0% {
+                bottom: -350px;
+            }
+
+            100% {
+                bottom: 0;
+            }
+        }
+
+        @-moz-keyframes mymove {
+            0% {
+                bottom: -350px;
+            }
+
+            100% {
+                bottom: 0;
+            }
+        }
+
+        @-webkit-keyframes mymove {
+            0% {
+                bottom: -350px;
+            }
+
+            100% {
+                bottom: 0;
+            }
+        }
+
+        @-o-keyframes mymove {
+            0% {
+                bottom: -350px;
+            }
+
+            100% {
+                bottom: 0;
+            }
+        }
+
+        .swiper-slide .boxcentent .titles {
+            font-size: 22px;
+            font-weight: 600;
+            line-height: 50px;
+        }
+
+        .swiper-slide .boxcentent .contents {
+            font-size: 16px;
+            text-indent: 2rem;
+            line-height: 40px;
+        }
+
+        .swiper-slide .boxcentent .chakanquanwen {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            color: #EF532D;
+            background: #fff;
+            padding: 4px 20px;
+            border-radius: 8px;
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            -ms-border-radius: 8px;
+            -o-border-radius: 8px;
         }
     </style>
 </head>
@@ -191,12 +283,21 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" v-for='(item,index) in slidearr' :key='index'>
                             <img :src="item.imgs" alt="">
-                            <div class='posi  animated  fadeInDown' v-if='activeIndex === index'>
+                            <!-- <div class='posi  animated  fadeInDown' v-if='activeIndex === index'>
                                 <p class="dian"></p>
                                 <p class="xian"></p>
                                 <p style="padding: 3px 38px;">
                                     {{item.content}}
                                 </p>
+                            </div> -->
+                            <div class="boxcentent" style="background:rgba(204,204,204,0.5) " v-if='activeIndex === index'>
+                                <p class="titles">{{item.title}}</p>
+                                <p class="contents">
+                                    {{item.content}}
+                                </p>
+                                <!-- <p class="chakanquanwen" @click='chakanquan()'>
+                                    查看全文
+                                </p> -->
                             </div>
                         </div>
                     </div>
@@ -224,27 +325,32 @@
                     timess: '2019',
                     yue: ' 八月',
                     content: '坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会',
-                    imgs: '../images/1-bfdsj-img.png'
+                    imgs: '../images/1-bfdsj-img.png',
+                    title: '这里是标题'
                 }, {
                     timess: '2019',
                     yue: ' 九月',
                     content: '8月，《关于打赢脱贫攻坚战三年 行动的指导意见》公布；',
-                    imgs: '../images/2-bfdsj-img.png'
+                    imgs: '../images/2-bfdsj-img.png',
+                    title: '这里是标题'
                 }, {
                     timess: '2019',
                     yue: ' 十月',
                     content: '坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会',
-                    imgs: '../images/3-bfdsj-img.png'
+                    imgs: '../images/3-bfdsj-img.png',
+                    title: '这里是标题'
                 }, {
                     timess: '2019',
                     yue: ' 十一月',
                     content: '坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会',
-                    imgs: '../images/3-bfdsj-img.png'
+                    imgs: '../images/3-bfdsj-img.png',
+                    title: '这里是标题'
                 }, {
                     timess: '2019',
                     yue: ' 十一月',
                     content: '坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会',
-                    imgs: '../images/3-bfdsj-img.png'
+                    imgs: '../images/3-bfdsj-img.png',
+                    title: '这里是标题'
                 },
 
             ],
@@ -263,12 +369,12 @@
             ],
             listnum: 0,
             bangfuarr: [
-               // { name: '帮扶纪年' }, 
-                { name: '帮扶项目' }, 
+                // { name: '帮扶纪年' }, 
+                { name: '帮扶项目' },
                 //{ name: '帮扶名录' }
             ],
             bangnums: 0,
-            activeIndex:2
+            activeIndex: 2
         },
         mounted: function () {
             headersget($('.backgbox'))
@@ -282,7 +388,7 @@
             },
             bangclick: function (val, index) {
                 this.bangnums = index
-                if(index === 0) {
+                if (index === 0) {
                     window.location = './bangfujinian.html'
                 }
             }
@@ -297,6 +403,8 @@
         effect: 'coverflow',
         slidesPerView: 2,
         centeredSlides: true,
+        simulateTouch : false,
+        paginationClickable :true,
         coverflow: {
             rotate: 30,
             stretch: 0,

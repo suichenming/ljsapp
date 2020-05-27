@@ -194,7 +194,7 @@
             <div class="pc-banner" v-show='listnums === 2'>
                 <div class="swiper-container pcbn">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for='(item,index) in imgsarr' :key='index'>
+                        <div class="swiper-slide" v-for='(item,index) in imgsarr' :key='index' @click='slidesclick(item,index)'>
                             <a href="#"><img :src="item.imgs" class="imgsa"></a>
                             <p class="zhaopianname">
                                 {{item.imgname}}
@@ -255,6 +255,9 @@
                     window.location = './Characterstyle.html'
                 }
             },
+            slidesclick:function(val,index){
+                window.location = './xiangcundetail.html'
+            }
         }
     })
     window.onload = function () {

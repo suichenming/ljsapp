@@ -9,10 +9,11 @@
 }
 
 .whtabox .boxleft {
-  width: 70%;
+  width: 60%;
   height: 100%;
-  background: url(../images/bfdt-bj-img.png) no-repeat 0px -158px;
+  background: url(../images/bfdt-bj-img.png) no-repeat 100% 100%;
   padding: 50px 70px;
+  padding-top: 100px;
 }
 
 .whtabox .boxleft .uls {
@@ -57,7 +58,7 @@
 .whtabox .boxleft .list li {
   display: flex;
   line-height: 40px;
-  font-size: 16px;
+  font-size: 18px;
   cursor: pointer;
 }
 
@@ -74,7 +75,7 @@
 }
 
 .whtabox .boxright {
-  width: 30%;
+  width: 40%;
   background: yellow;
 }
 

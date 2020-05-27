@@ -88,6 +88,9 @@
             -webkit-box-orient:vertical;
             overflow:hidden;
         }
+        .rights > .swiper-wrapper > .swiper-slide{
+            cursor: pointer;
+        }
 </style>
 <body>
     <div id="app" v-cloak>
@@ -120,7 +123,9 @@
                 <div class="rightbanner">
                     <div class="swiper-container rights">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide" v-for='(item,index) in rightarr' :key='index'>
+                            <div class="swiper-slide" v-for='(item,index) in rightarr' :key='index'
+                            @click='slideclick(item,index)'
+                            >
                                 <img :src="item.imgs" alt="" class="imgwi">
                                 <div class="imgbox">
                                     <div class="boxcontent">
@@ -191,6 +196,11 @@
                     dizhi: '驻村工作队队长张曼',
                     zhuyaoshiji: '张曼，一位80后驻村干部，是深圳联合产权交易所股份有限公司驻麻布岗镇红阳村扶贫工作队队长，大年三十，她挨家挨户走访，给乡亲们拜个早年，第一家就来到她最不放心不下的贫困户温传海家，一进门，张曼就与温传海算起了帐',
                     imgs: '../images/3bsfj-img.png'
+                },{
+                    name: '张曼',
+                    dizhi: '驻村工作队队长张曼',
+                    zhuyaoshiji: '张曼，一位80后驻村干部，是深圳联合产权交易所股份有限公司驻麻布岗镇红阳村扶贫工作队队长，大年三十，她挨家挨户走访，给乡亲们拜个早年，第一家就来到她最不放心不下的贫困户温传海家，一进门，张曼就与温传海算起了帐',
+                    imgs: '../images/3bsfj-img.png'
                 },
             ],
         },
@@ -225,6 +235,10 @@
                 })
                 })
                 
+            },
+            slideclick:function(val,index){
+                console.log(val)
+                window.location='./renwudetails.html'
             }
         }
     })
