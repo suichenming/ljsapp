@@ -15,6 +15,7 @@
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
   cursor: pointer;
+  font-size: 18px;
 }
 
 .ebanner {
@@ -69,7 +70,7 @@
   position: absolute;
   width: 100%;
   color: #fff;
-  bottom: -90%;
+  bottom: -91%;
   padding: 0 20px;
   cursor: pointer;
   z-index: 99;
@@ -117,13 +118,13 @@
 }
 
 .swiper-slide .boxcentent .titles {
-  font-size: 22px;
+  font-size: 30px;
   font-weight: 600;
   line-height: 50px;
 }
 
 .swiper-slide .boxcentent .contents {
-  font-size: 16px;
+  font-size: 22px;
   text-indent: 2rem;
   line-height: 40px;
 }
@@ -140,4 +141,5 @@
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
+  font-size: 16px;
 }

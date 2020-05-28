@@ -36,7 +36,7 @@
         <div class="ebanner">
         <div class="elist">
             <ul>
-                <li v-for='(item,index) in listarr' :key="index">
+                <li v-for='(item,index) in listarr' :key="index" @click='listarrclick(item,index)'>
                     {{item.name}}
                 </li>
             </ul>
@@ -115,6 +115,11 @@
         },
         methods: {
             chakanquan: function () {
+            },
+            listarrclick:function (val,index){
+                if(val.name === '教育帮扶'){}  else if (val.name === '金融帮扶'){
+                    window.location ='./Financialassistance.html'
+                }
             }
         }
     })

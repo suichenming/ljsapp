@@ -14,7 +14,7 @@
 	height: 100%;
 }
 .bangfubanner > .swiper-wrapper > .swiper-slide{
-	width:860px;
+	width:800px;
 	}
 	.bangfubanner > .swiper-wrapper > .swiper-slide a{
 	transition: 0.2s;
@@ -48,7 +48,7 @@
     width: 40px;
     height: 100%;
     background: url(../images/lefticon.png) no-repeat 0 center;
-    left: 84%;
+    left: 85%;
     top: 50%;
 	margin-top: -180px;
 	background-size: 100% 

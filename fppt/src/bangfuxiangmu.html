@@ -57,6 +57,7 @@
             cursor: pointer;
             color: #DB1316;
             position: relative;
+            font-size: 18px;
         }
 
         .topbottom ul li:before {
@@ -64,8 +65,8 @@
             position: absolute;
             top: 8px;
             right: -32.5px;
-            width: 6px;
-            height: 6px;
+            width: 10px;
+            height: 10px;
             border-radius: 100%;
             background-color: #DB1316;
             -webkit-transform: scale(0);
@@ -81,8 +82,8 @@
             position: absolute;
             top: 8px;
             right: -32.5px;
-            width: 6px;
-            height: 6px;
+            width: 10px;
+            height: 10px;
             border-radius: 100%;
             background-color: #DB1316;
             -webkit-transform: scale(1);
@@ -232,7 +233,7 @@
         }
 
         .swiper-slide .boxcentent .titles {
-            font-size: 22px;
+            font-size: 30px;
             font-weight: 600;
             line-height: 50px;
         }
@@ -290,7 +291,8 @@
                                     {{item.content}}
                                 </p>
                             </div> -->
-                            <div class="boxcentent" style="background:rgba(204,204,204,0.5) " v-if='activeIndex === index'>
+                            <div class="boxcentent" style="background:rgba(204,204,204,0.5) "
+                                v-if='activeIndex === index'>
                                 <p class="titles">{{item.title}}</p>
                                 <p class="contents">
                                     {{item.content}}
@@ -356,15 +358,18 @@
             ],
             nain: [
                 {
-                    year: '2016',
-                }, {
+                    year: '2020',
+                },
+                {
+                    year: '2019',
+                },
+                {
+                    year: '2018',
+                },
+                {
                     year: '2017',
                 }, {
-                    year: '2018',
-                }, {
-                    year: '2019',
-                }, {
-                    year: '2020',
+                    year: '2016',
                 },
             ],
             listnum: 0,
@@ -403,8 +408,8 @@
         effect: 'coverflow',
         slidesPerView: 2,
         centeredSlides: true,
-        simulateTouch : false,
-        paginationClickable :true,
+        simulateTouch: false,
+        paginationClickable: true,
         coverflow: {
             rotate: 30,
             stretch: 0,

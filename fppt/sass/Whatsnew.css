@@ -13,7 +13,7 @@
   height: 100%;
   background: url(../images/bfdt-bj-img.png) no-repeat 100% 100%;
   padding: 50px 70px;
-  padding-top: 100px;
+  padding-top: 5%
 }
 
 .whtabox .boxleft .uls {
@@ -52,21 +52,22 @@
 }
 
 .whtabox .boxleft .list {
-  margin-top: 20px;
+  margin-top: 5%;
 }
 
 .whtabox .boxleft .list li {
   display: flex;
-  line-height: 40px;
-  font-size: 18px;
+  line-height: 48px;
+  font-size: 22px;
   cursor: pointer;
 }
 
 .whtabox .boxleft .list li .last {
-  width: 80%;
-  text-overflow:ellipsis;
+    width: 80%;
+    text-overflow:ellipsis;
     white-space:nowrap;
     overflow:hidden;
+    color: #000;
 }
 
 .whtabox .boxleft .list li .flase {

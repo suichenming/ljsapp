@@ -51,7 +51,7 @@
   height: 80%;
   margin-top: 50px;
 }
-/* 
+
 .charbox .bannerbox:before {
   content: "";
   position: absolute;
@@ -60,7 +60,7 @@
   height: 100%;
   width: 1px;
   background-color: red;
-} */
+}
 
 .charbox .bannerbox .leftnav {
   width: 10%;
@@ -88,7 +88,6 @@
 .charbox .bannerbox .rightbanner {
   width: 90%;
   height: 100%;
-  margin: 0 auto;
 }
 
 .swiper-container {

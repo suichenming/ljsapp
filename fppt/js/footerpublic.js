@@ -48,15 +48,15 @@ Vue.component('footers', {
             ],
             footerimgs: [
                 {
-                    imgs: '../images/footerimg.jpg'
+                    imgs: '../images/szzfzx-png.png'
                 }, {
-                    imgs: '../images/footerimg.jpg'
+                    imgs: '../images/szzfzx-png.png'
                 }, {
-                    imgs: '../images/footerimg.jpg'
+                    imgs: '../images/szzfzx-png.png'
                 }, {
-                    imgs: '../images/footerimg.jpg'
+                    imgs: '../images/szzfzx-png.png'
                 }, {
-                    imgs: '../images/footerimg.jpg'
+                    imgs: '../images/szzfzx-png.png'
                 },
             ],
         }

@@ -165,6 +165,9 @@ header .headertop {
     text-align: center;
     border-left: 1px solid #FCC7C8;
   }
+  .footers .footerbanner div > img{
+    width: 70%;
+  }
   
   .footers .footerbanner div:first-child {
     border: none;

@@ -2,59 +2,61 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>扶贫平台</title>
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/amitate.css">
-    <link rel="stylesheet" href="../css/ele.css">
-    <link rel="stylesheet" href="../css/eleicon.css">
-    <link rel="stylesheet" href="../css/swiper.min.css">
-    <link rel="stylesheet" href="../css/jyjtpurchase.css">
-    <link rel="stylesheet" href="../sass/Helpmemorabilia.css">
-    <script src="../js/vue.min.js"></script>
-    <script src="../js/jquery.js"></script>
-    <script src="../js/bootstrap.js"></script>
-    <script src="../js/ele.js"></script>
-    <script src="../js/swiper.min.js"></script>
-    <script src="../js/scrollrevealjs.js"></script>
-    <script src="../js/headerpublic.js"></script>
-    <script src="../js/footerpublic.js"></script>
-    <style>
-        .swiper-container {
-            height: 100%;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>扶贫平台</title>
+  <link rel="stylesheet" href="../css/bootstrap.css">
+  <link rel="stylesheet" href="../css/amitate.css">
+  <link rel="stylesheet" href="../css/ele.css">
+  <link rel="stylesheet" href="../css/eleicon.css">
+  <link rel="stylesheet" href="../css/swiper.min.css">
+  <link rel="stylesheet" href="../css/jyjtpurchase.css">
+  <link rel="stylesheet" href="../sass/Helpmemorabilia.css">
+  <script src="../js/vue.min.js"></script>
+  <script src="../js/jquery.js"></script>
+  <script src="../js/bootstrap.js"></script>
+  <script src="../js/ele.js"></script>
+  <script src="../js/swiper.min.js"></script>
+  <script src="../js/scrollrevealjs.js"></script>
+  <script src="../js/headerpublic.js"></script>
+  <script src="../js/footerpublic.js"></script>
+  <style>
+    .swiper-container {
+      height: 100%;
+    }
 
-        .swiper-pagination {
-            width: 100%;
-            left: 0;
-            margin-top: 36px;
-        }
+    .swiper-pagination {
+      width: 100%;
+      left: 0;
+      margin-top: 36px;
+    }
 
-        .swiper-pagination-bullet {
-            margin: 0 8px;
+    .swiper-pagination-bullet {
+      margin: 0 8px;
 
-        }
+    }
 
-        .swiper-pagination-bullet-active {
-            background: #E2202E;
-            width: 38px;
-            border-radius: 8px;
-        }
+    .swiper-pagination-bullet-active {
+      background: #E2202E;
+      width: 38px;
+      border-radius: 8px;
+    }
 
 
-        .backgbox{
-            padding: 40px 120px 40px 220px;
-            background: url(../images/bfdsj-bj-img.png) no-repeat 80% -101px;
-        }
-        html,
-        
+    .backgbox {
+      padding: 40px 120px 40px 220px;
+      background: url(../images/bfdsj-bj-img.png) no-repeat -5px -101px;
+    }
+
+    html,
+
     body,
     .container {
       height: 100%;
       width: 100%;
     }
-/* 轮播样式 */
+
+    /* 轮播样式 */
     /* body {
       font-family: 'Open Sans', sans-serif;
       font-size: 14px;
@@ -334,84 +336,94 @@
       }
     } */
     .swiper-slide {
-        color: #fff;
-        background: rgba(225,225,225,.3);
-    border-radius: 4px;
+      color: #fff;
+      background: rgba(225, 225, 225, .3);
+      border-radius: 4px;
     }
-    .swiper-slide .yuefen{
-        color: #fff !important;
+
+    .swiper-slide .yuefen {
+      color: #fff !important;
     }
-    .swiper-slide .dian{
-        background: #fff !important;
+
+    .swiper-slide .dian {
+      background: #fff !important;
     }
+
     .slidnumsL {
-        background: #Fff;
-        color: #000;
-        border-radius: 4px;
+      background: #Fff;
+      color: #000;
+      border-radius: 4px;
     }
-    .swiper-slide:hover{
-        animation:heartBeat 1s
+
+    .swiper-slide:hover {
+      animation: heartBeat 1s
     }
-    .slidnumsL .yuefen{
-        color: #999999 !important;
+
+    .slidnumsL .yuefen {
+      color: #999999 !important;
     }
-    .slidnumsL .dian{
-        background: #999 !important;
+
+    .slidnumsL .dian {
+      background: #999 !important;
     }
-    @keyframes heartBeat{
-        from {opacity: 0;}
-        to {opacity:1}
+
+    @keyframes heartBeat {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1
+      }
     }
-    </style>
+  </style>
 </head>
 
 <body>
-    <div id="app" v-cloak>
-        <headers></headers>
-        <div class="backgbox">
-            <div class="hea">
-                <p>帮扶大事记</p>
-                <i></i>
-            </div>
-            <div class="topbottom">
-                <ul>
-                    <li v-for='(item,index) in nain' :key='index' @click='listclick(item,index)'
-                        :class="{lishow:listnum === index}">
-                        {{item.year}}
-                    </li>
-                </ul>
-            </div>
-            <div class="swiperbox">
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"
-                        :class="{slidnumsL: index === slidnumsL}"
-                        @mouseenter='enter(index)'
-                        v-for='(item,index) in slidearr' :key='index'>
-                            <div class="slidebox">
-                                <div class="toptime">
-                                    <p class="times"> {{item.timess}} </p>
-                                    <p class="chakan" v-if='slidnumsL === index'> 查看全文 </p>
-                                </div>
-                                <div class="yuefen">
-                                    <span> {{item.yue}} </span>
-                                </div>
-                                <p class="dian"></p>
-                                <div class="content"> {{item.content}} </div>
-                                <div style="text-align: center;height: 47%;">
-                                    <img :src="item.imgs" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  <div id="app" v-cloak>
+    <headers></headers>
+    <div class="backgbox">
+      <div class="hea">
+        <p>帮扶大事记</p>
+        <i></i>
+      </div>
+      <div class="topbottom">
+        <ul>
+          <li v-for='(item,index) in nain' :key='index' @click='listclick(item,index)'
+            :class="{lishow:listnum === index}">
+            {{item.year}}
+          </li>
+        </ul>
+      </div>
+      <div class="swiperbox">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" :class="{slidnumsL: index === slidnumsL}" @mouseenter='enter(index)'
+              v-for='(item,index) in slidearr' :key='index'>
+              <div class="slidebox">
+                <div class="toptime">
+                  <p class="times"> {{item.timess}} </p>
+                  <p class="chakan" v-if='slidnumsL === index'> 查看全文 </p>
                 </div>
-               <!-- 如果需要分页器   -->
-                <div class="swiper-pagination"></div>
-                <div class="leftandright">
-                    <img src="../images/lefticon.png" alt="" class="btn1">
-                    <img src="../images/righticon.png" alt="" class="btn2">
+                <div class="yuefen">
+                  <span> {{item.yue}} </span>
                 </div>
-                <!-- <div class="container">
+                <p class="dian"></p>
+                <div class="content"> {{item.content}} </div>
+                <div style="text-align: center;height: 47%;">
+                  <img :src="item.imgs" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 如果需要分页器   -->
+        <div class="swiper-pagination"></div>
+        <div class="leftandright">
+          <img src="../images/lefticon.png" alt="" class="btn1">
+          <img src="../images/righticon.png" alt="" class="btn2">
+        </div>
+        <!-- <div class="container">
                     <div class="timeline">
                       <div class="swiper-container">
                         <div class="swiper-wrapper">
@@ -434,116 +446,120 @@
                       </div>
                     </div>
                   </div> -->
-            </div>
-        </div>
-        <footers></footers>
+      </div>
     </div>
+    <footers></footers>
+  </div>
 </body>
+
 </html>
 <script>
-    var app = new Vue({
-        el: '#app',
-        data: {
-            slidearr: [
-                {
-                    timess: '2016',
-                    yue: ' 八月',
-                    content: '坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会',
-                    imgs: '../images/01.jpg'
-                }, {
-                    timess: '2017',
-                    yue: ' 九月',
-                    content: '8月，《关于打赢脱贫攻坚战三年 行动的指导意见》公布；',
-                    imgs: '../images/02.jpg'
-                }, {
-                    timess: '2018',
-                    yue: ' 十月',
-                    content: '坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会',
-                    imgs: '../images/03.jpg'
-                }, {
-                    timess: '2019',
-                    yue: ' 十一月',
-                    content: '坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会',
-                    imgs: '../images/04.jpg'
-                }, {
-                    timess: '2020',
-                    yue: ' 十一月',
-                    content: '坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会',
-                    imgs: '../images/05.jpg'
-                },
+  var app = new Vue({
+    el: '#app',
+    data: {
+      slidearr: [
+        {
+          timess: '2016',
+          yue: ' 八月',
+          content: '坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会',
+          imgs: '../images/01.jpg'
+        }, {
+          timess: '2017',
+          yue: ' 九月',
+          content: '8月，《关于打赢脱贫攻坚战三年 行动的指导意见》公布；',
+          imgs: '../images/02.jpg'
+        }, {
+          timess: '2018',
+          yue: ' 十月',
+          content: '坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会',
+          imgs: '../images/03.jpg'
+        }, {
+          timess: '2019',
+          yue: ' 十一月',
+          content: '坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会',
+          imgs: '../images/04.jpg'
+        }, {
+          timess: '2020',
+          yue: ' 十一月',
+          content: '坪山区驻陆河县对口帮扶指挥部召开精准扶贫工作推进会',
+          imgs: '../images/05.jpg'
+        },
 
-            ],
-            nain: [
-                {
-                    year: '2016',
-                }, {
-                    year: '2017',
-                }, {
-                    year: '2018',
-                }, {
-                    year: '2019',
-                }, {
-                    year: '2020',
-                },
-            ],
-            listnum: 0,
-            slidnumsL: 1
+      ],
+      nain: [
+        {
+          year: '2020',
         },
-        mounted: function () {
-            headersget($('.backgbox'))
+        {
+          year: '2019',
         },
-        methods: {
-            listclick: function (val, index) {
-                this.listnum = index
-                this.slidearr.map(function (item) {
-                    return item.timess = val.year
-                })
-                 
-            },
-            enter:function(index) {
-                this.slidnumsL = index
-            }
-        }
-    })
-    // var timelineSwiper = new Swiper('.timeline .swiper-container', {
-    //   direction: 'vertical',
-    //   loop: false,
-    //   speed: 1600,
-    //   mousewheelControl: true,
-    //   initialSlide :2,
-    //   pagination: '.swiper-pagination',
-    //   paginationBulletRender: function (swiper, index, className) {
-    //       console.log(swiper, index, className)
-    //     var year = document.querySelectorAll('.swiper-slide')[index].getAttribute('data-year');
-    //     return '<span class="' + className + '">' + year + '</span>';
-    //   },
-    //   onSlideChangeStart:function(swiper){
-    //       app.listnum = swiper.activeIndex
-    //       console.log(swiper.activeIndex)
-    //   },
-    //   paginationClickable: true,
-    //   nextButton: '.swiper-button-next',
-    //   prevButton: '.swiper-button-prev',
-    //   breakpoints: {
-    //     768: {
-    //       direction: 'horizontal',
-    //     }
-    //   }
-    // });
-    var mySwiper = new Swiper('.swiper-container', {
-        slidesPerView: 3,
-        spaceBetween: 20,
-        // 如果需要分页器
-        pagination: '.swiper-pagination',
-        onSlideChangeStart:function(swiper){
-            app.slidnumsL = swiper.activeIndex +1
-          console.log(swiper)
+        {
+          year: '2018',
+        },
+        {
+          year: '2017',
+        }, {
+          year: '2016',
+        },
+      ],
+      listnum: 0,
+      slidnumsL: 1
+    },
+    mounted: function () {
+      headersget($('.backgbox'))
+    },
+    methods: {
+      listclick: function (val, index) {
+        this.listnum = index
+        this.slidearr.map(function (item) {
+          return item.timess = val.year
+        })
+
       },
-    })
-    $('.btn1').click(function () {
-        mySwiper.slidePrev();
-    })
-    $('.btn2').click(function () {
-        mySwiper.slideNext();
-    })
+      enter: function (index) {
+        this.slidnumsL = index
+      }
+    }
+  })
+  // var timelineSwiper = new Swiper('.timeline .swiper-container', {
+  //   direction: 'vertical',
+  //   loop: false,
+  //   speed: 1600,
+  //   mousewheelControl: true,
+  //   initialSlide :2,
+  //   pagination: '.swiper-pagination',
+  //   paginationBulletRender: function (swiper, index, className) {
+  //       console.log(swiper, index, className)
+  //     var year = document.querySelectorAll('.swiper-slide')[index].getAttribute('data-year');
+  //     return '<span class="' + className + '">' + year + '</span>';
+  //   },
+  //   onSlideChangeStart:function(swiper){
+  //       app.listnum = swiper.activeIndex
+  //       console.log(swiper.activeIndex)
+  //   },
+  //   paginationClickable: true,
+  //   nextButton: '.swiper-button-next',
+  //   prevButton: '.swiper-button-prev',
+  //   breakpoints: {
+  //     768: {
+  //       direction: 'horizontal',
+  //     }
+  //   }
+  // });
+  var mySwiper = new Swiper('.swiper-container', {
+    slidesPerView: 3,
+    spaceBetween: 20,
+    // 如果需要分页器
+    pagination: '.swiper-pagination',
+    onSlideChangeStart: function (swiper) {
+      app.slidnumsL = swiper.activeIndex + 1
+      console.log(swiper)
+    },
+  })
+  $('.btn1').click(function () {
+    mySwiper.slidePrev();
+  })
+  $('.btn2').click(function () {
+    mySwiper.slideNext();
+  })
 </script>

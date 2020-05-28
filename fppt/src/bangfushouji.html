@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/eleicon.css">
     <link rel="stylesheet" href="../css/swiper.min.css">
     <link rel="stylesheet" href="../css/jyjtpurchase.css">
-    <link rel="stylesheet" href="../sass/Characterstyle.css">
+    <link rel="stylesheet" href="../sass/bangfushouji.css">
     <link rel="stylesheet" href="../css/pcbanner3.css">
     <script src="../js/vue.min.js"></script>
     <script src="../js/jquery.js"></script>
@@ -57,8 +57,8 @@
             -moz-transition: transform 1.0s;
             -ms-transition: transform 1.0s;
             -o-transition: transform 1.0s;
-            -webkit-transform: scale(0.9);
-            transform: scale(0.9);
+            -webkit-transform: scale(0.8);
+            transform: scale(0.8);
         }
 
 
@@ -80,6 +80,10 @@
         .swiper-pagination-bullet{
             margin: 0 10px;
         }
+        .swiper-button-prev,.swiper-button-next{
+            background: none
+        }
+      
 </style>
 <body>
     <div id="app" v-cloak>
@@ -173,7 +177,7 @@
     })
     var swiper = new Swiper('.bangfubanner', {
        loop: true,
-        loopedSlides: 3,
+        loopedSlides: 1,
         spaceBetween: 20,
         centeredSlides: true,
         slidesPerView: 'auto',
